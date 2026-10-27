@@ -87,14 +87,39 @@ function getParityColorsForInput(alg: string): { color: string } | null {
   return { color: parity === 'odd' ? 'var(--parity-odd)' : 'var(--parity-even)' };
 }
 
+/** True when the alg solves only the mirrored (z2) version of the case. */
+function isMirroredInput(alg: string): boolean {
+  const modal = document.getElementById('editCaseModal');
+  const caseName = modal ? getEditModalCaseName(modal) : null;
+  if (!caseName) return false;
+  const canonicalIdx = CSPData.getCanonicalShapeIndex(caseName);
+  const entry = getModalCaseShapeData(caseName);
+  const idx = algToShapeIndex(normalizeScramble(expandForColorCheck(alg))).shapeIndex;
+  return idx !== canonicalIdx && !entry?.org?.includes(idx) && !!entry?.mir?.includes(idx);
+}
+
+function setMirrorBadge(input: HTMLInputElement, mirrored: boolean): void {
+  let badge = input.previousElementSibling as HTMLElement | null;
+  if (!badge?.classList.contains('z2-prefix')) {
+    if (!mirrored) return;
+    badge = document.createElement('span');
+    badge.className = 'z2-prefix';
+    badge.textContent = 'z2';
+    input.before(badge);
+  }
+  badge.style.display = mirrored ? '' : 'none';
+}
+
 function updateInputColorLive(input: HTMLInputElement): void {
   const alg = input.value.trim();
   if (!alg || alg === 'Done!') {
     input.style.color = '';
     input.style.fontWeight = '';
+    setMirrorBadge(input, false);
     return;
   }
   try {
+    setMirrorBadge(input, isMirroredInput(alg));
     const info = getParityColorsForInput(alg);
     if (!info) {
       input.style.color = '';
@@ -103,6 +128,7 @@ function updateInputColorLive(input: HTMLInputElement): void {
     input.style.color = info.color;
     input.style.fontWeight = '600';
   } catch {
+    setMirrorBadge(input, false);
     input.style.color = 'var(--parity-invalid)';
     input.style.fontWeight = '600';
   }
@@ -527,7 +553,7 @@ export function showEditCaseInfoModal(): void {
                     </div>
                     <div class="training-info-item">
                         <div class="training-info-number">2</div>
-                        <div class="training-info-text"><strong>Auto-Normalization:</strong> When you finish editing an alg (click away from the input), it's automatically normalized to standard notation. Formatting will be standardized, and if your alg solves the z2 case, it will be marked with a "(mirrored)" tag.</div>
+                        <div class="training-info-text"><strong>Auto-Normalization:</strong> When you finish editing an alg (click away from the input), it's automatically normalized to standard notation. Formatting will be standardized, and if your alg solves the z2 case, it will be marked with a "z2" prefix.</div>
                     </div>
                     <div class="training-info-item">
                         <div class="training-info-number">3</div>

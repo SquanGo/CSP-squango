@@ -2876,6 +2876,15 @@ mark.search-hl { background-color: var(--search-highlight-bg); color: var(--sear
 .parity-mirror  { color: var(--parity-odd-mirror);   font-weight: 600; }
 .parity-invalid { color: var(--parity-invalid);      font-weight: 600; }
 
+/* z2 prefix shown before algs that solve the mirrored case */
+.z2-prefix {
+    color: var(--z2-prefix-color);
+    font-weight: 600;
+    margin-right: 4px;
+    white-space: nowrap;
+    user-select: none;
+}
+
 
 /* ── 11. PRESET OPTIONS in sidebar ──────────────────────────── */
 

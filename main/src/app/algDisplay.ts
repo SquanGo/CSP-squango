@@ -116,7 +116,19 @@ export interface AlgDisplayMeta {
   mirrored: boolean;
 }
 
+const metaCache = new Map<string, AlgDisplayMeta>();
+
 export function getAlgDisplayMeta(alg: string, caseName: string): AlgDisplayMeta {
+  const key = `${caseName}|${alg}`;
+  let meta = metaCache.get(key);
+  if (!meta) {
+    meta = computeAlgDisplayMeta(alg, caseName);
+    metaCache.set(key, meta);
+  }
+  return meta;
+}
+
+function computeAlgDisplayMeta(alg: string, caseName: string): AlgDisplayMeta {
   if (!alg || alg === 'Done!') {
     return { invalid: false, mirrored: false };
   }
@@ -198,15 +210,18 @@ export function renderAlgorithmWithPopup(
   hideParenthesis: boolean,
   fontFamily: string,
   validateMeta = true,
+  markMirrored = false,
 ): string {
   const fontStyle = fontFamily ? `font-family: ${fontFamily};` : '';
   return algoArray
     .map((algo, idx) => {
       const algoId = `alg-${caseName.replace(/[^a-zA-Z0-9]/g, '_')}-${parityType}-${idx}`;
-      const meta = validateMeta ? getAlgDisplayMeta(algo, caseName) : { invalid: false, mirrored: false };
-      const prefix = meta.mirrored
-        ? '<span style="color: var(--z2-prefix-color); margin-right:4px; display:inline; vertical-align:baseline; white-space:nowrap;"><big style="font-size:1em;">&lt;</big><small>z2</small><big style="font-size:1em;">&gt;</big></span>'
-        : '';
+      const full = validateMeta || markMirrored ? getAlgDisplayMeta(algo, caseName) : null;
+      const meta = {
+        invalid: validateMeta && !!full?.invalid,
+        mirrored: !!full?.mirrored,
+      };
+      const prefix = meta.mirrored ? '<span class="z2-prefix">z2</span>' : '';
       const colorStyle = meta.invalid ? 'color: var(--algo-invalid-color);' : '';
       const wrapStyle = meta.invalid
         ? 'display: flex; align-items: baseline; flex-wrap: wrap; opacity: 0.18;'

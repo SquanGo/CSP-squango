@@ -324,6 +324,7 @@ function stripBeforeFirstSlash(alg: string): string {
 function updateAlgorithmCellParity(cell: HTMLElement): void {
   const alg = (cell.textContent || '').trim();
   delete cell.dataset.parity;
+  delete cell.dataset.mirrored;
   if (!alg || alg === 'Done!') {
     cell.style.color = '';
     cell.style.fontWeight = '';
@@ -341,6 +342,8 @@ function updateAlgorithmCellParity(cell: HTMLElement): void {
     const isDirectMatch = canonicalIdx !== null && resultShapeIndex === canonicalIdx;
     const isInOrg = caseShapeData && caseShapeData.org && caseShapeData.org.includes(resultShapeIndex);
     const isInMir = caseShapeData && caseShapeData.mir && caseShapeData.mir.includes(resultShapeIndex);
+
+    if (!isDirectMatch && !isInOrg && isInMir) cell.dataset.mirrored = '1';
 
     if (isDirectMatch || isInOrg) {
       const setup = invertScramble(alg);
@@ -409,6 +412,7 @@ function updateAlgorithmCellParity(cell: HTMLElement): void {
 
 function updateAlgorithmCellParityLive(cell: HTMLElement): void {
   const alg = (cell.textContent || '').trim();
+  delete cell.dataset.mirrored;
   if (!alg || alg === 'Done!') {
     cell.style.color = '';
     cell.style.fontWeight = '';
@@ -427,6 +431,8 @@ function updateAlgorithmCellParityLive(cell: HTMLElement): void {
     const isDirectMatch = canonicalIdx !== null && resultShapeIndex === canonicalIdx;
     const isInOrg = caseShapeData && caseShapeData.org && caseShapeData.org.includes(resultShapeIndex);
     const isInMir = caseShapeData && caseShapeData.mir && caseShapeData.mir.includes(resultShapeIndex);
+
+    if (!isDirectMatch && !isInOrg && isInMir) cell.dataset.mirrored = '1';
 
     if (isDirectMatch || isInOrg) {
       const setup = invertScramble(normalized);

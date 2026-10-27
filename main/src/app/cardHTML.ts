@@ -83,11 +83,11 @@ export function renderCard(item: AlgCase): string {
   const fontFamily = algoFontFamily();
   const oddAlgoDisplay =
     oddAlgos.length > 0
-      ? renderAlgorithmWithPopup(oddAlgos, String(item.id), 'odd', hideParenthesis, fontFamily, false)
+      ? renderAlgorithmWithPopup(oddAlgos, String(item.id), 'odd', hideParenthesis, fontFamily, false, true)
       : '<div class="algo-line" style="color: var(--text-muted); font-style: italic;">No algorithms available</div>';
   const evenAlgoDisplay =
     evenAlgos.length > 0
-      ? renderAlgorithmWithPopup(evenAlgos, String(item.id), 'even', hideParenthesis, fontFamily, false)
+      ? renderAlgorithmWithPopup(evenAlgos, String(item.id), 'even', hideParenthesis, fontFamily, false, true)
       : '<div class="algo-line" style="color: var(--text-muted); font-style: italic;">No algorithms available</div>';
 
   const learnedIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="${isLearned ? 'var(--card-learned-border)' : isLearning ? 'var(--card-learning-border)' : 'var(--border-color)'}" stroke-width="2">

@@ -515,6 +515,15 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+/* z2 marker for mirrored algs (display only, not part of cell text) */
+.algorithms-table .alg-cell[data-mirrored]::before {
+    content: 'z2 ';
+    color: var(--z2-prefix-color);
+    font-weight: 600;
+    user-select: none;
+    pointer-events: none;
+}
+
 .algorithms-table .display-name-col {
     font-family: inherit;
     white-space: nowrap;
