@@ -434,7 +434,7 @@ function showParityTracerInstructionModal(config: TracerConfig): void {
             <li><b>Corner sticker mode</b> determines which sticker (left-most sticker or right-most sticker) of the corner you use for tracing. This doesn't affect parity calculations, just your personal preference.</li>
             <li><b>z2 tracing for 6 and 8 edge cases</b> means you prioritize the more edge-dense face to start your tracing, regardless of which layer it's on. This is the safest tracing mode. If you do not do z2 tracing, for 2E6E cases parity gets flipped.</li>
             <li><b>Image size</b> determine how big the image of the square 1 appear on the parity tracer screen.</li>
-            <li><b>Tracing arrow</b> shows where your tracing starts on each layer. You can customize its appearance or hide it completely.</li>
+            <li><b>Tracing arrow</b> shows where your tracing starts on each layer. The numbered badge shows which layer you trace first (1) and second (2). You can customize the arrow's appearance or hide it completely.</li>
             <li><b>Set your tracing position</b> for each shape to have fully personalized parity tracing. This affets the parity of the <span style="font-weight:600; font-style:italic;">Algorithms on the Homescreen</span>, <span style="font-weight:600; font-style:italic;">Case in Trainer</span>, basically the <span style="font-weight:650; font-style:italic;">entire app</span>!</li>
             <li><span style="font-weight:600; font-style:italic;">Evilness</span> refers to a special tracing technique where you add 1 to your tracing for certain cases to force good alg for even parity all the time. If you are a practitioner of this technique, toggle <b>Evilness Factor</b> on from the settings. If you don't want evilness factor affects the parity of an algorithm on the homescreen, you can toggle <b>Evilness Affects Homescreen</b> off.</li>
           </ol>
@@ -1770,6 +1770,7 @@ function createParityTracerModalWithAllParametersIncluded(options: ParityTracerO
                   topArrowData.startAngle,
                   topArrowData.arcDegrees,
                   topGeometry.puzzleSize,
+                  sixStepParity.wasSwapped ? 2 : 1,
                 );
                 firstSvg.insertAdjacentHTML('beforeend', arrowSvg1);
 
@@ -1781,6 +1782,7 @@ function createParityTracerModalWithAllParametersIncluded(options: ParityTracerO
                   botArrowData.startAngle,
                   botArrowData.arcDegrees,
                   botGeometry.puzzleSize,
+                  sixStepParity.wasSwapped ? 1 : 2,
                 );
                 secondSvg.insertAdjacentHTML('beforeend', arrowSvg2);
               }

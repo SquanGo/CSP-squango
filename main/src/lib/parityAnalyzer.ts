@@ -898,6 +898,7 @@ export function generateArrowSVG(
   startAngleDeg: number,
   arcDegrees: number,
   size: number,
+  order?: 1 | 2,
 ): string {
   if (!showCircularArrow) return '';
 
@@ -936,6 +937,20 @@ export function generateArrowSVG(
   const arrow2X = endX + arrowSize * 0.5 * Math.cos(perpAngle2);
   const arrow2Y = endY - arrowSize * 0.5 * Math.sin(perpAngle2);
 
+  // Numbered badge replaces the start dot when a trace order is given.
+  // Drawn outside the opacity group so it stays solid.
+  let badge = '';
+  if (order) {
+    const r = size * 0.055;
+    // Dark base keeps the badge solid; the arrow color is layered on top to match it.
+    badge = `
+        <circle cx="${startX}" cy="${startY}" r="${r}" fill="var(--trace-badge-base)"opacity="${opacity}"/>
+        <circle cx="${startX}" cy="${startY}" r="${r}" fill="${arrowColor}"opacity="${opacity}"/>
+        <text x="${startX}" y="${startY}" text-anchor="middle" dominant-baseline="central"
+              font-family="system-ui, sans-serif" font-weight="700" font-size="${r * 1.35}"
+              fill="var(--trace-badge-fg, #fff)">${order}</text>`;
+  }
+
   return `
         <g opacity="${opacity}">
             <path d="${pathD}"
@@ -944,11 +959,11 @@ export function generateArrowSVG(
                   stroke-width="${strokeWidth}"
                   stroke-dasharray="${size * 0.008},${size * 0.004}"
                   stroke-linecap="round"/>
-            <circle cx="${startX}" cy="${startY}" r="${startDiskRadius}"
-                    fill="${arrowColor}" stroke="none"/>
+            ${order ? '' : `<circle cx="${startX}" cy="${startY}" r="${startDiskRadius}"
+                    fill="${arrowColor}" stroke="none"/>`}
             <polygon points="${arrowTipX},${arrowTipY} ${arrow1X},${arrow1Y} ${arrow2X},${arrow2Y}"
                      fill="${arrowColor}" stroke="none"/>
-        </g>
+        </g>${badge}
     `;
 }
 

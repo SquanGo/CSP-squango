@@ -61,6 +61,10 @@
     --parity-even-mirror: #004a9f;
     --parity-invalid:     #71000b;
 
+    /* ── Parity tracer: trace-order badges ── */
+    --trace-badge-base:   #c4202c;
+    --trace-badge-fg:     #ffffff;
+
     /* ── SVG ── */
     --svg-stroke:   #1a1a1a;
     --svg-fill:     #ffffff;
@@ -194,6 +198,9 @@
     --parity-odd-mirror:  #4b9c70;
     --parity-even-mirror: #5e86b2;
     --parity-invalid:     #d96b73;
+
+    --trace-badge-base:   #d03540;
+    --trace-badge-fg:     #ffffff;
 
     --svg-stroke:   #c8ccd8;
     --svg-fill:     var(--text-primary);
