@@ -73,8 +73,8 @@
 
     /* ── Card chrome ── */
     --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
-    --good-case:   #007900;
-    --bad-case:    #8b0000;
+    --nice-case:   #007900;
+    --evil-case:    #8b0000;
 
     /* ── Card states ── */
     --card-learned-bg: #d4edda;   --card-learned-border: #28a745;
@@ -88,9 +88,9 @@
     --evil-case-bg:     #ffe0e0;
     --evil-case-border: #e53e3e;
     --evil-case-text:   #7b1c1c;
-    --good-case-bg:     #e8f5e9;
-    --good-case-border: #38a169;
-    --good-case-text:   #1a4731;
+    --nice-case-bg:     #e8f5e9;
+    --nice-case-border: #38a169;
+    --nice-case-text:   #1a4731;
 
     /* ── Priority tiers ── */
     --p1-bg: #b3d9ff; --p1-border: #80bfff; --p1-header: #cce6ff; --p1-svg: #d9edff;
@@ -208,8 +208,8 @@
     --card-labels:  #7fa8ff;
 
     --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
-    --good-case:   #00b100;
-    --bad-case:    #fe8d8d;
+    --nice-case:   #00b100;
+    --evil-case:    #fe8d8d;
 
     --card-learned-bg: #0f2117;   --card-learned-border: #2a7a3e;
     --card-learned-header: #132819;  --card-learned-svg: #162c1a;
@@ -221,9 +221,9 @@
     --evil-case-bg:     #3a1f26;
     --evil-case-border: #d35f6b;
     --evil-case-text:   #ffb8be;
-    --good-case-bg:     #183524;
-    --good-case-border: #49b978;
-    --good-case-text:   #a8e6bd;
+    --nice-case-bg:     #183524;
+    --nice-case-border: #49b978;
+    --nice-case-text:   #a8e6bd;
 
     --p1-bg: #0e2240; --p1-border: #2558a0; --p1-header: #122648; --p1-svg: #102440;
     --p2-bg: #112232; --p2-border: #236080; --p2-header: #162a3c; --p2-svg: #142838;

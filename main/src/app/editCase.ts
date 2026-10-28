@@ -395,7 +395,7 @@ export function openEditCaseModal(caseName: string, openedFromTrainingCaseInfo =
                     <label style="font-weight: 500; color: var(--text-secondary); font-size: 0.95rem;">Mark as Evil</label>
                     <label class="evil-switch" style="position:relative;display:inline-block;width:42px;height:24px;">
                         <input type="checkbox" id="evilCaseToggle" ${evilnessMap[caseId] ? 'checked' : ''} style="opacity:0;width:0;height:0;">
-                        <span style="position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:${evilnessMap[caseId] ? 'var(--bad-case, #c00)' : 'var(--surface-border)'};border-radius:24px;transition:.3s;">
+                        <span style="position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:${evilnessMap[caseId] ? 'var(--evil-case, #c00)' : 'var(--surface-border)'};border-radius:24px;transition:.3s;">
                             <span style="position:absolute;content:'';height:18px;width:18px;left:${evilnessMap[caseId] ? '21px' : '3px'};bottom:3px;background:var(--surface-raised);border-radius:50%;transition:.3s;display:block;" id="evilSwitchKnob"></span>
                         </span>
                     </label>
@@ -421,7 +421,7 @@ export function openEditCaseModal(caseName: string, openedFromTrainingCaseInfo =
         const knob = document.getElementById('evilSwitchKnob') as HTMLElement | null;
         if (span) {
           span.style.background = evilToggle.checked
-            ? 'var(--bad-case, #c00)'
+            ? 'var(--evil-case, #c00)'
             : 'var(--surface-border)';
         }
         if (knob) knob.style.left = evilToggle.checked ? '21px' : '3px';

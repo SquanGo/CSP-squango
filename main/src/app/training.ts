@@ -1067,7 +1067,7 @@ function startParityQuizInspection(): void {
             transition:background 0.15s;
             display:flex; align-items:center; justify-content:center;
             font-size:1rem; font-weight:800;
-            color:rgba(45,106,45,0.85); letter-spacing:0.06em;
+            color:var(--nice-case); letter-spacing:0.06em;
         ">${goodLabel}</button>
         <div style="width:1px;background:rgba(0,0,0,0.07);flex-shrink:0;"></div>
         <button id="pqBadBtn" style="
@@ -1076,7 +1076,7 @@ function startParityQuizInspection(): void {
             transition:background 0.15s;
             display:flex; align-items:center; justify-content:center;
             font-size:1rem; font-weight:800;
-            color:rgba(139,0,0,0.85); letter-spacing:0.06em;
+            color:var(--evil-case); letter-spacing:0.06em;
         ">${badLabel}</button>
     `;
 
@@ -1175,7 +1175,7 @@ function stopTimerOnly(): void {
     const solveTime = (timerElapsed / 1000).toFixed(3);
     let html = `<span style="color:var(--accent);font-weight:700;">(${insTime}s inspection)</span>`;
     if (wasParityWrong) {
-      html += `<br><span style="color:var(--bad-case);font-weight:600;">✗ wrong parity answer</span>`;
+      html += `<br><span style="color:var(--evil-case);font-weight:600;">✗ wrong parity answer</span>`;
     }
     subInfo.innerHTML = html;
     subInfo.style.display = 'block';
@@ -1783,11 +1783,11 @@ function handleQuizKeyDown(e: KeyboardEvent): void {
 
   const evilModal = document.getElementById('evilnessQuizModal');
   if (evilModal) {
-    const goodBtn = document.getElementById('evilQuizGood') as HTMLButtonElement | null;
+    const niceBtn = document.getElementById('evilQuizNice') as HTMLButtonElement | null;
     const badBtn = document.getElementById('evilQuizEvil') as HTMLButtonElement | null;
-    if (goodBtn && !goodBtn.disabled && leftKeys.has(e.code)) {
+    if (niceBtn && !niceBtn.disabled && leftKeys.has(e.code)) {
       e.preventDefault();
-      goodBtn.click();
+      niceBtn.click();
       return;
     }
     if (badBtn && !badBtn.disabled && rightKeys.has(e.code)) {
@@ -1799,11 +1799,11 @@ function handleQuizKeyDown(e: KeyboardEvent): void {
 
   const parityModal = document.getElementById('parityQuizModal');
   if (parityModal) {
-    const goodBtn = document.getElementById('parityQuizGood') as HTMLButtonElement | null;
+    const niceBtn = document.getElementById('parityQuizNice') as HTMLButtonElement | null;
     const badBtn = document.getElementById('parityQuizBad') as HTMLButtonElement | null;
-    if (goodBtn && !goodBtn.disabled && leftKeys.has(e.code)) {
+    if (niceBtn && !niceBtn.disabled && leftKeys.has(e.code)) {
       e.preventDefault();
-      goodBtn.click();
+      niceBtn.click();
       return;
     }
     if (badBtn && !badBtn.disabled && rightKeys.has(e.code)) {
@@ -1945,7 +1945,7 @@ function openTrainingInfoModal(): void {
                     </div>
                     <div class="training-info-item">
                         <div class="training-info-number">3</div>
-                        <div class="training-info-text">Click on the left side of the screen, or <b>any left side key</b> (ie. QWERASDFZXCV1234 etc) on your keyboard to answer <b>Even/ Good Alg</b>. Do the opposite to answer <b>Odd/ Bad alg</b></div>
+                        <div class="training-info-text">Click on the left side of the screen, or <b>any left side key</b> (ie. QWERASDFZXCV1234 etc) on your keyboard to answer <b>Even / Good Alg</b>. Do the opposite to answer <b>Odd / Bad alg</b></div>
                     </div>
                     <div class="training-info-item">
                         <div class="training-info-number">4</div>
@@ -2080,8 +2080,8 @@ function startEvilnessQuiz(chosenCaseNames: number[]): void {
                 <div style="display:flex;flex-direction:column;align-items:center;gap:1.2rem;max-width:320px;text-align:center;padding:1.5rem;">
                     <div style="font-size:1.1rem;font-weight:700;color:var(--text-ui);">Evilness Quiz</div>
                     <div style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6;">
-                        You'll be shown an image of a scramble. Decide if the case requires a <span style="color:#2d6a2d;font-weight:700;">Good</span> alg or an <span style="color:#8b0000;font-weight:700;">Evil</span> alg.<br><br>
-                        Press the <strong>left half</strong> of the screen (or left-side keys) for Good, and the <strong>right half</strong> (or right-side keys) for Evil.
+                        You'll be shown an image of a scramble. Decide if the CS is a <span style="color:var(--nice-case);font-weight:700;">nice</span> case or a <span style="color:var(--evil-case);font-weight:700;">evil</span> case.<br><br>
+                        Press the <strong>left half</strong> of the screen (or left-side keys) for nice, and the <strong>right half</strong> (or right-side keys) for evil.
                     </div>
                     <button id="evilQuizStartBtn" style="padding:0.9rem 2.2rem;background:var(--accent);color:var(--text-on-color);border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;">Start</button>
                 </div>
@@ -2160,10 +2160,10 @@ function startEvilnessQuiz(chosenCaseNames: number[]): void {
       .reverse()
       .map((entry) => {
         const icon = entry.correct ? '✓' : '✗';
-        const color = entry.correct ? '#2d6a2d' : '#cc0000';
+        const color = entry.correct ? 'var(--nice-case)' : '#cc0000';
         const timeStr = (entry.timeMs / 1000).toFixed(3) + 's';
-        const evilStr = entry.wasEvil ? 'Evil' : 'Good';
-        return `<div style="padding:6px 8px;border-radius:6px;background:${entry.correct ? 'var(--card-learned-bg)' : 'var(--toast-error-bg)'};border:1px solid ${entry.correct ? 'var(--card-learned-border)' : 'var(--bad-case)'};">
+        const evilStr = entry.wasEvil ? 'Evil' : 'Nice';
+        return `<div style="padding:6px 8px;border-radius:6px;background:${entry.correct ? 'var(--card-learned-bg)' : 'var(--toast-error-bg)'};border:1px solid ${entry.correct ? 'var(--card-learned-border)' : 'var(--evil-case)'};">
                 <span style="color:${color};font-weight:700;">${icon}</span>
                 <span style="font-weight:600;margin-left:4px;">${getDisplayName(entry.caseName)}</span>
                 <span style="color:var(--text-muted);margin-left:4px;">(${evilStr})</span>
@@ -2212,9 +2212,9 @@ function startEvilnessQuiz(chosenCaseNames: number[]): void {
     overlay.id = 'evilQuizAnswerOverlay';
     overlay.style.cssText = `position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:row;z-index:100;border-radius:inherit;overflow:hidden;`;
     overlay.innerHTML = `
-            <button id="evilQuizGood" style="flex:1;border:none;cursor:pointer;background:rgba(45,106,45,0.10);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:rgba(45,106,45,0.85);letter-spacing:0.06em;transition:background 0.15s;">GOOD</button>
+            <button id="evilQuizNice" style="flex:1;border:none;cursor:pointer;background:rgba(45,106,45,0.10);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:var(--nice-case);letter-spacing:0.06em;transition:background 0.15s;">NICE</button>
             <div style="width:1px;background:rgba(0,0,0,0.07);flex-shrink:0;"></div>
-            <button id="evilQuizEvil" style="flex:1;border:none;cursor:pointer;background:rgba(139,0,0,0.10);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:rgba(139,0,0,0.85);letter-spacing:0.06em;transition:background 0.15s;">EVIL</button>
+            <button id="evilQuizEvil" style="flex:1;border:none;cursor:pointer;background:rgba(139,0,0,0.10);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:var(--evil-case);letter-spacing:0.06em;transition:background 0.15s;">EVIL</button>
         `;
     timerZone.appendChild(overlay);
 
@@ -2238,7 +2238,7 @@ function startEvilnessQuiz(chosenCaseNames: number[]): void {
       ).toFixed(3);
     }, 10);
 
-    document.getElementById('evilQuizGood')!.addEventListener('click', () => handleAnswer(false));
+    document.getElementById('evilQuizNice')!.addEventListener('click', () => handleAnswer(false));
     document.getElementById('evilQuizEvil')!.addEventListener('click', () => handleAnswer(true));
   }
 
@@ -2257,13 +2257,13 @@ function startEvilnessQuiz(chosenCaseNames: number[]): void {
     } else {
       const wrongBtn = (userSaidEvil
         ? document.getElementById('evilQuizEvil')
-        : document.getElementById('evilQuizGood')) as HTMLButtonElement | null;
+        : document.getElementById('evilQuizNice')) as HTMLButtonElement | null;
       if (wrongBtn) {
         wrongBtn.style.background = 'rgba(200,0,0,0.22)';
         wrongBtn.style.color = 'rgba(180,0,0,0.9)';
         wrongBtn.disabled = true;
         const otherBtn = (userSaidEvil
-          ? document.getElementById('evilQuizGood')
+          ? document.getElementById('evilQuizNice')
           : document.getElementById('evilQuizEvil')) as HTMLButtonElement | null;
         if (otherBtn) otherBtn.disabled = true;
       }
@@ -2384,11 +2384,11 @@ function startEvilnessQuiz(chosenCaseNames: number[]): void {
     }
 
     if (!quizRunning) return;
-    const goodBtn = document.getElementById('evilQuizGood') as HTMLButtonElement | null;
+    const niceBtn = document.getElementById('evilQuizNice') as HTMLButtonElement | null;
     const evilBtn = document.getElementById('evilQuizEvil') as HTMLButtonElement | null;
-    if (leftKeys.has(e.code) && goodBtn && !goodBtn.disabled) {
+    if (leftKeys.has(e.code) && niceBtn && !niceBtn.disabled) {
       e.preventDefault();
-      goodBtn.click();
+      niceBtn.click();
     } else if (rightKeys.has(e.code) && evilBtn && !evilBtn.disabled) {
       e.preventDefault();
       evilBtn.click();
@@ -2433,8 +2433,8 @@ function startEvilnessQuiz(chosenCaseNames: number[]): void {
     <div style="display:flex;flex-direction:column;align-items:center;gap:1.2rem;max-width:320px;text-align:center;padding:1.5rem;">
         <div style="font-size:1.1rem;font-weight:700;color:var(--text-ui);">Evilness Quiz</div>
         <div style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6;">
-            You'll be shown a scrambled cube image. Decide if the case requires a <span style="color:#2d6a2d;font-weight:700;">Good</span> alg or a <span style="color:#8b0000;font-weight:700;">Bad</span> alg.<br><br>
-            Use the <strong>left half</strong> of the screen (or left-side keys) for Good, and the <strong>right half</strong> (or right-side keys) for Evil.
+            You'll be shown an image of a scramble. Decide if the CS is a <span style="color:var(--nice-case);font-weight:700;">nice</span> case or a <span style="color:var(--evil-case);font-weight:700;">evil</span> case.<br><br>
+            Press the <strong>left half</strong> of the screen (or left-side keys) for nice, and the <strong>right half</strong> (or right-side keys) for evil.
         </div>
         <button id="evilQuizStartBtn" style="padding:0.9rem 2.2rem;background:var(--accent);color:var(--text-on-color);border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;">Start</button>
     </div>`;
@@ -2509,8 +2509,8 @@ function startParityQuiz(chosenCaseNames: number[]): void {
             </div>
             <div style="font-size:1.1rem;font-weight:600;color:var(--text-ui);">Which alg do you need?</div>
             <div style="display:flex;gap:1rem;justify-content:center;width:100%;max-width:320px;">
-                <button id="parityQuizGood" style="flex:1;padding:0.9rem;background:#2d6a2d;color:var(--text-on-color);border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;transition:opacity 0.2s;">Good Alg</button>
-                <button id="parityQuizBad" style="flex:1;padding:0.9rem;background:#8b0000;color:var(--text-on-color);border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;transition:opacity 0.2s;">Bad Alg</button>
+                <button id="parityQuizGood" style="flex:1;padding:0.9rem;background:var(--nice-case);color:var(--text-on-color);border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;transition:opacity 0.2s;">Good Alg</button>
+                <button id="parityQuizBad" style="flex:1;padding:0.9rem;background:var(--evil-case);color:var(--text-on-color);border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;transition:opacity 0.2s;">Bad Alg</button>
             </div>
             <div id="parityQuizFeedback" style="min-height:26px;font-size:0.95rem;font-weight:600;color:var(--text-ui);"></div>
             <div class="training-modal-timer" id="parityQuizTimer">0.000</div>
@@ -2555,10 +2555,10 @@ function startParityQuiz(chosenCaseNames: number[]): void {
       .reverse()
       .map((entry) => {
         const icon = entry.correct ? '✓' : '✗';
-        const color = entry.correct ? '#2d6a2d' : '#cc0000';
+        const color = entry.correct ? 'var(--nice-case)' : '#cc0000';
         const timeStr = (entry.timeMs / 1000).toFixed(3) + 's';
         const parityStr = entry.parity ?? 'Unknown';
-        return `<div style="padding:6px 8px;border-radius:6px;background:${entry.correct ? 'var(--card-learned-bg)' : 'var(--toast-error-bg)'};border:1px solid ${entry.correct ? 'var(--card-learned-border)' : 'var(--bad-case)'};">
+        return `<div style="padding:6px 8px;border-radius:6px;background:${entry.correct ? 'var(--card-learned-bg)' : 'var(--toast-error-bg)'};border:1px solid ${entry.correct ? 'var(--card-learned-border)' : 'var(--evil-case)'};">
                 <span style="color:${color};font-weight:700;">${icon}</span>
                 <span style="font-weight:600;margin-left:4px;">${getDisplayName(entry.caseName)}</span>
                 <span style="color:var(--text-muted);margin-left:4px;">(${parityStr})</span>
@@ -2650,7 +2650,7 @@ function startParityQuiz(chosenCaseNames: number[]): void {
     fb.textContent = correct
       ? 'Correct!'
       : `Wrong — parity is ${currentParity}, need the ${correctIsGood ? 'Good' : 'Bad'} alg.`;
-    fb.style.color = correct ? '#2d6a2d' : '#8b0000';
+    fb.style.color = correct ? 'var(--nice-case)' : 'var(--evil-case)';
 
     setTimeout(nextQuestion, 1400);
   }
@@ -2835,7 +2835,7 @@ function startColorRecognitionPractice(): void {
                 <div style="display:flex;flex-direction:column;align-items:center;gap:1.2rem;max-width:320px;text-align:center;padding:1.5rem;">
                     <div style="font-size:1.1rem;font-weight:700;color:var(--text-ui);">Parity Quiz</div>
                     <div style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6;">
-                        You'll see three colors. Based on their colors, determine whether the parity is <span style="color:#2d6a2d;font-weight:700;">Even</span> or <span style="color:#8b0000;font-weight:700;">Odd</span>.<br><br>
+                        You'll see three colors. Based on their colors, determine whether the parity is <span style="color:var(--nice-case);font-weight:700;">Even</span> or <span style="color:var(--evil-case);font-weight:700;">Odd</span>.<br><br>
                         Press the <strong>left half</strong> of the screen (or left-side keys) for Even, and the <strong>right half</strong> (or right-side keys) for Odd.
                     </div>
                     <button id="colorRecogStartBtn" style="padding:0.9rem 2.2rem;background:var(--accent);color:var(--text-on-color);border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;">Start</button>
@@ -2886,10 +2886,10 @@ function startColorRecognitionPractice(): void {
       .reverse()
       .map((entry) => {
         const icon = entry.correct ? '✓' : '✗';
-        const color = entry.correct ? '#2d6a2d' : '#cc0000';
+        const color = entry.correct ? 'var(--nice-case)' : '#cc0000';
         const timeStr = (entry.timeMs / 1000).toFixed(3) + 's';
         const answerStr = entry.correctIsEven ? 'Even' : 'Odd';
-        return `<div style="padding:6px 8px;border-radius:6px;background:${entry.correct ? 'var(--card-learned-bg)' : 'var(--toast-error-bg)'};border:1px solid ${entry.correct ? 'var(--card-learned-border)' : 'var(--bad-case)'};">
+        return `<div style="padding:6px 8px;border-radius:6px;background:${entry.correct ? 'var(--card-learned-bg)' : 'var(--toast-error-bg)'};border:1px solid ${entry.correct ? 'var(--card-learned-border)' : 'var(--evil-case)'};">
                 <span style="color:${color};font-weight:700;">${icon}</span>
                 <span style="font-size:1.1em;margin-left:4px;">${entry.emoji}</span>
                 <span style="color:#888;font-size:0.78rem;margin-left:4px;">${answerStr}</span>
@@ -3133,7 +3133,7 @@ function startColorRecognitionPractice(): void {
             <div style="display:flex;flex-direction:column;align-items:center;gap:1.2rem;max-width:320px;text-align:center;padding:1.5rem;">
                 <div style="font-size:1.1rem;font-weight:700;color:var(--text-ui);">Parity Quiz</div>
                 <div style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6;">
-                    You'll see three colors. Based on their colors, determine whether the parity is <span style="color:#2d6a2d;font-weight:700;">Even</span> or <span style="color:#8b0000;font-weight:700;">Odd</span>.<br><br>
+                    You'll see three colors. Based on their colors, determine whether the parity is <span style="color:var(--nice-case);font-weight:700;">Even</span> or <span style="color:var(--evil-case);font-weight:700;">Odd</span>.<br><br>
                     Press the <strong>left half</strong> of the screen (or left-side keys) for Even, and the <strong>right half</strong> (or right-side keys) for Odd.
                 </div>
                 <button id="colorRecogStartBtn" style="padding:0.9rem 2.2rem;background:var(--accent);color:var(--text-on-color);border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;">Start</button>

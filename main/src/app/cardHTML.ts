@@ -111,8 +111,8 @@ export function renderCard(item: AlgCase): string {
 
   const titleStyle = evilnessFactor
     ? isCaseEvil(item.id)
-      ? 'color: var(--bad-case);'
-      : 'color: var(--good-case);'
+      ? 'color: var(--evil-case);'
+      : 'color: var(--nice-case);'
     : '';
 
   const escapedName = String(item.id);

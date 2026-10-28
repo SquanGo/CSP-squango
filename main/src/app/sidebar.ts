@@ -751,8 +751,8 @@ export function handlePresetChange(presetName: string): void {
                         We recommend exporting your data before reloading.
                     </p> <br>
                     <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                        <button data-action="export" style="padding: 10px 20px; background: transparent; color: var(--good-case); border: 2px solid var(--good-case); border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s;">Export First</button>
-                        <button data-action="reload" style="padding: 10px 20px; background: transparent; color: var(--bad-case); border: 2px solid var(--bad-case); border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s;">Reload Anyway</button>
+                        <button data-action="export" style="padding: 10px 20px; background: transparent; color: var(--nice-case); border: 2px solid var(--nice-case); border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s;">Export First</button>
+                        <button data-action="reload" style="padding: 10px 20px; background: transparent; color: var(--evil-case); border: 2px solid var(--evil-case); border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s;">Reload Anyway</button>
                         <button data-action="cancel" style="padding: 10px 20px; background: transparent; color: var(--text-secondary); border: 2px solid var(--border-color); border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s;">Cancel</button>
                     </div>
                 </div>

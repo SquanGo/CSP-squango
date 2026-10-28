@@ -122,8 +122,8 @@ function hydrateGeneralRow(row: HTMLTableRowElement): void {
           evilnessFactor
             ? `<td style="text-align:center;vertical-align:middle;"><label style="position:relative;display:inline-block;width:36px;height:20px;"><input type="checkbox" class="evil-qe-toggle" data-case="${item.id}" ${
                 isEvil ? 'checked' : ''
-              } style="opacity:0;width:0;height:0;" onchange="evilnessMap[this.dataset.case]=this.checked;saveState();const k=this.nextElementSibling;k.style.background=this.checked?'var(--bad-case,#c00)':'var(--surface-border)';k.querySelector('span').style.left=this.checked?'18px':'2px';"><span style="position:absolute;top:0;left:0;right:0;bottom:0;background:${
-                isEvil ? 'var(--bad-case,#c00)' : 'var(--surface-border)'
+              } style="opacity:0;width:0;height:0;" onchange="evilnessMap[this.dataset.case]=this.checked;saveState();const k=this.nextElementSibling;k.style.background=this.checked?'var(--evil-case,#c00)':'var(--surface-border)';k.querySelector('span').style.left=this.checked?'18px':'2px';"><span style="position:absolute;top:0;left:0;right:0;bottom:0;background:${
+                isEvil ? 'var(--evil-case,#c00)' : 'var(--surface-border)'
               };border-radius:20px;cursor:pointer;transition:.3s;"><span style="position:absolute;height:16px;width:16px;left:${
                 isEvil ? '18px' : '2px'
               };bottom:2px;background:var(--surface-raised);border-radius:50%;transition:.3s;display:block;"></span></span></label></td>`

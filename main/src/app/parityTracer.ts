@@ -258,8 +258,8 @@ function displayResults(container: HTMLElement, sixStepParity: SixStepParity, co
   const evilCounts = hasEvil && getEvilnessAffectsParity();
   const evilBadge =
     sixStepParity.evilStep === 1
-      ? '<span style="color:var(--bad-case);font-weight:700;">EVIL</span>'
-      : '<span style="color:var(--good-case);font-weight:700;">GOOD</span>';
+      ? '<span style="color:var(--evil-case);font-weight:700;">EVIL</span>'
+      : '<span style="color:var(--nice-case);font-weight:700;">GOOD</span>';
   const allSteps = [...sixStepParity.steps];
   if (evilCounts) {
     allSteps.push({
@@ -281,8 +281,8 @@ function displayResults(container: HTMLElement, sixStepParity: SixStepParity, co
             if (idx === 6) {
               const evilLabel =
                 step.result === 1
-                  ? '<span style="color:var(--bad-case);font-weight:700;">EVIL</span>'
-                  : '<span style="color:var(--good-case);font-weight:700;">GOOD</span>';
+                  ? '<span style="color:var(--evil-case);font-weight:700;">EVIL</span>'
+                  : '<span style="color:var(--nice-case);font-weight:700;">GOOD</span>';
               displayContent = `${lineName}: ${evilLabel} = <strong>${step.result}</strong>`;
             } else if (step.isLayer) {
               displayContent = `${lineName}: ${createPositionIndicator(step.hexPerm)} = <strong>${step.result}</strong>`;
@@ -542,9 +542,9 @@ function showEvilnessCasesModal(
           ? dn.replace(/ /g, '\u00A0').replace('/', '/\u200B')
           : dn;
 
-        const bgColor = isEvil ? 'var(--evil-case-bg)' : 'var(--good-case-bg)';
-        const borderColor2 = isEvil ? 'var(--evil-case-border)' : 'var(--good-case-border)';
-        const textCol = isEvil ? 'var(--evil-case-text)' : 'var(--good-case-text)';
+        const bgColor = isEvil ? 'var(--evil-case-bg)' : 'var(--nice-case-bg)';
+        const borderColor2 = isEvil ? 'var(--evil-case-border)' : 'var(--nice-case-border)';
+        const textCol = isEvil ? 'var(--evil-case-text)' : 'var(--nice-case-text)';
         const escaped = String(cn);
 
         return `<div
