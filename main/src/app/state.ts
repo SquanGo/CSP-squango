@@ -277,6 +277,14 @@ export function getCaseNameFromScramble(scramble: string): string | null {
   }
 }
 
+/** Canonical case id (string) for a scramble; the key format `evilnessMap` uses. */
+export function getCaseIdFromScramble(scramble: string): string | null {
+  const caseName = getCaseNameFromScramble(scramble);
+  if (!caseName) return null;
+  const caseId = getCaseId(caseName);
+  return caseId === undefined ? null : String(caseId);
+}
+
 export function isCaseEvil(caseName: CaseRef): boolean {
   if (!evilnessFactor) return false;
   const caseId = getCaseId(caseName);
@@ -295,7 +303,7 @@ let lastParityCalculationSettings: Record<string, unknown> | null = null;
 
 function syncParityAnalyzerEvilness(): void {
   setEvilnessConfig({ factor: evilnessFactor, affectsParity: evilnessAffectsParity, map: evilnessMap });
-  setCaseNameResolver(getCaseNameFromScramble);
+  setCaseNameResolver(getCaseIdFromScramble);
 }
 
 function getParityCalculationSettings(): Record<string, unknown> {

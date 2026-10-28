@@ -55,7 +55,7 @@ import {
   evilnessFactor,
   evilnessMap,
   evilnessAffectsParity,
-  getCaseNameFromScramble,
+  getCaseIdFromScramble,
   getDisplayName,
   getProbabilityTieRanks,
   hideInstructions,
@@ -98,7 +98,7 @@ let activeTracerSilentClose: (() => void) | null = null;
 // app state so calculateParity's evilStep matches legacy behavior.
 function syncEvilnessConfig(): void {
   setEvilnessConfig({ factor: evilnessFactor, affectsParity: evilnessAffectsParity, map: evilnessMap });
-  setCaseNameResolver(getCaseNameFromScramble);
+  setCaseNameResolver(getCaseIdFromScramble);
 }
 
 function getEvilnessFactor(): boolean {
@@ -294,8 +294,8 @@ function displayResults(container: HTMLElement, sixStepParity: SixStepParity, co
   const evilCounts = hasEvil && getEvilnessAffectsParity();
   const evilBadge =
     sixStepParity.evilStep === 1
-      ? '<span style="color:#8b0000;font-weight:700;">EVIL</span>'
-      : '<span style="color:#2d6a2d;font-weight:700;">GOOD</span>';
+      ? '<span style="color:var(--bad-case);font-weight:700;">EVIL</span>'
+      : '<span style="color:var(--good-case);font-weight:700;">GOOD</span>';
   const allSteps = [...sixStepParity.steps];
   if (evilCounts) {
     allSteps.push({
@@ -318,8 +318,8 @@ function displayResults(container: HTMLElement, sixStepParity: SixStepParity, co
             if (idx === 6) {
               const evilLabel =
                 step.result === 1
-                  ? '<span style="color:#8b0000;font-weight:700;">EVIL</span>'
-                  : '<span style="color:#2d6a2d;font-weight:700;">GOOD</span>';
+                  ? '<span style="color:var(--bad-case);font-weight:700;">EVIL</span>'
+                  : '<span style="color:var(--good-case);font-weight:700;">GOOD</span>';
               displayContent = `${lineName}: ${evilLabel} = <strong>${step.result}</strong>`;
             } else if (step.isLayer) {
               displayContent = `${lineName}: ${createPositionIndicator(step.hexPerm)} = <strong>${step.result}</strong>`;
