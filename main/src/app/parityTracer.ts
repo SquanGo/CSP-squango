@@ -16,7 +16,6 @@ import {
   type ArrowSettings,
   type MatchedShape,
   type SixStepParity,
-  adjustColorBrightness,
   applyUtilityTransformationsToScramble,
   calculateArrowAngle,
   calculateParityFromHex,
@@ -69,21 +68,6 @@ import { notify, subscribe } from './store';
 import { showToast } from './toast';
 import { openUnifiedSettings } from './settingsUI';
 
-// ── Dark-mode brightness offsets (restyle knobs) ─────────────────────────────
-const DM_INPUT_BG = 4;
-const DM_CARD_BG = 1;
-const DM_INNER_CARD_BG = 2;
-const DM_BUTTON_BG = 8;
-const DM_HOVER_BG = 14;
-const DM_RESULT_TITLE_COLOR = '#9299b0';
-
-const LM_INPUT_BG = -3;
-const LM_CARD_BG = -2;
-const LM_INNER_CARD_BG = -4;
-const LM_BUTTON_BG = -5;
-const LM_HOVER_BG = -8;
-const LM_RESULT_TITLE_COLOR = '#2d3748';
-
 // ── Module state (mirrors legacy globals) ────────────────────────────────────
 let shapePatterns: Record<string, string> = { ...getShapePatterns() };
 
@@ -109,20 +93,9 @@ function getEvilnessAffectsParity(): boolean {
   return getEvilnessConfig().affectsParity;
 }
 
-function getTracerTextColor(backgroundColor: string): string {
+function getContrastTextColor(backgroundColor: string): string {
   const contrastColor = getContrastColor(backgroundColor);
-  if (
-    contrastColor === '#FFFFFF' &&
-    document.documentElement.getAttribute('data-theme') === 'dark'
-  ) {
-    const themeTextColor = getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim();
-    if (themeTextColor) return themeTextColor;
-  }
   return contrastColor;
-}
-
-function isDarkTracerSurface(backgroundColor: string): boolean {
-  return getContrastColor(backgroundColor) === '#FFFFFF';
 }
 
 // Re-read the live tracer settings from localStorage (SettingsModal writes them
@@ -274,20 +247,11 @@ function displayResults(container: HTMLElement, sixStepParity: SixStepParity, co
         const isTopLayer = TOP_HEX.has(h);
         const letter = isTopLayer ? config.topLayerColorAbbreviation : config.bottomLayerColorAbbreviation;
         const bgColor = isTopLayer ? config.topLayerMainColor : config.bottomLayerMainColor;
-        const textColor = getTracerTextColor(bgColor);
+        const textColor = getContrastTextColor(bgColor);
         return `<span style="display: inline-block; width: 18px; height: 18px; border-radius: 3px; margin: 0 1px; background: ${bgColor}; color: ${textColor}; text-align: center; line-height: 18px; font-size: 11px; font-weight: bold; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">${letter}</span>`;
       })
       .join('');
   }
-
-  const textColor = getTracerTextColor(config.backgroundColor);
-  const isDark = isDarkTracerSurface(config.backgroundColor);
-  const cardBgColor = isDark
-    ? adjustColorBrightness(config.backgroundColor, DM_CARD_BG)
-    : adjustColorBrightness(config.backgroundColor, LM_CARD_BG);
-  const innerCardBg = isDark
-    ? adjustColorBrightness(config.backgroundColor, DM_INNER_CARD_BG)
-    : adjustColorBrightness(config.backgroundColor, LM_INNER_CARD_BG);
 
   // Evil only counts toward the total when "Evilness affects parity" is on
   const hasEvil = getEvilnessFactor() && sixStepParity.evilStep !== null;
@@ -305,10 +269,9 @@ function displayResults(container: HTMLElement, sixStepParity: SixStepParity, co
     });
   }
 
-  const resultTitleColor = isDark ? DM_RESULT_TITLE_COLOR : LM_RESULT_TITLE_COLOR;
   container.innerHTML = `
-    <div style="background: ${cardBgColor}; padding: 0.75rem; border-radius: 8px;">
-      <h3 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: ${resultTitleColor}; font-weight: 600;">Parity Analysis</h3>
+    <div style="background: var(--surface2); padding: 0.75rem; border-radius: 8px;">
+      <h3 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: 600;">Parity Analysis</h3>
       <div class="parity-grid-tracer-lib">
         ${allSteps
           .map((step, idx) => {
@@ -328,8 +291,8 @@ function displayResults(container: HTMLElement, sixStepParity: SixStepParity, co
             }
 
             return `
-              <div style="background: ${innerCardBg}; padding: 0.5rem; border-radius: 6px;">
-                <div style="font-weight: 600; font-size: 0.85rem; color: ${textColor};">
+              <div style="background: var(--surface-raised); padding: 0.5rem; border-radius: 6px;">
+                <div style="font-weight: 600; font-size: 0.85rem; color: var(--text-ui);">
                   ${displayContent}
                 </div>
               </div>
@@ -337,8 +300,8 @@ function displayResults(container: HTMLElement, sixStepParity: SixStepParity, co
           })
           .join('')}
       </div>
-      <div style="background: ${innerCardBg}; margin-top: 0.5rem; padding: 0.5rem; border-radius: 6px;">
-        <div style="font-weight: 600; font-size: 0.95rem; color: ${textColor};">
+      <div style="background: var(--surface-raised); margin-top: 0.5rem; padding: 0.5rem; border-radius: 6px;">
+        <div style="font-weight: 600; font-size: 0.95rem; color: var(--text-ui);">
           Total: ${
             evilCounts
               ? sixStepParity.total + '+' + sixStepParity.evilStep + '=' + (sixStepParity.total + (sixStepParity.evilStep ?? 0))
@@ -352,8 +315,8 @@ function displayResults(container: HTMLElement, sixStepParity: SixStepParity, co
       </div>
       ${
         hasEvil && !evilCounts
-          ? `<div style="background: ${innerCardBg}; margin-top: 0.5rem; padding: 0.5rem; border-radius: 6px;">
-        <div style="font-weight: 600; font-size: 0.85rem; color: ${textColor};">Evilness: ${evilBadge}</div>
+          ? `<div style="background: var(--surface-raised); margin-top: 0.5rem; padding: 0.5rem; border-radius: 6px;">
+        <div style="font-weight: 600; font-size: 0.85rem; color: var(--text-ui);">Evilness: ${evilBadge}</div>
       </div>`
           : ''
       }
@@ -387,21 +350,15 @@ function setShapeOrientation(pattern: string, clickedIndex: number): void {
 
 // ── Instruction modals ───────────────────────────────────────────────────────
 function showInstructionModal(config: TracerConfig, title: string, bodyHTML: string, zIndex: string): void {
-  const textColor = getTracerTextColor(config.backgroundColor);
-  const isDark = isDarkTracerSurface(config.backgroundColor);
-  const cardBgColor = isDark
-    ? adjustColorBrightness(config.backgroundColor, 12)
-    : adjustColorBrightness(config.backgroundColor, -4);
-
   const instructionModal = document.createElement('div');
   instructionModal.id = 'instructionModal';
   instructionModal.className = 'training-info-modal';
   instructionModal.style.zIndex = zIndex;
   instructionModal.innerHTML = `
     <div class="training-info-content" style="background: ${config.backgroundColor};">
-      <div class="training-info-header" style="background: ${cardBgColor}; color: ${textColor};">
+      <div class="training-info-header" style="background: var(--modal-header-bg); color: var(--text-ui);">
         <span class="training-info-title">${title}</span>
-        <button class="training-info-close" style="color: ${textColor};">&times;</button>
+        <button class="training-info-close" style="color: var(--text-ui);">&times;</button>
       </div>
       <div class="training-info-body">
         ${bodyHTML}
@@ -429,19 +386,19 @@ function showParityTracerInstructionModal(config: TracerConfig): void {
     `
       <div class="training-info-item">
         <div class="training-info-number">1</div>
-        <div class="training-info-text" style="color: ${getTracerTextColor(config.backgroundColor)};">Enter your scramble in the input bar to analyze the parity of the scramble using the <span style="font-weight: 550; font-style:italic;">Cale's tracing</span> method.</div>
+        <div class="training-info-text" style="color: var(--text-ui);">Enter your scramble in the input bar to analyze the parity of the scramble using the <span style="font-weight: 550; font-style:italic;">Cale's tracing</span> method.</div>
       </div>
       <div class="training-info-item">
         <div class="training-info-number">2</div>
-        <div class="training-info-text" style="color: ${getTracerTextColor(config.backgroundColor)};">You can customize your entire parity tracer from the settings button down below. If you need to change the color scheme, go the <b>Color Scheme Settings</b> under personalization tab in settings.</div>
+        <div class="training-info-text" style="color: var(--text-ui);">You can customize your entire parity tracer from the settings button down below. If you need to change the color scheme, go the <b>Color Scheme Settings</b> under personalization tab in settings.</div>
       </div>
       <div class="training-info-item">
         <div class="training-info-number">3</div>
-        <div class="training-info-text" style="color: ${getTracerTextColor(config.backgroundColor)};">Toggle the <b>z2</b> button on if you want to trace parity from the z2 orientation. Similarly toggle the <b>y2</b> button on to trace parity from y2 orientation. If you scrambled you square one with wrong color on front, toggle <b>Flip Color</b> on.</div>
+        <div class="training-info-text" style="color: var(--text-ui);">Toggle the <b>z2</b> button on if you want to trace parity from the z2 orientation. Similarly toggle the <b>y2</b> button on to trace parity from y2 orientation. If you scrambled you square one with wrong color on front, toggle <b>Flip Color</b> on.</div>
       </div>
       <div class="training-info-item">
         <div class="training-info-number">4</div>
-        <div class="training-info-text" style="color: ${getTracerTextColor(config.backgroundColor)};">Personalize your tracing methods and tracing positions from the Settings:
+        <div class="training-info-text" style="color: var(--text-ui);">Personalize your tracing methods and tracing positions from the Settings:
           <ol>
             <li><b>Corner sticker mode</b> determines which sticker (left-most sticker or right-most sticker) of the corner you use for tracing. This doesn't affect parity calculations, just your personal preference.</li>
             <li><b>z2 tracing for 6 and 8 edge cases</b> means you prioritize the more edge-dense face to start your tracing, regardless of which layer it's on. This is the safest tracing mode. If you do not do z2 tracing, for 2E6E cases parity gets flipped.</li>
@@ -454,7 +411,7 @@ function showParityTracerInstructionModal(config: TracerConfig): void {
       </div>
       <div class="training-info-item">
         <div class="training-info-number">5</div>
-        <div class="training-info-text" style="color: ${getTracerTextColor(config.backgroundColor)};">For <b>symmetric shapes</b> (eg. square, barrel, 2-2-2, 4-4, star), click the center of the image of the shape to trace from <span style="font-weight: 550; font-style:italic;">different symmetry.</span></div>
+        <div class="training-info-text" style="color: var(--text-ui);">For <b>symmetric shapes</b> (eg. square, barrel, 2-2-2, 4-4, star), click the center of the image of the shape to trace from <span style="font-weight: 550; font-style:italic;">different symmetry.</span></div>
       </div>
     `,
     '10010',
@@ -468,11 +425,11 @@ function showConfigOrientationInstructionModal(config: TracerConfig): void {
     `
       <div class="training-info-item">
         <div class="training-info-number">1</div>
-        <div class="training-info-text" style="color: ${getTracerTextColor(config.backgroundColor)};">For each shape, select one piece as your starting point. When you trace CSP, you would start from this piece, and go clockwise.</div>
+        <div class="training-info-text" style="color: var(--text-ui);">For each shape, select one piece as your starting point. When you trace CSP, you would start from this piece, and go clockwise.</div>
       </div>
       <div class="training-info-item">
         <div class="training-info-number">2</div>
-        <div class="training-info-text" style="color: ${getTracerTextColor(config.backgroundColor)};">Please just don't trace counterclockwise.</div>
+        <div class="training-info-text" style="color: var(--text-ui);">Please just don't trace counterclockwise.</div>
       </div>
     `,
     '10011',
@@ -759,14 +716,6 @@ function showTracingPositionSettingsModal(
   mainCloseBtn: HTMLElement | null,
   mainSettingsBtn: HTMLElement | null,
 ): void {
-  const textColor = getTracerTextColor(config.backgroundColor);
-  const isDark = isDarkTracerSurface(config.backgroundColor);
-  const borderColor = isDark
-    ? adjustColorBrightness(config.backgroundColor, 20)
-    : adjustColorBrightness(config.backgroundColor, -10);
-  const inputBgColor = isDark
-    ? adjustColorBrightness(config.backgroundColor, 10)
-    : adjustColorBrightness(config.backgroundColor, -3);
 
   const configModalDiv = document.createElement('div');
   configModalDiv.id = 'parityConfigModal';
@@ -810,8 +759,8 @@ function showTracingPositionSettingsModal(
   const headerTitle = document.createElement('div');
   headerTitle.style.cssText = 'display: flex; align-items: center; gap: 10px;';
   headerTitle.innerHTML = `
-    <h2 style="font-size: 1.5rem; color: ${textColor}; margin: 0;">Tracing Position Settings</h2>
-    <button class="config-info-btn" style="background: rgba(255, 255, 255, 0.1); border: none; color: ${textColor}; cursor: pointer; padding: 6px; border-radius: 6px; display: ${config.hideInstructionButton ? 'none' : 'flex'}; align-items: center; justify-content: center; transition: background 0.2s; width: 32px; height: 32px;" title="Configuration Guide">
+    <h2 style="font-size: 1.5rem; color: var(--text-ui); margin: 0;">Tracing Position Settings</h2>
+    <button class="config-info-btn" style="background: rgba(255, 255, 255, 0.1); border: none; color: var(--text-ui); cursor: pointer; padding: 6px; border-radius: 6px; display: ${config.hideInstructionButton ? 'none' : 'flex'}; align-items: center; justify-content: center; transition: background 0.2s; width: 32px; height: 32px;" title="Configuration Guide">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;">
         <circle cx="12" cy="12" r="10"></circle>
         <line x1="12" y1="16" x2="12" y2="12"></line>
@@ -825,7 +774,7 @@ function showTracingPositionSettingsModal(
   searchDiv.className = 'shape-search-container';
   searchDiv.style.cssText = 'margin-bottom: 1.5rem;';
   searchDiv.innerHTML = `
-    <input type="text" id="shape-search-input" placeholder="Search shapes by name..." style="width: 100%; padding: 0.75rem; border: 2px solid ${borderColor}; background: ${inputBgColor}; color: ${textColor}; border-radius: 8px; font-size: 0.9rem; transition: all 0.2s;">
+    <input type="text" id="shape-search-input" placeholder="Search shapes by name..." style="width: 100%; padding: 0.75rem; border: 2px solid var(--border-color); background: var(--surface-raised); color: var(--text-ui); border-radius: 8px; font-size: 0.9rem; transition: all 0.2s;">
   `;
 
   const casesListDiv = document.createElement('div');
@@ -862,11 +811,8 @@ function showTracingPositionSettingsModal(
       caseDiv.classList.add('last-odd-card');
     }
 
-    const cardBg = isDark
-      ? adjustColorBrightness(config.backgroundColor, 12)
-      : adjustColorBrightness(config.backgroundColor, -4);
     caseDiv.style.cssText = `
-      background: ${cardBg};
+      background: var(--surface2);
       padding: 1rem;
       border-radius: 8px;
       display: flex;
@@ -877,7 +823,7 @@ function showTracingPositionSettingsModal(
     `;
 
     const nameSpan = document.createElement('div');
-    nameSpan.style.cssText = `font-weight: 600; color: ${textColor}; font-size: 0.9rem; margin-bottom: 0.5rem; text-align: center;`;
+    nameSpan.style.cssText = 'font-weight: 600; color: var(--text-ui); font-size: 0.9rem; margin-bottom: 0.5rem; text-align: center;';
     nameSpan.textContent = name;
 
     const vizDiv = document.createElement('div');
@@ -890,59 +836,47 @@ function showTracingPositionSettingsModal(
   });
 
   const buttonsDiv = document.createElement('div');
-  buttonsDiv.style.cssText = `grid-column: 1 / -1; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid ${borderColor}; text-align: center; display: flex; gap: 1rem; justify-content: center;`;
+  buttonsDiv.style.cssText = 'grid-column: 1 / -1; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid var(--border-color); text-align: center; display: flex; gap: 1rem; justify-content: center;';
 
-  const saveBtnBg = isDark
-    ? adjustColorBrightness(config.backgroundColor, 20)
-    : adjustColorBrightness(config.backgroundColor, -10);
-  const saveBtnHover = isDark
-    ? adjustColorBrightness(config.backgroundColor, 25)
-    : adjustColorBrightness(config.backgroundColor, -15);
   const saveBtn = document.createElement('button');
   saveBtn.textContent = 'Save & Apply';
   saveBtn.id = 'configSaveBtn';
   saveBtn.style.cssText = `
     padding: 0.75rem 2rem;
-    border: 2px solid ${borderColor};
+    border: 2px solid var(--border-color);
     border-radius: 10px;
     font-weight: 600;
     font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.2s;
-    background: ${saveBtnBg};
-    color: ${textColor};
+    background: var(--surface-raised);
+    color: var(--text-ui);
   `;
   saveBtn.onmouseover = () => {
-    saveBtn.style.background = saveBtnHover;
+    saveBtn.style.background = 'var(--hover-bg)';
   };
   saveBtn.onmouseout = () => {
-    saveBtn.style.background = saveBtnBg;
+    saveBtn.style.background = 'var(--surface-raised)';
   };
 
-  const resetBtnBg = isDark
-    ? adjustColorBrightness(config.backgroundColor, 15)
-    : adjustColorBrightness(config.backgroundColor, -8);
-  const resetBtnHover = isDark
-    ? adjustColorBrightness(config.backgroundColor, 20)
-    : adjustColorBrightness(config.backgroundColor, -12);
   const resetBtn = document.createElement('button');
   resetBtn.textContent = 'Reset to Default';
   resetBtn.style.cssText = `
     padding: 0.75rem 2rem;
-    border: 2px solid ${borderColor};
+    border: 2px solid var(--border-color);
     border-radius: 10px;
     font-weight: 600;
     font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.2s;
-    background: ${resetBtnBg};
-    color: ${textColor};
+    background: var(--surface-raised);
+    color: var(--text-ui);
   `;
   resetBtn.onmouseover = () => {
-    resetBtn.style.background = resetBtnHover;
+    resetBtn.style.background = 'var(--hover-bg)';
   };
   resetBtn.onmouseout = () => {
-    resetBtn.style.background = resetBtnBg;
+    resetBtn.style.background = 'var(--surface-raised)';
   };
 
   const performSave = (): void => {
@@ -1004,18 +938,18 @@ function showTracingPositionSettingsModal(
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     z-index: 10010;
     border: none;
-    background: ${saveBtnBg};
-    color: ${textColor};
+    background: var(--surface-raised);
+    color: var(--text-ui);
     transition: all 0.2s;
     padding: 0;
   `;
   floatingSaveBtn.innerHTML = '<span class="themed-icon themed-icon--save" aria-hidden="true" style="width:24px;height:24px;"></span>';
   floatingSaveBtn.onmouseover = () => {
-    floatingSaveBtn.style.background = saveBtnHover;
+    floatingSaveBtn.style.background = 'var(--hover-bg)';
     floatingSaveBtn.style.transform = 'scale(1.1)';
   };
   floatingSaveBtn.onmouseout = () => {
-    floatingSaveBtn.style.background = saveBtnBg;
+    floatingSaveBtn.style.background = 'var(--surface-raised)';
     floatingSaveBtn.style.transform = 'scale(1)';
   };
   floatingSaveBtn.onclick = performSave;
@@ -1159,23 +1093,16 @@ function showTracingPositionSettingsModal(
     transition: transform 0.2s;
   `;
 
-  const configCloseBg = isDark
-    ? adjustColorBrightness(config.backgroundColor, 15)
-    : adjustColorBrightness(config.backgroundColor, -5);
-  const configCloseHover = isDark
-    ? adjustColorBrightness(config.backgroundColor, 20)
-    : adjustColorBrightness(config.backgroundColor, -8);
-
-  configFloatingCloseBtn.style.background = configCloseBg;
-  configFloatingCloseBtn.style.color = textColor;
+  configFloatingCloseBtn.style.background = 'var(--surface-raised)';
+  configFloatingCloseBtn.style.color = 'var(--text-ui)';
 
   configFloatingCloseBtn.onmouseover = () => {
     configFloatingCloseBtn.style.transform = 'scale(1.1)';
-    configFloatingCloseBtn.style.background = configCloseHover;
+    configFloatingCloseBtn.style.background = 'var(--hover-bg)';
   };
   configFloatingCloseBtn.onmouseout = () => {
     configFloatingCloseBtn.style.transform = 'scale(1)';
-    configFloatingCloseBtn.style.background = configCloseBg;
+    configFloatingCloseBtn.style.background = 'var(--surface-raised)';
   };
 
   document.body.appendChild(configFloatingCloseBtn);
@@ -1213,14 +1140,11 @@ function showTracingPositionSettingsModal(
       });
     });
 
-    const focusColor = isDark
-      ? adjustColorBrightness(config.backgroundColor, 30)
-      : adjustColorBrightness(config.backgroundColor, -15);
     searchInput.addEventListener('focus', () => {
-      searchInput.style.borderColor = focusColor;
+      searchInput.style.borderColor = 'var(--accent)';
     });
     searchInput.addEventListener('blur', () => {
-      searchInput.style.borderColor = borderColor;
+      searchInput.style.borderColor = 'var(--border-color)';
     });
   }, 100);
 
@@ -1381,21 +1305,6 @@ function createParityTracerModalWithAllParametersIncluded(options: ParityTracerO
     }
   }
 
-  const textColor = getTracerTextColor(config.backgroundColor);
-  const isDark = isDarkTracerSurface(config.backgroundColor);
-  const borderColor = isDark
-    ? adjustColorBrightness(config.backgroundColor, 20)
-    : adjustColorBrightness(config.backgroundColor, -10);
-  const inputBgColor = isDark
-    ? adjustColorBrightness(config.backgroundColor, DM_INPUT_BG)
-    : adjustColorBrightness(config.backgroundColor, LM_INPUT_BG);
-  const buttonBgColor = isDark
-    ? adjustColorBrightness(config.backgroundColor, DM_BUTTON_BG)
-    : adjustColorBrightness(config.backgroundColor, LM_BUTTON_BG);
-  const hoverBgColor = isDark
-    ? adjustColorBrightness(config.backgroundColor, DM_HOVER_BG)
-    : adjustColorBrightness(config.backgroundColor, LM_HOVER_BG);
-
   const backdrop = document.createElement('div');
   backdrop.id = 'parityTracerModal';
   backdrop.className = 'parity-tracer-backdrop';
@@ -1449,13 +1358,13 @@ function createParityTracerModalWithAllParametersIncluded(options: ParityTracerO
       }
       .parity-tracer-header h2 {
         font-size: 1.5rem;
-        color: ${textColor};
+        color: var(--text-ui);
         margin: 0;
       }
       .parity-tracer-header-info-btn {
         background: rgba(255, 255, 255, 0.1);
         border: none;
-        color: ${textColor};
+        color: var(--text-ui);
         cursor: pointer;
         padding: 6px;
         border-radius: 6px;
@@ -1478,22 +1387,22 @@ function createParityTracerModalWithAllParametersIncluded(options: ParityTracerO
       }
       .utility-toggle-btn {
         padding: 0.5rem 1rem;
-        border: 2px solid ${borderColor};
+        border: 2px solid var(--border-color);
         border-radius: 8px;
         cursor: pointer;
         font-weight: 600;
         font-size: 0.85rem;
         transition: all 0.2s;
-        background: ${inputBgColor};
-        color: ${textColor};
+        background: var(--surface-raised);
+        color: var(--text-ui);
         min-width: 70px;
       }
       .utility-toggle-btn:hover {
-        background: ${buttonBgColor};
+        background: var(--surface2);
       }
       .utility-toggle-btn.active {
-        background: ${hoverBgColor};
-        border-color: ${textColor};
+        background: var(--hover-bg);
+        border-color: var(--text-ui);
       }
       .parity-tracer-modal-container::-webkit-scrollbar {
         width: 0px;
@@ -1662,7 +1571,7 @@ function createParityTracerModalWithAllParametersIncluded(options: ParityTracerO
       </button>
     </div>
     <div class="parity-tracer-input-container">
-      <input type="text" id="${uniqueId}-scramble" value="${config.scrambleTextInput}" placeholder="Enter your scramble..." style="margin: 0; background: ${inputBgColor}; color: ${textColor}; border-color: ${borderColor}; border-radius:8px;">
+      <input type="text" id="${uniqueId}-scramble" value="${config.scrambleTextInput}" placeholder="Enter your scramble..." style="margin: 0; background: var(--surface-raised); color: var(--text-ui); border-color: var(--border-color); border-radius:8px;">
     </div>
     <div id="${uniqueId}-visualization" style="display: flex; justify-content: center; margin-bottom: 1rem;"></div>
     <div class="utility-buttons-container">
@@ -1677,14 +1586,14 @@ function createParityTracerModalWithAllParametersIncluded(options: ParityTracerO
   closeBtn.className = 'parity-tracer-close-btn';
   closeBtn.id = `${uniqueId}-close`;
   closeBtn.innerHTML = '×';
-  closeBtn.style.cssText += `background: ${buttonBgColor}; color: ${textColor};`;
+  closeBtn.style.cssText += 'background: var(--surface2); color: var(--text-ui);';
 
   const settingsIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16" style="display: block; transform: scale(0.7); transform-origin: center;"><path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/></svg>`;
   const settingsBtn = document.createElement('button');
   settingsBtn.className = 'parity-tracer-settings-btn';
   settingsBtn.id = `${uniqueId}-settings`;
   settingsBtn.innerHTML = settingsIcon;
-  settingsBtn.style.cssText += `background: ${buttonBgColor}; color: ${textColor};`;
+  settingsBtn.style.cssText += 'background: var(--surface2); color: var(--text-ui);';
 
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
@@ -1888,17 +1797,26 @@ function createParityTracerModalWithAllParametersIncluded(options: ParityTracerO
       performAnalysis();
     });
 
-    // Re-trace when evilness settings change while the tracer is open behind settings.
-    let lastEvilKey = `${evilnessFactor}|${evilnessAffectsParity}`;
-    const unsubscribeEvil = subscribe(() => {
-      const key = `${evilnessFactor}|${evilnessAffectsParity}`;
-      if (key === lastEvilKey) return;
-      lastEvilKey = key;
+    // Re-render when settings change while the tracer is open behind settings.
+    let lastRenderKey = `${evilnessFactor}|${evilnessAffectsParity}|${document.documentElement.getAttribute('data-theme')}`;
+    const unsubscribeRender = subscribe(() => {
+      const theme = document.documentElement.getAttribute('data-theme');
+      const key = `${evilnessFactor}|${evilnessAffectsParity}|${theme}`;
+      if (key === lastRenderKey) return;
+      lastRenderKey = key;
+      if (theme !== null) {
+        config.backgroundColor =
+          getComputedStyle(document.documentElement).getPropertyValue('--surface').trim() || config.backgroundColor;
+        config.topLayerMainColor = resolveThemeAwareWhite(colorScheme.topColor);
+        config.bottomLayerMainColor = resolveThemeAwareWhite(colorScheme.bottomColor);
+        modal.style.background = config.backgroundColor;
+        syncColorConfig(config);
+      }
       performAnalysis();
     });
 
     const doCloseMainModalCleanup = (): void => {
-      unsubscribeEvil();
+      unsubscribeRender();
       utilityZ2Enabled = false;
       utilityY2Enabled = false;
       utilityFlipColorEnabled = false;
