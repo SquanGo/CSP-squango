@@ -180,7 +180,7 @@ export let cornerStickerMode: CornerMode = 'counterclockwise';
 const progressStorage = readCspObject(CSP_PROGRESS_KEY);
 const preferencesStorage = readCspObject(CSP_PREFERENCES_KEY);
 export let evilnessFactor = Boolean(progressStorage.evilnessEnabled);
-export let evilnessStringReturn = Boolean(progressStorage.evilnessAffectsHomescreen);
+export let evilnessAffectsParity = Boolean(progressStorage.evilnessAffectsParity);
 export let evilnessMap: Record<string, boolean> =
   Array.isArray(progressStorage.evilCases)
     ? Object.fromEntries((progressStorage.evilCases as unknown[]).map((id) => [String(id), true]))
@@ -294,7 +294,7 @@ export function isScrambleEvil(scramble: string): boolean {
 let lastParityCalculationSettings: Record<string, unknown> | null = null;
 
 function syncParityAnalyzerEvilness(): void {
-  setEvilnessConfig({ factor: evilnessFactor, stringReturn: evilnessStringReturn, map: evilnessMap });
+  setEvilnessConfig({ factor: evilnessFactor, affectsParity: evilnessAffectsParity, map: evilnessMap });
   setCaseNameResolver(getCaseNameFromScramble);
 }
 
@@ -305,7 +305,7 @@ function getParityCalculationSettings(): Record<string, unknown> {
     customShapes: JSON.stringify(readCspObject(CSP_PROGRESS_KEY).tracingPositions || {}),
     customAlgorithms: JSON.stringify(Array.from(customAlgorithms.entries())),
     evilnessFactor,
-    evilnessStringReturn,
+    evilnessAffectsParity,
     evilnessMap: JSON.stringify(evilnessMap),
   };
 }
@@ -398,7 +398,7 @@ export function needsParityRecalculation(): boolean {
     current.customShapes !== lastParityCalculationSettings.customShapes ||
     current.customAlgorithms !== lastParityCalculationSettings.customAlgorithms ||
     current.evilnessFactor !== lastParityCalculationSettings.evilnessFactor ||
-    current.evilnessStringReturn !== lastParityCalculationSettings.evilnessStringReturn ||
+    current.evilnessAffectsParity !== lastParityCalculationSettings.evilnessAffectsParity ||
     current.evilnessMap !== lastParityCalculationSettings.evilnessMap
   );
 }
@@ -577,10 +577,10 @@ function normalizeCaseState(state: StoredProgressState): StoredProgressState {
     normalized.evilnessEnabled = normalized.evilnessFactor;
   }
   if (
-    normalized.evilnessAffectsHomescreen === undefined &&
+    normalized.evilnessAffectsParity === undefined &&
     normalized.evilnessStringReturn !== undefined
   ) {
-    normalized.evilnessAffectsHomescreen = normalized.evilnessStringReturn;
+    normalized.evilnessAffectsParity = normalized.evilnessStringReturn;
   }
   for (const key of ['learned', 'learning', 'planned', 'selectorSelectedCases']) {
     if (key in state) normalized[key] = normalizeCaseIds(state[key]);
@@ -702,7 +702,7 @@ export function saveState(): void {
       ...createStateSnapshot(),
       sortMode: currentSortMode,
       evilnessEnabled: evilnessFactor,
-      evilnessAffectsHomescreen: evilnessStringReturn,
+      evilnessAffectsParity: evilnessAffectsParity,
       evilCases: evilCasesFromMap(evilnessMap),
     });
     updateCspObject(CSP_BOOT_KEY, { ...createStateSnapshot(true), version: 1 });
@@ -789,8 +789,8 @@ function applyStoredState(state: StoredProgressState): void {
   lastParityCalculationSettings = (state.lastParityCalculationSettings as Record<string, unknown>) || null;
 
   if (state.evilnessEnabled !== undefined) evilnessFactor = Boolean(state.evilnessEnabled);
-  if (state.evilnessAffectsHomescreen !== undefined) {
-    evilnessStringReturn = Boolean(state.evilnessAffectsHomescreen);
+  if (state.evilnessAffectsParity !== undefined) {
+    evilnessAffectsParity = Boolean(state.evilnessAffectsParity);
   }
   if (state.evilCases !== undefined || state.evilnessMap !== undefined) {
     evilnessMap = evilMapFromCases(state.evilCases ?? normalized.evilnessMap);
@@ -809,8 +809,8 @@ function loadStoredEvilnessOverrides(): void {
   }
   if (preferences.enhancedAccess !== undefined) enhancedAccess = Boolean(preferences.enhancedAccess);
   if (progress.evilnessEnabled !== undefined) evilnessFactor = Boolean(progress.evilnessEnabled);
-  if (progress.evilnessAffectsHomescreen !== undefined) {
-    evilnessStringReturn = Boolean(progress.evilnessAffectsHomescreen);
+  if (progress.evilnessAffectsParity !== undefined) {
+    evilnessAffectsParity = Boolean(progress.evilnessAffectsParity);
   }
   if (progress.evilCases !== undefined) {
     evilnessMap = evilMapFromCases(progress.evilCases);
@@ -981,10 +981,10 @@ export async function applyPreset(
   }
   if (preset.evilnessEnabled !== undefined) evilnessFactor = Boolean(preset.evilnessEnabled);
   else if (preset.evilnessFactor !== undefined) evilnessFactor = Boolean(preset.evilnessFactor);
-  if (preset.evilnessAffectsHomescreen !== undefined)
-    evilnessStringReturn = Boolean(preset.evilnessAffectsHomescreen);
+  if (preset.evilnessAffectsParity !== undefined)
+    evilnessAffectsParity = Boolean(preset.evilnessAffectsParity);
   else if (preset.evilnessStringReturn !== undefined)
-    evilnessStringReturn = Boolean(preset.evilnessStringReturn);
+    evilnessAffectsParity = Boolean(preset.evilnessStringReturn);
 
   generalNotes = (preset.generalNotes as string) || '';
 
@@ -1096,7 +1096,7 @@ export function exportData(): void {
     generalNotes,
     algVariables: Object.fromEntries(algVariables),
     evilnessEnabled: evilnessFactor,
-    evilnessAffectsHomescreen: evilnessStringReturn,
+    evilnessAffectsParity: evilnessAffectsParity,
     evilCases: evilCasesFromMap(evilnessMap),
     sortMode: currentSortMode,
     preferences: {
@@ -1186,8 +1186,8 @@ export function importData(jsonStr: string): void {
 
     if (normalized.evilnessEnabled !== undefined)
       evilnessFactor = Boolean(normalized.evilnessEnabled);
-    if (normalized.evilnessAffectsHomescreen !== undefined)
-      evilnessStringReturn = Boolean(normalized.evilnessAffectsHomescreen);
+    if (normalized.evilnessAffectsParity !== undefined)
+      evilnessAffectsParity = Boolean(normalized.evilnessAffectsParity);
     if (state.evilCases !== undefined || state.evilnessMap !== undefined) {
       evilnessMap = evilMapFromCases(state.evilCases ?? normalized.evilnessMap);
     }
@@ -1198,8 +1198,8 @@ export function importData(jsonStr: string): void {
 
     if (normalized.evilnessEnabled !== undefined)
       evilnessFactor = Boolean(normalized.evilnessEnabled);
-    if (normalized.evilnessAffectsHomescreen !== undefined)
-      evilnessStringReturn = Boolean(normalized.evilnessAffectsHomescreen);
+    if (normalized.evilnessAffectsParity !== undefined)
+      evilnessAffectsParity = Boolean(normalized.evilnessAffectsParity);
     if (state.evilCases !== undefined || state.evilnessMap !== undefined) {
       evilnessMap = evilMapFromCases(state.evilCases ?? normalized.evilnessMap);
     }
@@ -1505,8 +1505,8 @@ export function setEvilnessFactor(value: boolean): void {
   notify();
 }
 
-export function setEvilnessStringReturn(value: boolean): void {
-  evilnessStringReturn = value;
+export function setEvilnessAffectsParity(value: boolean): void {
+  evilnessAffectsParity = value;
   lastParityCalculationSettings = null;
   syncParityAnalyzerEvilness();
   saveState();

@@ -265,11 +265,11 @@ export function setArrowSettings(settings: Partial<ArrowSettings>): void {
 
 export interface EvilnessConfig {
   factor: boolean;
-  stringReturn: boolean;
+  affectsParity: boolean;
   map: Record<string, boolean>;
 }
 
-const defaultEvilness: EvilnessConfig = { factor: false, stringReturn: false, map: {} };
+const defaultEvilness: EvilnessConfig = { factor: false, affectsParity: false, map: {} };
 let evilness: EvilnessConfig = { ...defaultEvilness };
 let caseNameResolver: ((scramble: string) => string | null) | null = null;
 
@@ -983,7 +983,7 @@ export function analyzeParity(
   try {
     const { tlHex, blHex } = sq1AlgToHex(scrambleText);
     const parity = calculateParityFromHex(tlHex, blHex, getZ2TracingMode(), cornerMode === 'clockwise', scrambleText);
-    const useEvil = getEvilnessConfig().stringReturn && parity.evilStep !== null;
+    const useEvil = getEvilnessConfig().affectsParity && parity.evilStep !== null;
     return (useEvil ? parity.isOddWithEvil : parity.isOdd) ? 'Odd' : 'Even';
   } catch {
     return 'Error';

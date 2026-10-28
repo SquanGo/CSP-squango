@@ -56,7 +56,7 @@ test('slimmed presets contain no redundant derived fields', () => {
 test('bundled presets use grouped preference and training fields', () => {
   const matt = loadPresetFile("Matt's_Preset.json");
   expect(matt).toHaveProperty('evilnessEnabled');
-  expect(matt).toHaveProperty('evilnessAffectsHomescreen');
+  expect(matt).toHaveProperty('evilnessAffectsParity');
   expect(matt).not.toHaveProperty('evilnessFactor');
   expect(matt).not.toHaveProperty('evilnessStringReturn');
   expect(matt).toHaveProperty('evilCases');
@@ -204,6 +204,7 @@ test("Matt's boot preset seeds the first four cards' homepage SVGs", async () =>
 
   expect(Object.keys(state.svgData).sort()).toEqual([
     'bottom:Paired_edges',
+    'bottom:Perpendicular_edges',
     'top:Left_4_2',
     'top:Right_4_2',
     'top:svg_3_3',

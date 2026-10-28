@@ -54,7 +54,7 @@ import {
   data,
   evilnessFactor,
   evilnessMap,
-  evilnessStringReturn,
+  evilnessAffectsParity,
   getCaseNameFromScramble,
   getDisplayName,
   getProbabilityTieRanks,
@@ -65,7 +65,7 @@ import {
   saveState,
   setEvilnessMap,
 } from './state';
-import { notify } from './store';
+import { notify, subscribe } from './store';
 import { showToast } from './toast';
 import { openUnifiedSettings } from './settingsUI';
 
@@ -97,7 +97,7 @@ let activeTracerSilentClose: (() => void) | null = null;
 // Keep the parityAnalyzer engine's internal evilness config in sync with the
 // app state so calculateParity's evilStep matches legacy behavior.
 function syncEvilnessConfig(): void {
-  setEvilnessConfig({ factor: evilnessFactor, stringReturn: evilnessStringReturn, map: evilnessMap });
+  setEvilnessConfig({ factor: evilnessFactor, affectsParity: evilnessAffectsParity, map: evilnessMap });
   setCaseNameResolver(getCaseNameFromScramble);
 }
 
@@ -105,8 +105,8 @@ function getEvilnessFactor(): boolean {
   return getEvilnessConfig().factor;
 }
 
-function getEvilnessStringReturn(): boolean {
-  return getEvilnessConfig().stringReturn;
+function getEvilnessAffectsParity(): boolean {
+  return getEvilnessConfig().affectsParity;
 }
 
 function getTracerTextColor(backgroundColor: string): string {
@@ -289,11 +289,18 @@ function displayResults(container: HTMLElement, sixStepParity: SixStepParity, co
     ? adjustColorBrightness(config.backgroundColor, DM_INNER_CARD_BG)
     : adjustColorBrightness(config.backgroundColor, LM_INNER_CARD_BG);
 
+  // Evil only counts toward the total when "Evilness affects parity" is on
+  const hasEvil = getEvilnessFactor() && sixStepParity.evilStep !== null;
+  const evilCounts = hasEvil && getEvilnessAffectsParity();
+  const evilBadge =
+    sixStepParity.evilStep === 1
+      ? '<span style="color:#8b0000;font-weight:700;">EVIL</span>'
+      : '<span style="color:#2d6a2d;font-weight:700;">GOOD</span>';
   const allSteps = [...sixStepParity.steps];
-  if (getEvilnessFactor() && sixStepParity.evilStep !== null) {
+  if (evilCounts) {
     allSteps.push({
       name: 'Line 7: Evilness',
-      result: sixStepParity.evilStep,
+      result: sixStepParity.evilStep ?? 0,
       hexPerm: [],
     });
   }
@@ -333,18 +340,23 @@ function displayResults(container: HTMLElement, sixStepParity: SixStepParity, co
       <div style="background: ${innerCardBg}; margin-top: 0.5rem; padding: 0.5rem; border-radius: 6px;">
         <div style="font-weight: 600; font-size: 0.95rem; color: ${textColor};">
           Total: ${
-            getEvilnessFactor() && sixStepParity.evilStep !== null
-              ? sixStepParity.total + '+' + sixStepParity.evilStep + '=' + (sixStepParity.total + sixStepParity.evilStep)
+            evilCounts
+              ? sixStepParity.total + '+' + sixStepParity.evilStep + '=' + (sixStepParity.total + (sixStepParity.evilStep ?? 0))
               : sixStepParity.total
           } → <strong>${
-            (getEvilnessFactor() && sixStepParity.evilStep !== null
-              ? sixStepParity.isOddWithEvil
-              : sixStepParity.isOdd)
+            (evilCounts ? sixStepParity.isOddWithEvil : sixStepParity.isOdd)
               ? 'ODD'
               : 'EVEN'
           } Parity</strong>
         </div>
       </div>
+      ${
+        hasEvil && !evilCounts
+          ? `<div style="background: ${innerCardBg}; margin-top: 0.5rem; padding: 0.5rem; border-radius: 6px;">
+        <div style="font-weight: 600; font-size: 0.85rem; color: ${textColor};">Evilness: ${evilBadge}</div>
+      </div>`
+          : ''
+      }
     </div>
   `;
 }
@@ -436,7 +448,7 @@ function showParityTracerInstructionModal(config: TracerConfig): void {
             <li><b>Image size</b> determine how big the image of the square 1 appear on the parity tracer screen.</li>
             <li><b>Tracing arrow</b> shows where your tracing starts on each layer. The numbered badge shows which layer you trace first (1) and second (2). You can customize the arrow's appearance or hide it completely.</li>
             <li><b>Set your tracing position</b> for each shape to have fully personalized parity tracing. This affets the parity of the <span style="font-weight:600; font-style:italic;">Algorithms on the Homescreen</span>, <span style="font-weight:600; font-style:italic;">Case in Trainer</span>, basically the <span style="font-weight:650; font-style:italic;">entire app</span>!</li>
-            <li><span style="font-weight:600; font-style:italic;">Evilness</span> refers to a special tracing technique where you add 1 to your tracing for certain cases to force good alg for even parity all the time. If you are a practitioner of this technique, toggle <b>Evilness Factor</b> on from the settings. If you don't want evilness factor affects the parity of an algorithm on the homescreen, you can toggle <b>Evilness Affects Homescreen</b> off.</li>
+            <li><span style="font-weight:600; font-style:italic;">Evilness</span> refers to a special tracing technique where you add 1 to your tracing for certain cases to force good alg for even parity all the time. If you are a practitioner of this technique, toggle <b>Evilness Factor</b> on from the settings. If you only want to see whether a case is evil without it changing the parity (in the tracer, homescreen, and trainer), toggle <b>Evilness Affects Parity</b> off.</li>
           </ol>
         </div>
       </div>
@@ -663,7 +675,7 @@ function showEvilnessCasesModal(
 
   function performSave(): void {
     setEvilnessMap({ ...evilnessMap, ...localEvilMap });
-    const useEvilInCalc = getEvilnessStringReturn();
+    const useEvilInCalc = getEvilnessAffectsParity();
     if (useEvilInCalc) {
       recalculateAllParity();
     } else {
@@ -1361,7 +1373,7 @@ function createParityTracerModalWithAllParametersIncluded(options: ParityTracerO
       const { tlHex, blHex } = sq1AlgToHex(config.scrambleTextInput);
       const useClockwise = cornerStickerMode === 'clockwise';
       const parity = calculateParityFromHex(tlHex, blHex, getZ2TracingMode(), useClockwise, config.scrambleTextInput);
-      const useEvil = getEvilnessStringReturn() && parity.evilStep !== null;
+      const useEvil = getEvilnessAffectsParity() && parity.evilStep !== null;
       return (useEvil ? parity.isOddWithEvil : parity.isOdd) ? 'Odd' : 'Even';
     } catch (err) {
       console.error('Parity calculation error:', err);
@@ -1876,7 +1888,17 @@ function createParityTracerModalWithAllParametersIncluded(options: ParityTracerO
       performAnalysis();
     });
 
+    // Re-trace when evilness settings change while the tracer is open behind settings.
+    let lastEvilKey = `${evilnessFactor}|${evilnessAffectsParity}`;
+    const unsubscribeEvil = subscribe(() => {
+      const key = `${evilnessFactor}|${evilnessAffectsParity}`;
+      if (key === lastEvilKey) return;
+      lastEvilKey = key;
+      performAnalysis();
+    });
+
     const doCloseMainModalCleanup = (): void => {
+      unsubscribeEvil();
       utilityZ2Enabled = false;
       utilityY2Enabled = false;
       utilityFlipColorEnabled = false;

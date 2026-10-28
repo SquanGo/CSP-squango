@@ -20,7 +20,7 @@ import {
   cornerStickerMode,
   enhancedAccess,
   evilnessFactor,
-  evilnessStringReturn,
+  evilnessAffectsParity,
   hideInstructions,
   hideParenthesis,
   recalculateAllParity,
@@ -28,7 +28,7 @@ import {
   setCornerStickerMode,
   setEnhancedAccess,
   setEvilnessFactor,
-  setEvilnessStringReturn,
+  setEvilnessAffectsParity,
   setHideInstructions,
   setHideParenthesis,
   toggleTheme,
@@ -458,18 +458,18 @@ function ParityTab(): React.ReactNode {
       )}
       <div id="pt_evilSubSettings" style={{ opacity: evilnessFactor ? '1' : '0.4', pointerEvents: evilnessFactor ? 'auto' : 'none' }}>
         {_row(
-          'Evilness Affects Homescreen',
-          _toggle('pt_evilStr', evilnessStringReturn, (v) =>
+          'Evilness Affects Parity',
+          _toggle('pt_evilStr', evilnessAffectsParity, (v) =>
             toggleEvilness(
               `${v ? 'Enable' : 'Disable'} Evilness in Parity Results?`,
-              'This will update the parity calculations and may freeze your page for a brief moment.',
+              'This will update the parity calculations and may take a brief moment.',
               () => {
-                setEvilnessStringReturn(v);
+                setEvilnessAffectsParity(v);
                 recalculateAllParity();
               },
             ),
           ),
-          'When ON, the parity tags (Odd/Even) shown on algs on the homescreen also factor in the evilness of each case.',
+          'When ON, parity in Parity Tracer and on the homescreen also factor in the evilness of each case.',
         )}
         {_actionBtn(
           'Per-case Evilness Settings',

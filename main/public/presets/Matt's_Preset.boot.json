@@ -1363,7 +1363,7 @@
   ],
   "sortMode": "priority",
   "colorScheme": {
-    "topColor": "#000000",
+    "topColor": "#474747",
     "bottomColor": "#FFFFFF",
     "frontColor": "#CC0000",
     "rightColor": "#00AA00",
@@ -1420,7 +1420,6 @@
     89
   ],
   "evilnessEnabled": true,
-  "evilnessAffectsHomescreen": true,
   "tracingPositions": {
     "111111": "Star",
     "10010101": "Right Fist",

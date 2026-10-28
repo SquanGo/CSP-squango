@@ -62,7 +62,7 @@ function generateBootPreset(preset) {
     'cornerStickerMode',
     'evilCases',
     'evilnessEnabled',
-    'evilnessAffectsHomescreen',
+    'evilnessAffectsParity',
     'hideInstructions',
     'tracingPositions',
   ]) {

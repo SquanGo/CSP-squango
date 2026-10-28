@@ -56,10 +56,10 @@ function migrateStorage(): void {
     progress.evilnessEnabled = legacyProgress.evilnessFactor;
   }
   if (
-    progress.evilnessAffectsHomescreen === undefined &&
+    progress.evilnessAffectsParity === undefined &&
     legacyProgress.evilnessStringReturn !== undefined
   ) {
-    progress.evilnessAffectsHomescreen = legacyProgress.evilnessStringReturn;
+    progress.evilnessAffectsParity = legacyProgress.evilnessStringReturn;
   }
   delete progress.evilnessFactor;
   delete progress.evilnessStringReturn;
@@ -93,7 +93,7 @@ function migrateStorage(): void {
   const progressFields: Record<string, [string, unknown]> = {
     sortMode: ['sortMode', undefined],
     evilnessEnabled: ['evilnessFactor', undefined],
-    evilnessAffectsHomescreen: ['evilnessStringReturn', undefined],
+    evilnessAffectsParity: ['evilnessStringReturn', undefined],
     evilCases: ['evilnessMap', undefined],
   };
   for (const [field, [legacyKey]] of Object.entries(progressFields)) {
@@ -106,7 +106,7 @@ function migrateStorage(): void {
               .map(([id]) => Number(id))
               .filter(Number.isInteger)
           : value;
-        if (field === 'evilnessEnabled' || field === 'evilnessAffectsHomescreen') {
+        if (field === 'evilnessEnabled' || field === 'evilnessAffectsParity') {
           progress[field] = value === 'true';
         }
       }
