@@ -46,8 +46,72 @@ function parseLegacyJSON(key: string): unknown {
   }
 }
 
+const LEGACY_KEYS = [
+  'sq1-parity-progress',
+  'sq1-parity-boot-progress-v1',
+  'sortMode',
+  'evilnessFactor',
+  'evilnessStringReturn',
+  'evilnessMap',
+  'customShapesForParityTracerLibrary',
+  'sqg-csp-theme',
+  'currentPreset',
+  'enhancedAccess',
+  'algorithmFontSize',
+  'profileName',
+  'profileAvatar',
+  'z2TracingModeForParityTracerLibrary',
+  'parityTracerImageSize',
+  'parityTracerShowArrow',
+  'parityTracerArrowSettings',
+  'sq1AutoDelay',
+  'sq1ThreeAnimSpeed',
+  'sq1-homepage-image-settings',
+  'sqg-card-height-estimates-v1',
+  'sq1-homepage-svg-cache-settings',
+  'trainingEnableInspection',
+  'trainingEnableParityQuiz',
+  'trainingHideScrambleImage',
+  'trainingHoldToStart',
+  'trainingInspectionBeep',
+  'trainingScrambleImageSize',
+  'trainingScrambleTextSize',
+  'trainingShowPrevScramble',
+  'trainingTimerSize',
+  'sq1-selector-cases',
+  'sq1-selector-evilness',
+  'sq1-selector-parity',
+  'sq1-selector-color',
+  'trainingGoThroughEachCase',
+  'sq1AnimBothLayers',
+  'sq1AnimImageSize',
+  'sq1AnimVerticalDisplay',
+  'sq1AnimSpeed',
+];
+
+const LEGACY_PREFIXES = ['goThroughEachCase:', 'sq1-homepage-svg-cache-item:'];
+
+function hasLegacyData(): boolean {
+  if (LEGACY_KEYS.some((key) => localStorage.getItem(key) !== null)) return true;
+  for (let index = 0; index < localStorage.length; index++) {
+    const key = localStorage.key(index);
+    if (key && LEGACY_PREFIXES.some((prefix) => key.startsWith(prefix))) return true;
+  }
+  return false;
+}
+
 function migrateStorage(): void {
   if (typeof localStorage === 'undefined') return;
+  // Nothing to migrate once legacy keys are gone.
+  if (!hasLegacyData()) return;
+
+  // Skip when no legacy data remains.
+  let hasLegacy = false;
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && !k.startsWith('csp')) { hasLegacy = true; break; }
+  }
+  if (!hasLegacy) return;
 
   const progress = readObject(CSP_PROGRESS_KEY);
   const legacyProgress = readObject('sq1-parity-progress');
@@ -63,16 +127,9 @@ function migrateStorage(): void {
   }
   delete progress.evilnessFactor;
   delete progress.evilnessStringReturn;
-  if (!hasOwn(progress, 'evilCases') && progress.evilnessMap !== undefined) {
-    const legacyMap = progress.evilnessMap;
-    progress.evilCases = legacyMap && typeof legacyMap === 'object'
-      ? Object.entries(legacyMap as Record<string, unknown>)
-          .filter(([, value]) => value === true)
-          .map(([id]) => Number(id))
-          .filter(Number.isInteger)
-      : [];
-  }
-  delete progress.evilnessMap;
+  // Keys are case names; state.ts resolves them to ids, so keep the map as-is.
+  if (hasOwn(progress, 'evilCases')) delete progress.evilnessMap;
+  const legacyTheme = progress.theme ?? localStorage.getItem('sqg-csp-theme');
   delete progress.theme;
   if (!hasOwn(progress, 'tracingPositions')) {
     const legacyTracingPositions =
@@ -90,32 +147,30 @@ function migrateStorage(): void {
     }
   }
   delete progress.customShapesForParityTracerLibrary;
-  const progressFields: Record<string, [string, unknown]> = {
-    sortMode: ['sortMode', undefined],
-    evilnessEnabled: ['evilnessFactor', undefined],
-    evilnessAffectsParity: ['evilnessStringReturn', undefined],
-    evilCases: ['evilnessMap', undefined],
+  const progressFields: Record<string, string> = {
+    sortMode: 'sortMode',
+    evilnessEnabled: 'evilnessFactor',
+    evilnessAffectsParity: 'evilnessStringReturn',
   };
-  for (const [field, [legacyKey]] of Object.entries(progressFields)) {
+  for (const [field, legacyKey] of Object.entries(progressFields)) {
     if (!hasOwn(progress, field)) {
       const value = readLegacyValue(legacyKey);
       if (value !== null) {
-        progress[field] = field === 'evilCases'
-          ? Object.entries((parseLegacyJSON(legacyKey) as Record<string, unknown>) || {})
-              .filter(([, enabled]) => enabled === true)
-              .map(([id]) => Number(id))
-              .filter(Number.isInteger)
-          : value;
-        if (field === 'evilnessEnabled' || field === 'evilnessAffectsParity') {
-          progress[field] = value === 'true';
-        }
+        progress[field] =
+          field === 'evilnessEnabled' || field === 'evilnessAffectsParity' ? value === 'true' : value;
       }
     }
   }
+  if (!hasOwn(progress, 'evilCases') && !hasOwn(progress, 'evilnessMap')) {
+    const legacyEvilMap = parseLegacyJSON('evilnessMap');
+    if (legacyEvilMap && typeof legacyEvilMap === 'object') progress.evilnessMap = legacyEvilMap;
+  }
 
   const boot = readObject(CSP_BOOT_KEY);
-  Object.assign(boot, readObject('sq1-parity-boot-progress-v1'));
-  if (!hasOwn(boot, 'version')) boot.version = 1;
+  Object.assign(boot, readObject('sq1-parity-boot-progress-v1'), boot);
+  // An empty boot stub would skip the full load in state.ts.
+  const hasBoot = Object.keys(boot).length > 0;
+  if (hasBoot && !hasOwn(boot, 'version')) boot.version = 1;
 
   const preferences = readObject(CSP_PREFERENCES_KEY);
   const preferenceKeys: Record<string, [string, (value: string) => unknown]> = {
@@ -134,6 +189,12 @@ function migrateStorage(): void {
       const value = readLegacyValue(legacyKey);
       if (value !== null) preferences[field] = parse(value);
     }
+  }
+  if (
+    !hasOwn(preferences, 'theme') &&
+    (legacyTheme === 'dark' || legacyTheme === 'light')
+  ) {
+    preferences.theme = legacyTheme;
   }
   if (!hasOwn(preferences, 'ptArrow')) {
     const arrow = parseLegacyJSON('parityTracerArrowSettings');
@@ -208,57 +269,15 @@ function migrateStorage(): void {
 
   try {
     writeObject(CSP_PROGRESS_KEY, progress);
-    writeObject(CSP_BOOT_KEY, boot);
+    if (hasBoot) writeObject(CSP_BOOT_KEY, boot);
     writeObject(CSP_PREFERENCES_KEY, preferences);
     writeObject(CSP_TRAINING_KEY, training);
     writeObject(CSP_CACHE_KEY, cache);
 
-    const oldKeys = [
-      'sq1-parity-progress',
-      'sq1-parity-boot-progress-v1',
-      'sortMode',
-      'evilnessFactor',
-      'evilnessStringReturn',
-      'evilnessMap',
-      'customShapesForParityTracerLibrary',
-      'sqg-csp-theme',
-      'currentPreset',
-      'enhancedAccess',
-      'algorithmFontSize',
-      'profileName',
-      'profileAvatar',
-      'z2TracingModeForParityTracerLibrary',
-      'parityTracerImageSize',
-      'parityTracerShowArrow',
-      'parityTracerArrowSettings',
-      'sq1AutoDelay',
-      'sq1ThreeAnimSpeed',
-      'sq1-homepage-image-settings',
-      'sqg-card-height-estimates-v1',
-      'sq1-homepage-svg-cache-settings',
-      'trainingEnableInspection',
-      'trainingEnableParityQuiz',
-      'trainingHideScrambleImage',
-      'trainingHoldToStart',
-      'trainingInspectionBeep',
-      'trainingScrambleImageSize',
-      'trainingScrambleTextSize',
-      'trainingShowPrevScramble',
-      'trainingTimerSize',
-      'sq1-selector-cases',
-      'sq1-selector-evilness',
-      'sq1-selector-parity',
-      'sq1-selector-color',
-      'trainingGoThroughEachCase',
-      'sq1AnimBothLayers',
-      'sq1AnimImageSize',
-      'sq1AnimVerticalDisplay',
-      'sq1AnimSpeed',
-    ];
-    for (const key of oldKeys) localStorage.removeItem(key);
+    for (const key of LEGACY_KEYS) localStorage.removeItem(key);
     for (let index = localStorage.length - 1; index >= 0; index--) {
       const key = localStorage.key(index);
-      if (key?.startsWith('goThroughEachCase:') || key?.startsWith('sq1-homepage-svg-cache-item:')) {
+      if (key && LEGACY_PREFIXES.some((prefix) => key.startsWith(prefix))) {
         localStorage.removeItem(key);
       }
     }
