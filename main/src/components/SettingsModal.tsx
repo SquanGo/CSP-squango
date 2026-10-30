@@ -431,12 +431,7 @@ function ParityTab(): React.ReactNode {
       {_sectionTitle('Tools')}
       {_actionBtn(
         'Set Tracing Positions',
-        () => {
-          closeUnifiedSettings();
-          setTimeout(() => {
-            (window as unknown as { openParityTracingPersonalization?: () => void }).openParityTracingPersonalization?.();
-          }, 200);
-        },
+        () => (window as unknown as { openParityTracingPersonalization?: () => void }).openParityTracingPersonalization?.(),
         'Set the starting piece (edge or corner) for each shape. This determines the order in which pieces are traced and therefore the odds/evens assigned to your algs.',
       )}
 
@@ -473,12 +468,7 @@ function ParityTab(): React.ReactNode {
         )}
         {_actionBtn(
           'Per-case Evilness Settings',
-          () => {
-            closeUnifiedSettings();
-            setTimeout(() => {
-              (window as unknown as { _openEvilnessCasesFromSettings?: () => void })._openEvilnessCasesFromSettings?.();
-            }, 200);
-          },
+          () => (window as unknown as { _openEvilnessCasesFromSettings?: () => void })._openEvilnessCasesFromSettings?.(),
           'Mark individual cases as evil or good.',
         )}
       </div>

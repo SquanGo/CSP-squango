@@ -458,7 +458,7 @@ function showEvilnessCasesModal(
   evilModalDiv.id = 'evilModal';
   evilModalDiv.style.cssText = `
     display:flex; position:fixed; top:0; left:0; width:100%; height:100%;
-    background:var(--modal-overlay); z-index:10008;
+    background:var(--modal-overlay); z-index:10011;
     align-items:center; justify-content:center; padding:20px; box-sizing:border-box;
   `;
 
@@ -727,7 +727,7 @@ function showTracingPositionSettingsModal(
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.7);
-    z-index: 10008;
+    z-index: 10011;
     padding: 2rem;
     overflow-y: auto;
     display: flex;

@@ -6,7 +6,7 @@
     width: 100vw;
     height: 100vh;
     background: var(--surface);
-    z-index: 10000;
+    z-index: 10020;
 }
 
 .quick-edit-screen {
