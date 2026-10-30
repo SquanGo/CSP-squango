@@ -22,6 +22,7 @@ import { computeFilteredData, type LearnFilter } from '../app/filter';
 import { installWindowShims } from '../app/shims';
 import { renderCard } from '../app/cardHTML';
 import { reconcileGrid } from '../app/gridRender';
+import { getCaseId } from '../data/cases';
 import { openGeneralNotesModal } from '../app/notes';
 import { applyInstructionVisibility } from '../app/visibility';
 // LoadingScreen intentionally disabled: the app now paints the shell first and
@@ -222,10 +223,30 @@ export default function App(): React.ReactNode {
   }, []);
 
   useEffect(() => {
-    const onShowReorder = () => setShowReorderButton(true);
+    // Show the button only if a re-sort would change the displayed order.
+    
+    const onShowReorder = () => {
+      const grid = gridRef.current;
+      let differs = true;
+      if (grid) {
+        const current = Array.from(grid.querySelectorAll<HTMLElement>('.card')).map((card) =>
+          getCaseId(card.dataset.caseName || ''),
+        );
+        const expected = computeFilteredData(searchTerm, sortType, learnFilter).map((item) => item.id);
+        // Compare only the rendered prefix; the grid fills in progressively.
+        differs = current.some((id, i) => id !== expected[i]);
+      }
+      setNeedsReorder(differs, false);
+      setShowReorderButton(differs);
+    };
+    const onPresetLoaded = () => setShowReorderButton(false);
     window.addEventListener('sqg:show-reorder', onShowReorder);
-    return () => window.removeEventListener('sqg:show-reorder', onShowReorder);
-  }, []);
+    window.addEventListener('sqg:preset-loaded', onPresetLoaded);
+    return () => {
+      window.removeEventListener('sqg:show-reorder', onShowReorder);
+      window.removeEventListener('sqg:preset-loaded', onPresetLoaded);
+    };
+  }, [searchTerm, sortType, learnFilter]);
 
   // Search toggle behavior
   const searchToggleRef = useRef<HTMLButtonElement | null>(null);

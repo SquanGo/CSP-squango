@@ -1040,6 +1040,9 @@ export async function applyPreset(
   presetData = preset;
   lastParityCalculationSettings = presetParityCache ? getParityCalculationSettings() : null;
   saveState();
+  // Cases were reloaded, so any pending re-order no longer applies.
+  needsReorder = false;
+  if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('sqg:preset-loaded'));
   if (!silent) {
     notify();
     updateProgress();
