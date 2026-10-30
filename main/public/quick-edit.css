@@ -517,7 +517,7 @@
 
 /* z2 marker for mirrored algs (display only, not part of cell text) */
 .algorithms-table .alg-cell[data-mirrored]::before {
-    content: 'z2 ';
+    content: 'z2\00a0';
     color: var(--z2-prefix-color);
     font-weight: 600;
     user-select: none;

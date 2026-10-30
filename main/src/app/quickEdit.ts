@@ -3,7 +3,7 @@
  * batch editor for case names, subtitles, notes, algorithms, find/replace,
  * and the algorithm-variables table).
  */
-import type { ShapeIndexEntry } from '../data/types';
+import type { AlgCase, ShapeIndexEntry } from '../data/types';
 import { CASE_NAMES } from '../data/cases';
 import {
   algVariables,
@@ -18,6 +18,8 @@ import {
   evilnessFactor,
   evilnessMap,
   getDisplayName,
+  getLearningOrder,
+  getProbabilityTieRanks,
   perCaseSubtitles,
   saveState,
 } from './state';
@@ -85,8 +87,15 @@ export function expandForColorCheck(alg: string): string {
 }
 
 // ── Row shells + lazy hydration ───────────────────────────────────────────────
+/** Cases in flattened learning order; probability-descending when no order is saved. */
+function getLearningOrderedData(): AlgCase[] {
+  if (!getLearningOrder()) return [...data].sort((a, b) => b.probability - a.probability);
+  const ranks = getProbabilityTieRanks();
+  return [...data].sort((a, b) => (ranks.get(a.id) ?? 0) - (ranks.get(b.id) ?? 0));
+}
+
 function generateGeneralTableRowsShell(): string {
-  const sortedData = [...data].sort((a, b) => getDisplayName(a.id).localeCompare(getDisplayName(b.id)));
+  const sortedData = getLearningOrderedData();
   return sortedData
     .map(
       (item) =>
@@ -98,7 +107,7 @@ function generateGeneralTableRowsShell(): string {
 }
 
 function generateAlgorithmsTableRowsShell(): string {
-  const sortedData = [...data].sort((a, b) => getDisplayName(a.id).localeCompare(getDisplayName(b.id)));
+  const sortedData = getLearningOrderedData();
   return sortedData
     .map((item) => `<tr data-case="${item.id}" class="qe-lazy-row" data-tab="algorithms"><td colspan="7" style="height:41px;"></td></tr>`)
     .join('');
@@ -143,7 +152,7 @@ function hydrateAlgorithmsRow(row: HTMLTableRowElement): void {
   while (allAlgs.length < totalCols) allAlgs.push('');
   row.classList.remove('qe-lazy-row');
   row.innerHTML = `
-        <td class="uneditable display-name-col">${CASE_NAMES[item.id - 1]}</td>
+        <td class="uneditable display-name-col">${getDisplayName(item.id)}</td>
         ${allAlgs
           .slice(0, totalCols)
           .map(
@@ -158,6 +167,20 @@ function hydrateAlgorithmsRow(row: HTMLTableRowElement): void {
   row.querySelectorAll('.alg-cell').forEach((cell) => {
     if (cell.textContent?.trim()) updateAlgorithmCellParity(cell as HTMLElement);
   });
+}
+
+/** Inserts plain text at the caret, replacing any selection. */
+function insertTextAtCursor(text: string): void {
+  const sel = window.getSelection();
+  if (!sel || sel.rangeCount === 0) return;
+  const range = sel.getRangeAt(0);
+  range.deleteContents();
+  const node = document.createTextNode(text);
+  range.insertNode(node);
+  range.setStartAfter(node);
+  range.collapse(true);
+  sel.removeAllRanges();
+  sel.addRange(range);
 }
 
 function setupRowHandlers(row: HTMLTableRowElement, tab: 'general' | 'algorithms'): void {
@@ -184,7 +207,8 @@ function setupRowHandlers(row: HTMLTableRowElement, tab: 'general' | 'algorithms
     cell.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && e.shiftKey && cell.dataset.field === 'notes') {
         e.preventDefault();
-        document.execCommand('insertLineBreak');
+        // Notes are edited as raw HTML source; a literal <br> survives textContent reads.
+        insertTextAtCursor('<br>');
         return;
       }
       if (e.key === 'Enter' && !e.shiftKey) {
@@ -229,7 +253,7 @@ function setupRowHandlers(row: HTMLTableRowElement, tab: 'general' | 'algorithms
       cell.addEventListener('paste', (e) => {
         e.preventDefault();
         const t = (e.clipboardData || (window as unknown as { clipboardData?: DataTransfer }).clipboardData)?.getData('text/plain') || '';
-        document.execCommand('insertText', false, t);
+        insertTextAtCursor(t);
       });
     }
   });
@@ -588,7 +612,7 @@ function addAlgorithmColumns(): void {
         td.addEventListener('paste', (e) => {
           e.preventDefault();
           const text = (e.clipboardData || (window as unknown as { clipboardData?: DataTransfer }).clipboardData)?.getData('text/plain') || '';
-          document.execCommand('insertText', false, text);
+          insertTextAtCursor(text);
         });
 
         td.addEventListener('keydown', (e) => {
@@ -675,6 +699,7 @@ function openQuickEditFindReplace(): void {
   const findInput = document.getElementById('quickEditFindInput') as HTMLInputElement;
   const scopeSelector = document.getElementById('quickEditScopeSelector') as HTMLSelectElement;
 
+  hydrateAllRows();
   findReplace.style.display = 'block';
   quickEditState.findReplaceOpen = true;
 
@@ -734,7 +759,66 @@ function closeQuickEditFindReplace(): void {
   });
 }
 
-function liveSearchQuickEdit(): void {
+/** Hydrates all lazy rows so every cell is searchable. */
+function hydrateAllRows(): void {
+  document.querySelectorAll<HTMLTableRowElement>('#quickEditModal .qe-lazy-row').forEach((row) => {
+    if (row.dataset.tab === 'general') hydrateGeneralRow(row);
+    else hydrateAlgorithmsRow(row);
+  });
+}
+
+/** Cells in scope for the current tab and scope selection. */
+function getFindCells(modal: HTMLElement): HTMLElement[] {
+  if (quickEditState.currentTab === 'algorithms') {
+    return Array.from(modal.querySelectorAll<HTMLElement>('#quickEditAlgorithmsBody .alg-cell')).filter(
+      (c) => c.style.display !== 'none',
+    );
+  }
+  const scope = (document.getElementById('quickEditScopeSelector') as HTMLSelectElement | null)?.value ?? 'global';
+  const fieldMap: Record<string, string> = { name: 'displayName', subtitle: 'subtitle', notes: 'notes' };
+  const field = fieldMap[scope];
+  const selector = field
+    ? `#quickEditGeneralBody .editable[data-field="${field}"]`
+    : '#quickEditGeneralBody .editable';
+  return Array.from(modal.querySelectorAll<HTMLElement>(selector));
+}
+
+/**
+ * Replaces matches in one cell: only the given occurrence, or all when omitted.
+ * Returns the number of replacements made.
+ */
+function replaceInCell(cell: HTMLElement, term: string, replacement: string, occurrence?: number): number {
+  const text = cell.textContent || '';
+  const lower = text.toLowerCase();
+  const needle = term.toLowerCase();
+  let out = '';
+  let last = 0;
+  let pos = 0;
+  let seen = 0;
+  let count = 0;
+
+  while ((pos = lower.indexOf(needle, pos)) !== -1) {
+    if (occurrence === undefined || seen === occurrence) {
+      out += text.slice(last, pos) + replacement;
+      last = pos + term.length;
+      count++;
+    }
+    seen++;
+    pos += term.length;
+  }
+  if (count === 0) return 0;
+
+  out += text.slice(last);
+  cell.textContent = out;
+  if (cell.classList.contains('notes-cell')) {
+    cell.dataset.rawHtml = out;
+  } else if (cell.classList.contains('alg-cell')) {
+    updateAlgorithmCellParity(cell);
+  }
+  return count;
+}
+
+function liveSearchQuickEdit(restoreIndex = 0): void {
   const findInput = document.getElementById('quickEditFindInput') as HTMLInputElement;
   const searchTerm = findInput.value;
 
@@ -757,26 +841,7 @@ function liveSearchQuickEdit(): void {
 
   const modal = document.getElementById('quickEditModal');
   if (!modal) return;
-  let cells: HTMLElement[];
-
-  if (quickEditState.currentTab === 'general') {
-    const scopeSelector = document.getElementById('quickEditScopeSelector') as HTMLSelectElement;
-    const scope = scopeSelector ? scopeSelector.value : 'global';
-
-    if (scope === 'global') {
-      cells = Array.from(modal.querySelectorAll('#quickEditGeneralTab .editable')) as HTMLElement[];
-    } else {
-      const fieldMap: Record<string, string> = {
-        name: 'displayName',
-        subtitle: 'subtitle',
-        notes: 'notes',
-      };
-      const field = fieldMap[scope];
-      cells = Array.from(modal.querySelectorAll(`.editable[data-field="${field}"]`)) as HTMLElement[];
-    }
-  } else {
-    cells = Array.from(modal.querySelectorAll('.alg-cell')) as HTMLElement[];
-  }
+  const cells = getFindCells(modal);
 
   const searchLower = searchTerm.toLowerCase();
   cells.forEach((cell) => {
@@ -800,30 +865,32 @@ function liveSearchQuickEdit(): void {
 
   highlightAllMatches();
 
-  quickEditState.currentFindIndex = 0;
+  quickEditState.currentFindIndex = Math.min(restoreIndex, quickEditState.findMatches.length - 1);
   highlightCurrentMatch();
 
   countEl.textContent = `${quickEditState.currentFindIndex + 1} of ${quickEditState.findMatches.length}`;
 }
 
 function highlightAllMatches(): void {
-  quickEditState.allMatchRanges.forEach((range) => {
-    if (range.cell.classList.contains('notes-cell')) {
-      const rawText = range.cell.textContent || '';
-      const before = rawText.substring(0, range.start);
-      const match = rawText.substring(range.start, range.end);
-      const after = rawText.substring(range.end);
-      range.cell.textContent = before + match + after;
+  // Group by cell so every match survives; one rewrite per cell.
+  const byCell = new Map<HTMLElement, { start: number; end: number }[]>();
+  quickEditState.allMatchRanges.forEach(({ cell, start, end }) => {
+    const list = byCell.get(cell) || [];
+    list.push({ start, end });
+    byCell.set(cell, list);
+  });
 
-      range.cell.innerHTML =
-        escapeHtml(before) + `<mark class="find-match-highlight">${escapeHtml(match)}</mark>` + escapeHtml(after);
-    } else {
-      const text = range.cell.textContent || '';
-      range.cell.innerHTML =
-        text.substring(0, range.start) +
-        `<span class="find-match-highlight">${text.substring(range.start, range.end)}</span>` +
-        text.substring(range.end);
-    }
+  byCell.forEach((ranges, cell) => {
+    const text = cell.textContent || '';
+    let html = '';
+    let last = 0;
+    ranges.forEach(({ start, end }) => {
+      html +=
+        escapeHtml(text.slice(last, start)) +
+        `<span class="find-match-highlight">${escapeHtml(text.slice(start, end))}</span>`;
+      last = end;
+    });
+    cell.innerHTML = html + escapeHtml(text.slice(last));
   });
 }
 
@@ -901,16 +968,14 @@ function replaceQuickEdit(): void {
 
   if (!searchTerm || quickEditState.findMatches.length === 0) return;
 
-  const currentMatch = quickEditState.findMatches[quickEditState.currentFindIndex];
-  const text = currentMatch.textContent || '';
-  const regex = new RegExp(searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
-  currentMatch.textContent = text.replace(regex, replaceTerm);
+  const idx = quickEditState.currentFindIndex;
+  const cell = quickEditState.findMatches[idx];
+  const occurrence = quickEditState.findMatches.slice(0, idx).filter((c) => c === cell).length;
+  replaceInCell(cell, searchTerm, replaceTerm, occurrence);
 
-  if (currentMatch.classList.contains('alg-cell')) {
-    updateAlgorithmCellParity(currentMatch);
-  }
-
-  liveSearchQuickEdit();
+  // Skip past the replacement if it still contains the search term.
+  const stillMatches = replaceTerm.toLowerCase().includes(searchTerm.toLowerCase());
+  liveSearchQuickEdit(stillMatches ? idx + 1 : idx);
 }
 
 function replaceAllQuickEdit(): void {
@@ -923,42 +988,13 @@ function replaceAllQuickEdit(): void {
 
   const modal = document.getElementById('quickEditModal');
   if (!modal) return;
-  let cells: HTMLElement[];
-
-  if (quickEditState.currentTab === 'general') {
-    const scopeSelector = document.getElementById('quickEditScopeSelector') as HTMLSelectElement;
-    const scope = scopeSelector ? scopeSelector.value : 'global';
-    if (scope === 'global') {
-      cells = Array.from(modal.querySelectorAll('#quickEditGeneralTab .editable')) as HTMLElement[];
-    } else {
-      const fieldMap: Record<string, string> = {
-        name: 'displayName',
-        subtitle: 'subtitle',
-        notes: 'notes',
-      };
-      const field = fieldMap[scope];
-      cells = Array.from(modal.querySelectorAll(`.editable[data-field="${field}"]`)) as HTMLElement[];
-    }
-  } else {
-    cells = Array.from(modal.querySelectorAll('.alg-cell')) as HTMLElement[];
-  }
 
   let replaceCount = 0;
-  const regex = new RegExp(searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
-
-  cells.forEach((cell) => {
-    const text = cell.textContent || '';
-    if (regex.test(text)) {
-      cell.textContent = text.replace(regex, replaceTerm);
-      replaceCount++;
-
-      if (cell.classList.contains('alg-cell')) {
-        updateAlgorithmCellParity(cell);
-      }
-    }
+  getFindCells(modal).forEach((cell) => {
+    replaceCount += replaceInCell(cell, searchTerm, replaceTerm);
   });
 
-  showToast(`Replaced ${replaceCount} occurrences`, 2000, 'success');
+  showToast(`Replaced ${replaceCount} occurrence${replaceCount === 1 ? '' : 's'}`, 2000, 'success');
 
   liveSearchQuickEdit();
 }
