@@ -113,9 +113,8 @@ function migrateStorage(): void {
   }
   if (!hasLegacy) return;
 
-  const progress = readObject(CSP_PROGRESS_KEY);
   const legacyProgress = readObject('sq1-parity-progress');
-  Object.assign(progress, legacyProgress, progress);
+  const progress = { ...legacyProgress, ...readObject(CSP_PROGRESS_KEY) };
   if (progress.evilnessEnabled === undefined && legacyProgress.evilnessFactor !== undefined) {
     progress.evilnessEnabled = legacyProgress.evilnessFactor;
   }
@@ -166,8 +165,7 @@ function migrateStorage(): void {
     if (legacyEvilMap && typeof legacyEvilMap === 'object') progress.evilnessMap = legacyEvilMap;
   }
 
-  const boot = readObject(CSP_BOOT_KEY);
-  Object.assign(boot, readObject('sq1-parity-boot-progress-v1'), boot);
+  const boot = { ...readObject('sq1-parity-boot-progress-v1'), ...readObject(CSP_BOOT_KEY) };
   // An empty boot stub would skip the full load in state.ts.
   const hasBoot = Object.keys(boot).length > 0;
   if (hasBoot && !hasOwn(boot, 'version')) boot.version = 1;

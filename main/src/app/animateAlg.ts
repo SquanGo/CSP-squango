@@ -6,6 +6,7 @@
  * `openAnimateAlgModal(algorithm, caseName, parity)`.
  */
 import * as THREE from 'three';
+import { insetStickerFace } from '../lib/stickerGeometry';
 import { invertScramble } from '../lib/cube';
 import { getParityText } from '../lib/parityAnalyzer';
 import { resolveThemeAwareWhite } from '../lib/drawScramble';
@@ -19,6 +20,8 @@ type ViewerToken =
   | { type: 'rotation'; axis: 'y2' | 'z2'; text: string };
 
 const LEN = 150;
+// Each neighboring face contributes half of the seam, in model units.
+const BORDER_WIDTH = LEN * 0.008;
 const INTERNAL_COL = 0x0f0f0f;
 type Face = 'front' | 'right' | 'back' | 'left';
 // Solved-state face of each side sticker, indexed by piece number - 1.
@@ -89,9 +92,7 @@ function turnLayer(layer: number[], move: number): number[] {
 class ImmediateRenderer {
   positions = new Float32Array(6000 * 3 * 3);
   colors = new Float32Array(6000 * 3 * 3);
-  linePositions = new Float32Array(4000 * 2 * 3);
   count = 0;
-  lineCount = 0;
   private matrix = new THREE.Matrix4();
   private stack: THREE.Matrix4[] = [];
   private verts: THREE.Vector3[] = [];
@@ -101,7 +102,6 @@ class ImmediateRenderer {
 
   reset(): void {
     this.count = 0;
-    this.lineCount = 0;
     this.matrix.identity();
     this.stack.length = 0;
     this.verts.length = 0;
@@ -127,13 +127,10 @@ class ImmediateRenderer {
   end(): void {
     if (this.mode === 'QUADS') {
       for (let i = 0; i + 3 < this.verts.length; i += 4) {
-        this.tri(this.verts[i], this.verts[i + 1], this.verts[i + 2]);
-        this.tri(this.verts[i], this.verts[i + 2], this.verts[i + 3]);
-        this.outline([this.verts[i], this.verts[i + 1], this.verts[i + 2], this.verts[i + 3]]);
+        this.face(this.verts.slice(i, i + 4));
       }
     } else {
-      for (let i = 1; i + 1 < this.verts.length; i++) this.tri(this.verts[0], this.verts[i], this.verts[i + 1]);
-      this.outline(this.verts);
+      this.face(this.verts);
     }
   }
   private tri(a: THREE.Vector3, b: THREE.Vector3, c: THREE.Vector3): void {
@@ -150,19 +147,19 @@ class ImmediateRenderer {
     }
     this.count += 3;
   }
-  private line(a: THREE.Vector3, b: THREE.Vector3): void {
-    if (this.lineCount + 2 > 4000 * 2) return;
-    const base = this.lineCount * 3;
-    this.linePositions[base] = a.x;
-    this.linePositions[base + 1] = a.y;
-    this.linePositions[base + 2] = a.z;
-    this.linePositions[base + 3] = b.x;
-    this.linePositions[base + 4] = b.y;
-    this.linePositions[base + 5] = b.z;
-    this.lineCount += 2;
-  }
-  private outline(verts: THREE.Vector3[]): void {
-    for (let i = 0; i < verts.length; i++) this.line(verts[i], verts[(i + 1) % verts.length]);
+  private face(verts: THREE.Vector3[]): void {
+    const inset = insetStickerFace(verts, BORDER_WIDTH);
+    const stickerColor = this.color;
+    // Tessellate the border and sticker as one surface. No overlapping faces,
+    // depth bias, or line caps extending past the piece's actual silhouette.
+    this.color = [0, 0, 0];
+    for (let i = 0; i < verts.length; i++) {
+      const next = (i + 1) % verts.length;
+      this.tri(verts[i], verts[next], inset[next]);
+      this.tri(verts[i], inset[next], inset[i]);
+    }
+    this.color = stickerColor;
+    for (let i = 1; i + 1 < inset.length; i++) this.tri(inset[0], inset[i], inset[i + 1]);
   }
 }
 
@@ -195,14 +192,11 @@ class Square1ThreeViewer {
   private readonly renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   private readonly rig = new THREE.Group();
   private readonly geometry = new THREE.BufferGeometry();
-  private readonly lineGeometry = new THREE.BufferGeometry();
   private readonly mesh: THREE.Mesh;
-  private readonly lineMesh: THREE.LineSegments;
   private readonly initialCameraVector = new THREE.Vector3(300, 400, -300);
   private readonly initialCameraDistance = this.initialCameraVector.length();
   private dragging = false;
   private lastMouse = { x: 0, y: 0 };
-  private dragZone = 1;
 
   constructor(
     private readonly host: HTMLElement,
@@ -232,16 +226,10 @@ class Square1ThreeViewer {
     this.geometry.setAttribute('color', new THREE.BufferAttribute(this.im.colors, 3));
     this.geometry.setDrawRange(0, 0);
     const material = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide });
-    material.polygonOffset = true;
-    material.polygonOffsetFactor = 1;
-    material.polygonOffsetUnits = 1;
     this.mesh = new THREE.Mesh(this.geometry, material);
     this.scene.add(this.mesh);
 
-    this.lineGeometry.setAttribute('position', new THREE.BufferAttribute(this.im.linePositions, 3));
-    this.lineGeometry.setDrawRange(0, 0);
-    this.lineMesh = new THREE.LineSegments(this.lineGeometry, new THREE.LineBasicMaterial({ color: 0x000000 }));
-    this.scene.add(this.lineMesh);
+    this.mesh.frustumCulled = false;
 
     this.bindControls();
     this.resize();
@@ -259,9 +247,7 @@ class Square1ThreeViewer {
     this.renderer.domElement.removeEventListener('pointerdown', this.onPointerDown);
     this.renderer.domElement.removeEventListener('wheel', this.onWheel);
     this.geometry.dispose();
-    this.lineGeometry.dispose();
     (this.mesh.material as THREE.Material).dispose();
-    (this.lineMesh.material as THREE.Material).dispose();
     this.renderer.dispose();
     this.renderer.domElement.remove();
   }
@@ -390,11 +376,6 @@ class Square1ThreeViewer {
   private onPointerDown = (e: PointerEvent): void => {
     this.dragging = true;
     this.lastMouse = { x: e.clientX, y: e.clientY };
-    const rect = this.renderer.domElement.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const radius = Math.min(rect.width, rect.height) * 0.35;
-    this.dragZone = Math.hypot(e.clientX - cx, e.clientY - cy) < radius ? 1 : 2;
   };
 
   private onPointerUp = (): void => { this.dragging = false; };
@@ -407,39 +388,11 @@ class Square1ThreeViewer {
     const q = new THREE.Quaternion();
     const up = new THREE.Vector3(0, 1, 0).applyQuaternion(this.rig.quaternion);
     const right = new THREE.Vector3(1, 0, 0).applyQuaternion(this.rig.quaternion);
-    const forward = new THREE.Vector3(0, 0, -1).applyQuaternion(this.rig.quaternion);
 
-    if (this.dragZone === 1) {
-      q.setFromAxisAngle(up, -dx * rotSpeed);
-      this.rig.quaternion.premultiply(q);
-      q.setFromAxisAngle(right, -dy * rotSpeed);
-      this.rig.quaternion.premultiply(q);
-    } else {
-      const rect = this.renderer.domElement.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const vecX = this.lastMouse.x - cx;
-      const vecY = this.lastMouse.y - cy;
-      const len = Math.hypot(vecX, vecY);
-
-      if (len > 0.001) {
-        const rX = vecX / len;
-        const rY = vecY / len;
-        const tX = -rY;
-        const tY = rX;
-        const centralMag = dx * rX + dy * rY;
-        const tangentMag = dx * tX + dy * tY;
-        const dCx = centralMag * rX;
-        const dCy = centralMag * rY;
-
-        q.setFromAxisAngle(up, -dCx * rotSpeed);
-        this.rig.quaternion.premultiply(q);
-        q.setFromAxisAngle(right, -dCy * rotSpeed);
-        this.rig.quaternion.premultiply(q);
-        q.setFromAxisAngle(forward, -tangentMag * rotSpeed);
-        this.rig.quaternion.premultiply(q);
-      }
-    }
+    q.setFromAxisAngle(up, -dx * rotSpeed);
+    this.rig.quaternion.premultiply(q);
+    q.setFromAxisAngle(right, -dy * rotSpeed);
+    this.rig.quaternion.premultiply(q);
     this.rig.quaternion.normalize();
     this.lastMouse = { x: e.clientX, y: e.clientY };
   };
@@ -568,8 +521,6 @@ class Square1ThreeViewer {
     (this.geometry.attributes.position as THREE.BufferAttribute).needsUpdate = true;
     (this.geometry.attributes.color as THREE.BufferAttribute).needsUpdate = true;
     this.geometry.setDrawRange(0, this.im.count);
-    (this.lineGeometry.attributes.position as THREE.BufferAttribute).needsUpdate = true;
-    this.lineGeometry.setDrawRange(0, this.im.lineCount);
   }
 
   private edge(col: number): void {
@@ -750,10 +701,10 @@ class Square1ThreeViewer {
   private sliceInternal(): void {
     this.im.fill(INTERNAL_COL);
     this.im.begin('QUADS');
-    this.im.vertex(0, -LEN / (2 * Math.cos(Math.PI / 12)), -LEN / 2 + 0.5);
-    this.im.vertex(0, LEN / (2 * Math.cos(Math.PI / 12)), -LEN / 2 + 0.5);
-    this.im.vertex(0, LEN / (2 * Math.cos(Math.PI / 12)), LEN / 2 - 0.5);
-    this.im.vertex(0, -LEN / (2 * Math.cos(Math.PI / 12)), LEN / 2 - 0.5);
+    this.im.vertex(0, -LEN / (2 * Math.cos(Math.PI / 12)), -LEN / 2);
+    this.im.vertex(0, LEN / (2 * Math.cos(Math.PI / 12)), -LEN / 2);
+    this.im.vertex(0, LEN / (2 * Math.cos(Math.PI / 12)), LEN / 2);
+    this.im.vertex(0, -LEN / (2 * Math.cos(Math.PI / 12)), LEN / 2);
     this.im.end();
   }
 
