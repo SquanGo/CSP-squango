@@ -1,0 +1,33 @@
+{
+  "name": "SquanGo CSP",
+  "short_name": "CSP",
+  "start_url": "./",
+  "scope": "./",
+  "id": "./manifest.webmanifest",
+  "display": "standalone",
+  "background_color": "#9299b0",
+  "theme_color": "#7fa8ff",
+  "description": "Learn, train, and manage your CSPs, all in one place.",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "16x16 32x32",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "./res/icons/icon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "./res/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./res/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Square-1 Cubeshape Parity Trainer - Learn all 90 cubeshape parity cases with dynamic analysis and personalized tracking"
+    />
+    <meta name="theme-color" content="#007bff" />
+    <title>SquanGo CSP</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./training-modal.css" />
+    <link rel="stylesheet" href="./quick-edit.css" />
+    <link rel="stylesheet" href="./svg-editor.css" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./res/icons/icon-32.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <script>
+      (function () {
+        let saved = null;
+        try {
+          const progress = JSON.parse(localStorage.getItem('cspProgress') || '{}');
+          saved = progress.theme;
+        } catch {
+          saved = null;
+        }
+        if (saved === 'dark' || saved === 'light') {
+          document.documentElement.setAttribute('data-theme', saved);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./src/main.tsx"></script>
+  </body>
+</html>

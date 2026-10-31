@@ -1,0 +1,1487 @@
+{
+  "displayNames": {
+    "1": "kite/square",
+    "2": "7-1/star",
+    "3": "8/star",
+    "4": "6-2/star",
+    "5": "4-4/star",
+    "6": "5-3/star",
+    "7": "2-2-2/L",
+    "8": "2-2-2/line",
+    "9": "muffin/evil fist",
+    "10": "muffin/nice fist",
+    "11": "muffin/kite",
+    "12": "muffin/barrel",
+    "13": "kite/evil fist",
+    "14": "kite/nice fist",
+    "15": "barrel/evil fist",
+    "16": "barrel/nice fist",
+    "17": "evil fist/evil fist",
+    "18": "nice fist/nice fist",
+    "19": "nice fist/square",
+    "20": "evil fist/square",
+    "21": "barrel/square",
+    "22": "6/L",
+    "23": "6/line",
+    "24": "left 5-1/line",
+    "25": "right 5-1/line",
+    "26": "evil 4-2/L",
+    "27": "nice 4-2/L",
+    "28": "3-3/pair",
+    "29": "3-3/line",
+    "30": "4-1-1/line",
+    "31": "3-1-2/pair",
+    "32": "3-2-1/pair",
+    "33": "3-1-2/line",
+    "34": "3-2-1/line",
+    "35": "scallop/evil paw",
+    "36": "scallop/nice paw",
+    "37": "scallop/shield",
+    "38": "scallop/muffin",
+    "39": "scallop/nice fist",
+    "40": "scallop/evil fist",
+    "41": "scallop/square",
+    "42": "nice paw/shield",
+    "43": "evil paw/shield",
+    "44": "evil paw/evil paw",
+    "45": "nice paw/nice paw",
+    "46": "evil paw/muffin",
+    "47": "nice paw/muffin",
+    "48": "evil paw/evil fist",
+    "49": "nice paw/nice fist",
+    "50": "evil paw/kite",
+    "51": "nice paw/kite",
+    "52": "evil paw/barrel",
+    "53": "nice paw/barrel",
+    "54": "evil paw/square",
+    "55": "nice paw/square",
+    "56": "shield/nice fist",
+    "57": "shield/evil fist",
+    "58": "shield/kite",
+    "59": "shield/barrel",
+    "60": "6/pair",
+    "61": "left 5-1/pair",
+    "62": "right 5-1/pair",
+    "63": "left 5-1/L",
+    "64": "right 5-1/L",
+    "65": "evil 4-2/pair",
+    "66": "nice 4-2/pair",
+    "67": "evil 4-2/line",
+    "68": "nice 4-2/line",
+    "69": "3-3/L",
+    "70": "4-1-1/pair",
+    "71": "4-1-1/L",
+    "72": "3-1-2/L",
+    "73": "3-2-1/L",
+    "74": "2-2-2/pair",
+    "75": "scallop/barrel",
+    "76": "evil paw/nice fist",
+    "77": "nice paw/evil fist",
+    "78": "shield/muffin",
+    "79": "scallop/scallop",
+    "80": "scallop/kite",
+    "81": "nice paw/evil paw",
+    "82": "shield/shield",
+    "83": "shield/square",
+    "84": "muffin/muffin",
+    "85": "muffin/square",
+    "86": "kite/barrel",
+    "87": "nice fist/evil fist",
+    "88": "barrel/barrel",
+    "89": "kite/kite",
+    "90": "square/square"
+  },
+  "perCaseSubtitles": {
+    "1": "nice case",
+    "2": "nice case",
+    "3": "nice case",
+    "4": "evil case",
+    "5": "nice case",
+    "6": "nice case",
+    "7": "evil case",
+    "8": "evil case",
+    "9": "nice case",
+    "10": "nice case",
+    "11": "nice case",
+    "12": "evil case",
+    "13": "evil case",
+    "14": "nice case",
+    "15": "nice case",
+    "16": "evil case",
+    "17": "bad fists (nice case)",
+    "18": "bad fists (evil case)",
+    "19": "nice case",
+    "20": "nice case",
+    "21": "evil case",
+    "22": "nice case",
+    "23": "nice case",
+    "24": "nice case",
+    "25": "nice case",
+    "26": "nice case",
+    "27": "evil case",
+    "28": "nice case",
+    "29": "nice case",
+    "30": "evil case",
+    "31": "evil case",
+    "32": "evil case",
+    "33": "nice case",
+    "34": "nice case",
+    "35": "evil case",
+    "36": "nice case",
+    "37": "evil case",
+    "38": "evil case",
+    "39": "nice case",
+    "40": "evil case",
+    "41": "evil case",
+    "42": "nice case",
+    "43": "nice case",
+    "44": "bad paws (evil case)",
+    "45": "bad paws (evil case)",
+    "46": "evil case",
+    "47": "evil case",
+    "48": "bad paw/fist (evil case)",
+    "49": "bad paw/fist (evil case)",
+    "50": "nice case",
+    "51": "evil case",
+    "52": "evil case",
+    "53": "nice case",
+    "54": "evil case",
+    "55": "evil case",
+    "56": "evil case",
+    "57": "evil case",
+    "58": "evil case",
+    "59": "nice case",
+    "60": "evil case",
+    "61": "nice case",
+    "62": "nice case",
+    "63": "nice case",
+    "64": "nice case",
+    "65": "evil case",
+    "66": "nice case",
+    "67": "nice case",
+    "68": "evil case",
+    "69": "nice case",
+    "70": "nice case",
+    "71": "nice case",
+    "72": "evil case",
+    "73": "evil case",
+    "74": "evil case",
+    "75": "nice case",
+    "76": "good paw/fist (evil case)",
+    "77": "good paw/fist (evil case)",
+    "78": "evil case",
+    "79": "evil case",
+    "80": "evil case",
+    "81": "good paws (nice case)",
+    "82": "nice case",
+    "83": "evil case",
+    "84": "nice case",
+    "85": "nice case",
+    "86": "nice case",
+    "87": "good fists (nice case)",
+    "88": "evil case",
+    "89": "evil case",
+    "90": "nice case"
+  },
+  "comments": {
+    "1": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=670s\" target=\"blank\">video timestamp</a><br>nice, because it is very spammy and is composed of a 0 slice cs and a 1 slice cs<br><b>good sol:</b> preserve the Ls of the square on the <b>frontslash</b> line, 2 slices → shield/kite<br><b>bad sol:</b> preserve the Ls of the square on the <b>backslash</b> line, 2 slices → shield/kite",
+    "2": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=728s\" target=\"blank\">video timestamp</a><br>nice, because it's so close to 8/star!<br><b>good sol:</b> 2 slices to the right of the 1 → 5-1/pair<br><b>bad sol:</b> <b>misalign star</b> → good sol",
+    "3": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=994s\" target=\"blank\">video timestamp</a><br>nice, because it's the beginner CS<br><b>good sol:</b> slice between the two corners in front → scallops<br><b>bad sol:</b> <b>misalign star</b> → good sol",
+    "4": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=1013s\" target=\"blank\">video timestamp</a><br>evil, because it's the star case that aspired to be 8/star and 4-4/star, was torn and became neither<br><b>good sol:</b> slice between the two edges in front → paws<br><b>bad sol:</b> <b>misalign star</b> → good sol",
+    "5": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=1109s\" target=\"blank\">video timestamp</a><br>nice, because wowie so symmetrical<br><b>good sol:</b> slice → <b>shields</b><br><b>bad sol:</b> slice → <b>scallops</b>",
+    "6": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=728s\" target=\"blank\">video timestamp</a><br>nice, because it's so close to 4-4/star!<br><b>good sol:</b> 2 slices on the right of the 3 → 5-1/pair<br><b>bad sol:</b> <b>misalign star</b> → good sol",
+    "7": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=809s\" target=\"blank\">video timestamp</a><br>evil, because 2-2-2 is always evil<br><b>good sol:</b> L on the <b>frontslash</b> line, 2 slices → 3-x-x/L<br><b>bad sol:</b> L on the <b>backslash</b> line, 2 slices → 3-x-x/L",
+    "8": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=1147s\" target=\"blank\">video timestamp</a><br>evil, because 2-2-2 is always evil<br><b>good sol:</b> slice → shield/kite, slicing the <b>top</b> half of the kite<br><b>bad sol:</b> slice → shield/kite, slicing the <b>bottom</b> half of the kite",
+    "9": "<a href=\"https://youtu.be/kKOSxk84v90&t=653s\" target=\"blank\">video timestamp</a><br>nice, because the innocent snack neutralizes the angry person (insert snickers commercial??)<br><b>good sol:</b> 2 slices → <b>2-gen</b> to paws<br><b>bad sol:</b> 2 slices → <b>3-gen</b> to paws",
+    "10": "<a href=\"https://youtu.be/kKOSxk84v90&t=653s\" target=\"blank\">video timestamp</a><br>nice, because the innocent snack neutralizes the angry person (insert snickers commercial??)<br><b>good sol:</b> 2 slices → <b>2-gen</b> to paws<br><b>bad sol:</b> 2 slices → <b>3-gen</b> to paws",
+    "11": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=40s\" target=\"blank\">video timestamp</a><br>nice, because if you tie a snack up to a kite, it feeds the birds (compare with scallop/kite)<br><b>good sol:</b> → shield/barrel, do a <b>positive</b> 1 move on the barrel, 2 slices \u001a scallops<br><b>bad sol:</b> → shield/barrel, do a <b>negative</b> 1 move on the barrel, 2 slices \u001a scallops",
+    "12": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=76s\" target=\"blank\">video timestamp</a><br>evil, because a muffin in a barrel spoils<br><b>good sol:</b> slice → shield/kite, slicing the <b>top</b> half of the kite<br><b>bad sol:</b> slice → shield/kite, slicing the <b>bottom</b> half of the kite",
+    "13": "<a href=\"https://youtu.be/kKOSxk84v90&t=714s\" target=\"blank\">video timestamp</a><br>follow, because kite is very fragile compared to fist (fist dominates)<br><b>good sol:</b> 2 slices → <b>2-gen</b> to scallop/kite<br><b>bad sol:</b> 2 slices → <b>3-gen</b> to scallop/kite",
+    "14": "<a href=\"https://youtu.be/kKOSxk84v90&t=714s\" target=\"blank\">video timestamp</a><br>follow, because kite is very fragile compared to fist (fist dominates)<br><b>good sol:</b> 2 slices → <b>2-gen</b> to scallop/kite<br><b>bad sol:</b> 2 slices → <b>3-gen</b> to scallop/kite",
+    "15": "<a href=\"https://youtu.be/kKOSxk84v90&t=784s\" target=\"blank\">video timestamp</a><br>invert, because putting a fist in a barrel rolls it over<br><b>good sol:</b> 2 slices → 4-2/pair → <b>scallops</b><br><b>bad sol:</b> 2 slices → 4-2/pair → <b>shields</b>",
+    "16": "<a href=\"https://youtu.be/kKOSxk84v90&t=784s\" target=\"blank\">video timestamp</a><br>invert, because putting a fist in a barrel rolls it over<br><b>good sol:</b> 2 slices → 4-2/pair → <b>scallops</b><br><b>bad sol:</b> 2 slices → 4-2/pair → <b>shields</b>",
+    "17": "<a href=\"https://youtu.be/kKOSxk84v90&t=1369s\" target=\"blank\">video timestamp</a><br>invert, because ANTIMULTIPLICATION<br><b>good sol:</b> → shield/kite <b>good</b> alg<br><b>bad sol:</b> → shield/kite <b>bad</b> alg",
+    "18": "<a href=\"https://youtu.be/kKOSxk84v90&t=1369s\" target=\"blank\">video timestamp</a><br>invert, because ANTIMULTIPLICATION<br><b>good sol:</b> → shield/kite <b>good</b> alg<br><b>bad sol:</b> → shield/kite <b>bad</b> alg",
+    "19": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=337s\" target=\"blank\">video timestamp</a><br>nice, because a spell (magic) blocks a fist (physical force)<br><b>good sol:</b> 2 slices → 3-x-x/L → shield/square<br><b>bad sol:</b> 2 slices → 3-gen to scallop/kite",
+    "20": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=337s\" target=\"blank\">video timestamp</a><br>nice, because a spell (magic) blocks a fist (physical force)<br><b>good sol:</b> 2 slices → 3-x-x/L → shield/square<br><b>bad sol:</b> 2 slices → 3-gen to scallop/kite",
+    "21": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=841s\" target=\"blank\">video timestamp</a><br>evil, because 7 slices, and not as spammy as kite/square<br><b>good sol:</b> preserve the Ls of the square on the <b>frontslash</b> line, 2 slices → shield/kite<br><b>bad sol:</b> preserve the Ls of the square on the <b>backslash</b> line, 2 slices → shield/kite",
+    "22": "<a href=\"https://youtu.be/kKOSxk84v90&t=851s\" target=\"blank\">video timestamp</a><br>nice, because the concentrated power of the 6 easily defeats the diluted power of the L<br><b>good sol:</b> L on the <b>frontslash</b> line → 5-1/pair<br><b>bad sol:</b> L on the <b>backslash</b> line → 5-1/pair",
+    "23": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=375s\" target=\"blank\">video timestamp</a><br>nice, because the concentrated power of the 6 easily defeats the diluted power of the line<br><b>good sol:</b> replace the more <b>clockwise</b> pair of the 6 → 5-1/pair<br><b>bad sol:</b> replace the more <b>counterclockwise</b> of the 6 → 5-1/pair<br>(the pairs we are replacing are the same as the ones in 6/L)",
+    "24": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=440s\" target=\"blank\">video timestamp</a><br>nice, because 5-1 is always nice<br><b>good sol:</b> → 5-1/L<br><b>bad sol:</b> → 4-2/pair bad sol",
+    "25": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=440s\" target=\"blank\">video timestamp</a><br>nice, because 5-1 is always nice<br><b>good sol:</b> → 5-1/L<br><b>bad sol:</b> → 4-2/pair bad sol",
+    "26": "<a href=\"https://youtu.be/kKOSxk84v90&t=564s\" target=\"blank\">video timestamp</a><br>invert, because 4-2 likes no one else except for pair, so it inverts with L<br><b>good sol:</b> <b>2-gen</b> to scallop/kite<br><b>bad sol:</b> <b>3-gen</b> to scallop/kite",
+    "27": "<a href=\"https://youtu.be/kKOSxk84v90&t=564s\" target=\"blank\">video timestamp</a><br>invert, because 4-2 likes no one else except for pair, so it inverts with L<br><b>good sol:</b> <b>2-gen</b> to scallop/kite<br><b>bad sol:</b> <b>3-gen</b> to scallop/kite",
+    "28": "<a href=\"https://youtu.be/kKOSxk84v90&t=131s\" target=\"blank\">video timestamp</a><br>nice, because 3-3 is always nice<br><b>good sol:</b> pair on the <b>frontslash</b> line, 2 slices → scallop/kite<br><b>bad sol:</b> pair on the <b>backslash</b> line, 2 slices → scallop/kite",
+    "29": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=482s\" target=\"blank\">video timestamp</a><br>nice, because 3-3 is always nice<br><b>good sol:</b> 3-3 on the <b>frontslash</b> line → 4-2/pair good sol<br><b>bad sol:</b> 3-3 on the <b>backslash</b> line → 4-2/pair good sol",
+    "30": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=110s\" target=\"blank\">video timestamp</a><br>evil, because 4-1-1 kinda looks like a diamond, and 4-1-1/line is like a crack in the diamond :(<br><b>good sol:</b> 4 of the 4-1-1 on the <b>frontslash</b> line → 5-1/L<br><b>bad sol:</b> 4 of the 4-1-1 on the <b>backslash</b> line → 5-1/L",
+    "31": "<a href=\"https://youtu.be/kKOSxk84v90&t=163s\" target=\"blank\">video timestamp</a><br>evil, because 3-x-x is usually bad<br><b>good sol:</b> 2 slices → shield/square<br><b>bad sol:</b> → 5-1/L",
+    "32": "<a href=\"https://youtu.be/kKOSxk84v90&t=163s\" target=\"blank\">video timestamp</a><br>evil, because 3-x-x is usually bad<br><b>good sol:</b> 2 slices → shield/square<br><b>bad sol:</b> → 5-1/L",
+    "33": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=516s\" target=\"blank\">video timestamp</a><br>nice, because although it's not all pairs, it's able to go to all pairs in one slice<br><b>good sol:</b> → 4-2/pair good sol<br><b>bad sol:</b> 4 slices → kites",
+    "34": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=516s\" target=\"blank\">video timestamp</a><br>nice, because although it's not all pairs, it's able to go to all pairs in one slice<br><b>good sol:</b> → 4-2/pair good sol<br><b>bad sol:</b> 4 slices → kites",
+    "35": "<a href=\"https://youtu.be/kKOSxk84v90&t=870s\" target=\"blank\">video timestamp</a><br>follow, because similar to scallop/fist, a bear can eat scallops (paw is like a bear's fist)<br><b>good sol:</b> join a <b>pair to paw</b> → 5-1/pair<br><b>bad sol:</b> join an <b>L to scallop</b> → 5-1/pair",
+    "36": "<a href=\"https://youtu.be/kKOSxk84v90&t=870s\" target=\"blank\">video timestamp</a><br>follow, because similar to scallop/fist, a bear can eat scallops (paw is like a bear's fist)<br><b>good sol:</b> join a <b>pair to paw</b> → 5-1/pair<br><b>bad sol:</b> join an <b>L to scallop</b> → 5-1/pair",
+    "37": "<a href=\"https://youtu.be/kKOSxk84v90&t=242s\" target=\"blank\">video timestamp</a><br>evil, because using a shield to block out scallop will make you starve<br><b>good sol:</b> shield lone corner on the <b>frontslash</b> line, 2 slices → scallops<br><b>bad sol:</b> shield lone corner on the <b>backslash</b> line, 2 slices → scallops",
+    "38": "<a href=\"https://youtu.be/kKOSxk84v90&t=927s\" target=\"blank\">video timestamp</a><br>evil, because scallop and muffin are NOT food that go well together<br><b>good sol:</b> put the muffin lone edge on the <b>frontslash</b> line, 2 slices → scallop/kite<br><b>bad sol:</b> put the muffin lone edge on the <b>backslash</b> line, 2 slices → scallop/kite",
+    "39": "<a href=\"https://youtu.be/kKOSxk84v90&t=295s\" target=\"blank\">video timestamp</a><br>follow, because a fist can eat the scallop (fist dominates)<br><b>good sol:</b> 2 slices <b>2-gen</b> to scallop/kite<br><b>bad sol:</b> 2 slices <b>3-gen</b> to scallop/kite",
+    "40": "<a href=\"https://youtu.be/kKOSxk84v90&t=295s\" target=\"blank\">video timestamp</a><br>follow, because a fist can eat the scallop (fist dominates)<br><b>good sol:</b> 2 slices <b>2-gen</b> to scallop/kite<br><b>bad sol:</b> 2 slices <b>3-gen</b> to scallop/kite",
+    "41": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=571s\" target=\"blank\">video timestamp</a><br>evil, because it's so close to scallop/kite yet 2 slices away<br><b>good sol:</b> preserve the Ls of the square on the <b>frontslash</b> line, 2 slices → scallop/kite<br><b>bad sol:</b> preserve the Ls of the square on the <b>backslash</b> line, 2 slices → scallop/kite",
+    "42": "<a href=\"https://youtu.be/kKOSxk84v90&t=971s\" target=\"blank\">video timestamp</a><br>nice, because using a shield blocks off the dangerous bear and keeps you safe<br><b>good sol:</b> <b>slice</b> → 5-1/pair<br><b>bad sol:</b> <b>2 slices</b> → 5-1/pair",
+    "43": "<a href=\"https://youtu.be/kKOSxk84v90&t=971s\" target=\"blank\">video timestamp</a><br>nice, because using a shield blocks off the dangerous bear and keeps you safe<br><b>good sol:</b> <b>slice</b> → 5-1/pair<br><b>bad sol:</b> <b>2 slices</b> → 5-1/pair",
+    "44": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=876s\" target=\"blank\">video timestamp</a><br>evil, because bad paws is just a bad case in general<br><b>good sol:</b> 2 slices → <b>shields</b><br><b>bad sol:</b> 2 slices → <b>scallops</b>",
+    "45": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=876s\" target=\"blank\">video timestamp</a><br>evil, because bad paws is just a bad case in general<br><b>good sol:</b> 2 slices → <b>shields</b><br><b>bad sol:</b> 2 slices → <b>scallops</b>",
+    "46": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=140s\" target=\"blank\">video timestamp</a><br>evil, because you should not feed wild animals (they'll get hungry and attack you)<br><b>good sol:</b> 2 slices <b>2-gen</b> to scallops<br><b>bad sol:</b> 2 slices <b>3-gen</b> to scallops",
+    "47": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=140s\" target=\"blank\">video timestamp</a><br>evil, because you should not feed wild animals (they'll get hungry and attack you)<br><b>good sol:</b> 2 slices <b>2-gen</b> to scallops<br><b>bad sol:</b> 2 slices <b>3-gen</b> to scallops",
+    "48": "<a href=\"https://youtu.be/kKOSxk84v90&t=1009s\" target=\"blank\">video timestamp</a><br>evil, because you just hit a bear with a fist, RIP<br><b>good sol:</b> join fist L with <b>fist pair</b>, 2 slices → paws<br><b>bad sol:</b> join fist L with <b>paw pair</b>, 2 slices → paws",
+    "49": "<a href=\"https://youtu.be/kKOSxk84v90&t=1009s\" target=\"blank\">video timestamp</a><br>evil, because you just hit a bear with a fist, RIP<br><b>good sol:</b> join fist L with <b>fist pair</b>, 2 slices → paws<br><b>bad sol:</b> join fist L with <b>paw pair</b>, 2 slices → paws",
+    "50": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=194s\" target=\"blank\">video timestamp</a><br>invert, because if you tie a bear to a kite and fly it, they play with the kite and turns over midair<br><b>good sol</b>: 2 slices → shield/square<br><b>bad sol:</b> slice → 4-2/pair → scallops",
+    "51": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=194s\" target=\"blank\">video timestamp</a><br>invert, because if you tie a bear to a kite and fly it, they play with the kite and turns over midair<br><b>good sol</b>: 2 slices → shield/square<br><b>bad sol:</b> slice → 4-2/pair → scallops",
+    "52": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=226s\" target=\"blank\">video timestamp</a><br>follow, because bears are too heavy to be rolled over in a barrel<br><b>good sol:</b> <b>slice</b> → 5-1/pair<br><b>bad sol:</b> <b>2 slices</b> → 5-1/pair",
+    "53": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=226s\" target=\"blank\">video timestamp</a><br>follow, because bears are too heavy to be rolled over in a barrel<br><b>good sol:</b> <b>slice</b> → 5-1/pair<br><b>bad sol:</b> <b>2 slices</b> → 5-1/pair",
+    "54": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=961s\" target=\"blank\">video timestamp</a><br>evil, because spells do not work on bears, you are dead<br><b>good sol:</b> 2 slices <b>2-gen</b> → scallop/kite<br><b>bad sol:</b> 2 slices <b>3-gen</b> → scallop/kite",
+    "55": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=961s\" target=\"blank\">video timestamp</a><br>evil, because spells do not work on bears, you are dead<br><b>good sol:</b> 2 slices <b>2-gen</b> → scallop/kite<br><b>bad sol:</b> 2 slices <b>3-gen</b> → scallop/kite",
+    "56": "<a href=\"https://youtu.be/kKOSxk84v90&t=382s\" target=\"blank\">video timestamp</a><br>evil, because a medieval weapon (shield) is not enough to fight an angry person nowadays, you are dead<br><b>good sol:</b> 2 slices <b>2-gen</b> → paws<br><b>bad sol:</b> 2 slices <b>3-gen</b> → paws",
+    "57": "<a href=\"https://youtu.be/kKOSxk84v90&t=382s\" target=\"blank\">video timestamp</a><br>evil, because a medieval weapon (shield) is not enough to fight an angry person nowadays, you are dead<br><b>good sol:</b> 2 slices <b>2-gen</b> → paws<br><b>bad sol:</b> 2 slices <b>3-gen</b> → paws",
+    "58": "<a href=\"https://youtu.be/kKOSxk84v90&t=1056s\" target=\"blank\">video timestamp</a><br>evil, because flying a kite is relaxing! why block it off!<br><b>good sol:</b> putting the shield on the <b>top</b> half of the kite, 2 slices → shield/square<br><b>bad sol:</b> putting the shield on the <b>bottom</b> half of the kite, 2 slices → shield/square",
+    "59": "<a href=\"https://youtu.be/kKOSxk84v90&t=1099s\" target=\"blank\">video timestamp</a><br>nice, because if a barrel is rolling down towards you, you can easily block it with a shield<br><b>good sol:</b> barrel on the <b>frontslash</b> line, 2 slices → scallops<br><b>bad sol:</b> barrel on the <b>backslash</b> line, 2 slices → scallops",
+    "60": "<a href=\"https://youtu.be/kKOSxk84v90&t=438s\" target=\"blank\">video timestamp</a><br>evil, because both shape are symmetrical but are not sliceable at the symmetry axis (the concentrated power of the 6 met its match in the concentrated power of the pair)<br><b>good sol:</b> pair on the <b>frontslash</b> line → scallops<br><b>bad sol:</b> pair on the <b>backslash</b> line → scallops",
+    "61": "<a href=\"https://youtu.be/kKOSxk84v90&t=472s\" target=\"blank\">video timestamp</a><br>nice, because 5-1 is always nice<br><b>good sol:</b> <b>slice</b> → scallop/kite<br><b>bad sol:</b> <b>2 slices</b> → scallop/kite",
+    "62": "<a href=\"https://youtu.be/kKOSxk84v90&t=472s\" target=\"blank\">video timestamp</a><br>nice, because 5-1 is always nice<br><b>good sol:</b> <b>slice</b> → scallop/kite<br><b>bad sol:</b> <b>2 slices</b> → scallop/kite",
+    "63": "<a href=\"https://youtu.be/kKOSxk84v90&t=1129s\" target=\"blank\">video timestamp</a><br>nice, because 5-1 is always nice<br><b>good sol:</b> → scallop/kite<br><b>bad sol:</b> → 4-1-1/L, don't do a 60 or a 06 → scallop/kite",
+    "64": "<a href=\"https://youtu.be/kKOSxk84v90&t=1129s\" target=\"blank\">video timestamp</a><br>nice, because 5-1 is always nice<br><b>good sol:</b> → scallop/kite<br><b>bad sol:</b> → 4-1-1/L, don't do a 60 or a 06 → scallop/kite",
+    "65": "<a href=\"https://youtu.be/kKOSxk84v90&t=4s\" target=\"blank\">video timestamp</a><br>follow, because 4-2/pair is how the two 4-2 got their evilness in the first place<br><b>good sol:</b> → <b>scallops</b><br><b>bad sol:</b> → <b>shields</b>",
+    "66": "<a href=\"https://youtu.be/kKOSxk84v90&t=4s\" target=\"blank\">video timestamp</a><br>follow, because 4-2/pair is how the two 4-2 got their evilness in the first place<br><b>good sol:</b> → <b>scallops</b><br><b>bad sol:</b> → <b>shields</b>",
+    "67": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=260s\" target=\"blank\">video timestamp</a><br>invert, because 4-2 likes no one else except for pair, so it inverts with line<br><b>good sol:</b> <b>slice</b> → scallop/kite<br><b>bad sol:</b> <b>2 slices</b> → scallop/kite",
+    "68": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=260s\" target=\"blank\">video timestamp</a><br>invert, because 4-2 likes no one else except for pair, so it inverts with line<br><b>good sol:</b> <b>slice</b> → scallop/kite<br><b>bad sol:</b> <b>2 slices</b> → scallop/kite",
+    "69": "<a href=\"https://youtu.be/kKOSxk84v90&t=1174s\" target=\"blank\">video timestamp</a><br>nice, because 3-3 is always nice<br><b>good sol:</b> L on the <b>frontslash</b> line → paws<br><b>bad sol:</b> L on the <b>backslash</b> line → paws",
+    "70": "<a href=\"https://youtu.be/kKOSxk84v90&t=93s\" target=\"blank\">video timestamp</a><br>nice, because it's a <u>4</u>-1-1 <u>4</u> slicer<br><b>good sol:</b> pair on the <b>frontslash</b> line → paws<br><b>bad sol:</b> pair on the <b>backslash</b> line → paws",
+    "71": "<a href=\"https://youtu.be/kKOSxk84v90&t=617s\" target=\"blank\">video timestamp</a><br>nice, because it's a <u>4</u>-1-1 <u>4</u> slicer<br><b>good sol:</b> L on the <b>frontslash</b> line → scallop/kite<br><b>bad sol:</b> L on the <b>backslash</b> line → scallop/kite",
+    "72": "<a href=\"https://youtu.be/kKOSxk84v90&t=1195s\" target=\"blank\">video timestamp</a><br>evil, because 3-x-x is usually bad<br><b>good sol:</b> <b>slice</b> → shield/square<br><b>bad sol:</b> <b>2 slices</b> → shield/square",
+    "73": "<a href=\"https://youtu.be/kKOSxk84v90&t=1195s\" target=\"blank\">video timestamp</a><br>evil, because 3-x-x is usually bad<br><b>good sol:</b> <b>slice</b> → shield/square<br><b>bad sol:</b> <b>2 slices</b> → shield/square",
+    "74": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=616s\" target=\"blank\">video timestamp</a><br>evil, because 2-2-2 is always bad<br><b>good sol:</b> pair on the <b>frontslash</b> line → shields<br><b>bad sol:</b> pair on the <b>backslash</b> line → shields",
+    "75": "<a href=\"https://youtu.be/kKOSxk84v90&t=1237s\" target=\"blank\">video timestamp</a><br>nice, because a barrel is used to store scallops, yum<br><b>good sol:</b> → shields<br><b>bad sol:</b> 2 slices → scallops",
+    "76": "<a href=\"https://youtu.be/kKOSxk84v90&t=1261s\" target=\"blank\">video timestamp</a><br>evil, because you just hit a bear with a fist, RIP<br><b>good sol:</b> → shield/square<br><b>bad sol:</b> 2 slices → paws",
+    "77": "<a href=\"https://youtu.be/kKOSxk84v90&t=1261s\" target=\"blank\">video timestamp</a><br>evil, because you just hit a bear with a fist, RIP<br><b>good sol:</b> → shield/square<br><b>bad sol:</b> 2 slices → paws",
+    "78": "<a href=\"https://youtu.be/kKOSxk84v90&t=1334s\" target=\"blank\">video timestamp</a><br>evil, because you are blocking off a snack with a shield, you starve<br><b>good sol:</b> → scallop kite <b>good sol</b><br><b>bad sol:</b> → scallop/kite <b>bad sol</b>",
+    "79": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=0s\" target=\"blank\">video timestamp</a><br>evil, because eating two scallops makes you sick cuz allergy (compare with muffins)<br><b>good sol:</b> 3 slicer<br><b>bad sol:</b> <b>swap 3 corners</b> → good sol",
+    "80": "<a href=\"https://youtu.be/kKOSxk84v90&t=1307s\" target=\"blank\">video timestamp</a><br>evil, because even though you tied a scallop to a kite, the birds don't eat the scallop (compare with muffin/kite)<br><b>good sol:</b> 3 slicer<br><b>bad sol:</b> → 4-1-1/L, do a -22 move → good sol",
+    "81": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=299s\" target=\"blank\">video timestamp</a><br>nice, because paw is like animal fist, so like good paws is like good fists, so also good<br><b>good sol:</b> 3 slicer<br><b>bad sol:</b> <b>swap 3 corners</b> → good sol",
+    "82": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=0s\" target=\"blank\">video timestamp</a><br>nice, because two shields can block more attacks<br><b>good sol:</b> 3 slicer<br><b>bad sol:</b> <b>swap 3 corners</b> → good sol",
+    "83": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=646s\" target=\"blank\">video timestamp</a><br>evil, because shield is intrinsically evil (compare with muffin/square)<br><b>good sol:</b> → good fists <b>good sol</b><br><b>bad sol:</b> → good fists <b>bad sol</b>",
+    "84": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=1035s\" target=\"blank\">video timestamp</a><br>nice, because you can eat two muffins (compare with scallops)<br><b>good sol:</b> → barrels <b>good sol</b><br><b>bad sol:</b> → barrels <b>bad sol</b>",
+    "85": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=1050s\" target=\"blank\">video timestamp</a><br>nice, because muffin is intrinsically nice (compare with shield/square)<br><b>good sol:</b> 3 slicer<br><b>bad sol:</b> 2 slices → scallop/kite bad sol",
+    "86": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=318s\" target=\"blank\">video timestamp</a><br>nice, because 2-gen 3 slicer<br><b>good sol:</b> → good fists <b>good sol</b><br><b>bad sol:</b> → good fists <b>bad sol</b>",
+    "87": "<a href=\"https://youtu.be/kKOSxk84v90&t=523s\" target=\"blank\">video timestamp</a><br>nice, because it's a very common 2 slicer (because the top and bottom layer are not the same) (compare with barrels, kites)<br><b>good sol:</b> 2 slicer<br><b>bad sol:</b> → good paws bad sol",
+    "88": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=1065s\" target=\"blank\">video timestamp</a><br>evil, because it's a very uncommon 2 slicer (because the top and bottom layer are the same) (compare with fists, kites)<br><b>good sol:</b> 2 slicer<br><b>bad sol:</b> → scallops bad sol",
+    "89": "<b>for even: predict OBL or CO, and do the HpN+ after OBL</b><br><a href=\"https://youtu.be/V5zx2MUSNJI&t=1078s\" target=\"blank\">video timestamp</a><br>evil, because it's a very uncommon 2 slicer (because the top and bottom layer are the same) (compare with fists, barrels)<br><b>good sol:</b> 1 slicer<br><b>bad sol:</b> predict OBL or CO → 1 slicer → HpN+ after OBL",
+    "90": "<a href=\"https://youtu.be/V5zx2MUSNJI&t=1181s\" target=\"blank\">video timestamp</a><br>nice, cuz CS skip!!!!<br><b>good sol:</b> say \"meowww\"<br><b>bad sol:</b> do OBL or CO → HpN+ after OBL"
+  },
+  "generalNotes": "<style>\n.nw{\n    font-family:'Segoe UI',system-ui,sans-serif;\n    color:var(--text-primary);\n    line-height:1.8;\n    padding:32px 20px;\n    max-width:900px;\n    margin:auto;\n    word-wrap:break-word;\n    background:var(--background);\n}\n\n.welcome-banner{\n    text-align:center;\n    margin-bottom:40px;\n}\n\n.welcome-banner h1{\n    font-size:28px;\n    font-weight:700;\n    margin-bottom:10px;\n}\n\n.welcome-banner p{\n    font-size:14px;\n    color:var(--text-secondary);\n}\n\n.nw p {\n    margin: 0;\n    text-indent:2rem each-line;\n}\n\n.nw p+p {\n    margin-top: 0.5em;\n}\n\n.nw a{\n    color:var(--about-link-color);\n    text-decoration:underline;\n    text-underline-offset:3px;\n}\n\n.nw .intro{\n    font-size:0.95em;\n    color:var(--text-secondary);\n    margin-bottom:28px;\n    padding-bottom:20px;\n    border-bottom:1px solid var(--surface-border);\n}\n\n.nw h2{\n    font-size:0.72em;\n    font-weight:700;\n    letter-spacing:0.12em;\n    text-transform:uppercase;\n    color:var(--text-muted);\n    margin:30px 0 16px;\n}\n\n.nw .item{\n    margin-bottom:20px;\n    padding:16px;\n    border-radius:10px;\n    background:var(--surface2);\n    border:1px solid var(--surface-border);\n}\n\n.nw .item-title{\n    font-weight:600;\n    font-size:0.95em;\n    margin-bottom:6px;\n    color:var(--text-primary);\n}\n\n.nw .item-body{\n    font-size:0.9em;\n    color:var(--text-secondary);\n}\n\n.nw .tg{\n    display:flex;\n    flex-wrap:wrap;\n    gap:6px;\n    margin-top:8px;\n}\n\n.nw .tag{\n    padding:3px 10px;\n    border-radius:6px;\n    font-size:0.78em;\n    font-weight:600;\n    letter-spacing:0.02em;\n}\n\n.nw .tag.good{background:var(--nice-case-bg);color:var(--nice-case-text);border:1px solid color-mix(in srgb,var(--nice-case-border) 45%,var(--surface-border));}\n.nw .tag.bad{background:var(--evil-case-bg);color:var(--evil-case-text);border:1px solid color-mix(in srgb,var(--evil-case-border) 45%,var(--surface-border));}\n.nw .tag.neutral{background:var(--surface2);color:var(--text-secondary);border:1px solid var(--surface-border);}\n.nw .tag.special{background:var(--step-highlight-bg);color:var(--accent);border:1px solid var(--surface-border);}\n\n.nw .tag.link{\n    --tag-link:var(--about-link-color);\n    display:inline-block;\n    text-indent:0;\n    background:color-mix(in srgb,var(--tag-link) 10%,transparent);\n    color:var(--tag-link);\n    border:1px solid color-mix(in srgb,var(--tag-link) 45%,transparent);\n    position:relative;\n    padding-right:16px;\n    text-decoration:none;\n    transition:background-color 0.15s ease,border-color 0.15s ease;\n}\n\n.nw .tag.link::after{\n    content:'';\n    position:absolute;\n    top:4px;\n    right:4px;\n    width:6px;\n    height:6px;\n    background-color:currentColor;\n    opacity:0.7;\n    -webkit-mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'%3E%3Cpath d='M1 5 5 1M1.5 1H5v3.5' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\") center/contain no-repeat;\n    mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 6'%3E%3Cpath d='M1 5 5 1M1.5 1H5v3.5' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\") center/contain no-repeat;\n    transition:opacity 0.15s ease,transform 0.15s ease;\n}\n\n@media (hover:hover){\n    .nw .tag.link:hover{\n        background:color-mix(in srgb,var(--tag-link) 20%,transparent);\n        border-color:var(--tag-link);\n    }\n    .nw .tag.link:hover::after{opacity:1;transform:translate(1px,-1px);}\n}\n\n.nw .tag.link:active{background:color-mix(in srgb,var(--tag-link) 28%,transparent);}\n\n.nw .videos{\n    display:flex;\n    flex-direction:column;\n    gap:10px;\n    margin-top:10px;\n}\n\n.nw .videos a{\n    font-size:0.92em;\n    color:var(--about-link-color);\n    text-decoration:none;\n    display:flex;\n    align-items:center;\n    gap:8px;\n    padding:6px 10px;\n    border-radius:6px;\n    transition:background 0.2s ease;\n}\n\n.nw .videos a:hover{\n    background:var(--hover-bg);\n}\n\n.nw .videos a::before{\n    content:'';\n    display:inline-block;\n    width:0;\n    height:0;\n    border-top:5px solid transparent;\n    border-bottom:5px solid transparent;\n    border-left:8px solid var(--accent);\n}\n\n@media(max-width:480px){\n    .nw{padding:24px 14px;}\n    .nw .intro{font-size:0.9em;}\n    .nw .item-body{font-size:0.85em;}\n    .nw .tag{font-size:0.73em;}\n    .nw .videos a{font-size:0.85em;}\n}\n</style>\n\n<div class=\"nw\">\n\n    <div class=\"welcome-banner\">\n        <h1>Welcome to Matt's Preset!</h1>\n    </div>\n\n    <div class=\"intro\">\n        <p>Hi there!! I&apos;m matt, and I made\n        <a href=\"https://youtu.be/RoFBTBTj69E?list=PLJiRXp7DjfyI\" target=\"_blank\" rel=\"noopener noreferrer\">this awesome CSP video series</a>! Definitely check it out for visuals, but I can't just edit a published YouTube video. So if you see that it's a couple years old, it's possible that it's outdated.</p>\n        <p>So: 1. make sure to <b>check description</b> of each video. 2. treat <b>this website</b> as the more reliable source.</p>\n    </div>\n\n    <h2>References</h2>\n\n    <div class=\"item\">\n        <div class=\"item-title\">1. Shape Representations</div>\n        <div class=\"item-body\">\n            These CS shapes get a backstory to help you make stories for memorizing nice vs evil cases:\n            <div class=\"tg\">\n                <span class=\"tag neutral\">scallop = seafood</span>\n                <span class=\"tag neutral\">muffin = innocent snack</span>\n                <span class=\"tag neutral\">shield = physical shield</span>\n                <span class=\"tag neutral\">kite = physical kite</span>\n                <span class=\"tag neutral\">barrel = physical barrel</span>\n                <span class=\"tag neutral\">square = magic spell</span>\n                <span class=\"tag neutral\">paw = bear</span>\n                <span class=\"tag neutral\">fist = angry person (punch)</span>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"item\">\n        <div class=\"item-title\">2. Shape Evilness</div>\n        <div class=\"item-body\">\n            Shapes have an intrinsic evilness to help with storytelling:\n            <div class=\"tg\">\n                <span class=\"tag good\">scallop</span>\n                <span class=\"tag good\">muffin</span>\n                <span class=\"tag good\">kite</span>\n                <span class=\"tag good\">nice paw</span>\n                <span class=\"tag good\">nice fist</span>\n                <span class=\"tag good\">6</span>\n                <span class=\"tag good\">4-1-1</span>\n                <span class=\"tag good\">nice 4-2</span>\n                <span class=\"tag good\">3-3</span>\n                <span class=\"tag good\">pair</span>\n            </div><div class=\"tg\">\n                <span class=\"tag good\">both 5-1 (always nice)</span>\n                <span class=\"tag good\">3-3 (always nice)</span>\n            </div><div class=\"tg\">\n                <span class=\"tag bad\">shield</span>\n                <span class=\"tag bad\">evil paw</span>\n                <span class=\"tag bad\">evil fist</span>\n                <span class=\"tag bad\">evil 4-2</span>\n                <span class=\"tag bad\">L</span>\n                <span class=\"tag bad\">line</span>\n            </div><div class=\"tg\">\n                <span class=\"tag bad\">2-2-2 (always evil)</span>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"item\">\n        <div class=\"item-title\">3. Timestamps</div>\n        <div class=\"item-body\">\n            <p>If you're getting the urge to ask me a very specific question that I definitely covered in the video, consider looking for it here first:</p>\n            <div class=\"tg\">\n                <a class=\"tag link\" href=\"https://youtu.be/RoFBTBTj69E?list=PLJiRXp7DjfyI&t=83s\" target=\"_blank\" rel=\"noopener noreferrer\">z2 tracing</a>\n                <a class=\"tag link\" href=\"https://youtu.be/RoFBTBTj69E?list=PLJiRXp7DjfyI&t=176s\" target=\"_blank\" rel=\"noopener noreferrer\">tracing positions</a></div>\n            <div class=\"tg\">\n                <a class=\"tag link\" href=\"https://youtu.be/RoFBTBTj69E?list=PLJiRXp7DjfyI&t=319s\" target=\"_blank\" rel=\"noopener noreferrer\">color parities</a>\n                <a class=\"tag link\" href=\"https://youtu.be/RoFBTBTj69E?list=PLJiRXp7DjfyI&t=466s\" target=\"_blank\" rel=\"noopener noreferrer\">position parities</a></div>\n            <div class=\"tg\">\n                <a class=\"tag link\" href=\"https://youtu.be/RoFBTBTj69E?list=PLJiRXp7DjfyI&t=548s\" target=\"_blank\" rel=\"noopener noreferrer\">evilness</a>\n                <a class=\"tag link\" href=\"https://youtu.be/RoFBTBTj69E?list=PLJiRXp7DjfyI&t=604s\" target=\"_blank\" rel=\"noopener noreferrer\">2gen 3gen</a>\n                <a class=\"tag link\" href=\"https://youtu.be/RoFBTBTj69E?list=PLJiRXp7DjfyI&t=619s\" target=\"_blank\" rel=\"noopener noreferrer\">front/backslash</a></div>\n            <div class=\"tg\">\n                <a class=\"tag link\" href=\"https://youtu.be/YurdJ0PQt1w?list=PLJiRXp7DjfyI&t=894s\" target=\"_blank\" rel=\"noopener noreferrer\">star cases</a>\n            </div>\n        </div>\n    </div>\n\n    <h2>FAQ</h2>\n\n    <div class=\"item\">\n        <div class=\"item-title\">1. I'm mistracing this case x times in a row!</div>\n        <div class=\"item-body\">\n            <p>Okay, look, I don't know what the heck you are doing wrong, but if it's really that consistent, just <b>flip the evilness</b> for the case, and move on.</p>\n        </div>\n    </div>\n\n    <div class=\"item\">\n        <div class=\"item-title\">2. I'm mistracing this case... inconsistently.</div>\n        <div class=\"item-body ind\">\n            <p>When you get parity, plug the scramble into the <b>Parity Tracer</b>, and check if the PT agrees with you on what parity you should be getting.</p>\n            <p>If it tells you your tracing is wrong, either you just missed a color (happens to the best of us), or you are tracing from the wrong position, etc. Either way, check your tracing step-by-step against the PT to find the issue.</p>\n            <p>But if the PT says you are tracing right, but you still get parity, consider rewatching the relevant video sections. Here's the timestamp where I talked about <a href=\"https://youtu.be/RoFBTBTj69E?list=PLJiRXp7DjfyI&t=619s\" target=\"_blank\" rel=\"noopener noreferrer\">front/backslash</a>, and here's for <a href=\"https://youtu.be/YurdJ0PQt1w?list=PLJiRXp7DjfyI&t=894s\" target=\"_blank\" rel=\"noopener noreferrer\">star cases</a>.</p>\n        </div>\n    </div>\n\n    <div class=\"item\">\n        <div class=\"item-title\">3. How can I get faster at tracing?</div>\n        <div class=\"item-body\">\n            <p>- Don't stay in your comfort zone. <b>Rush through the tracing</b> and make mistakes. At a certain point in time (around when you dont have to consciously go through all the steps of the color parity calculation), your subconscious can trace much faster, and some of your time is being spent to verify the result of your subconscious. This is where it can help to do x2 faster than you think you can.</p>\n            <p>- Be mindful of your own tracing! <b>Engage your brain</b> instead of autopiloting. Specifically lookahead to what tracing step you are going to do next, and be mentally prepared.</p>\n            <p>- To get fast at color parities beside just spamming traces, drill the parity quiz, but try to suppress your inner monologue. <b>Don't read out</b> the colors in your head; just look at them.</p>\n        </div>\n    </div>\n\n    <h2>Videos</h2>\n\n    <div class=\"videos\">\n        <a href=\"https://youtu.be/RoFBTBTj69E?list=PLJiRXp7DjfyI\" target=\"_blank\" rel=\"noopener noreferrer\">Part 1: Tracing</a>\n        <a href=\"https://youtu.be/SY6bgq7Koik?list=PLJiRXp7DjfyI\" target=\"_blank\" rel=\"noopener noreferrer\">Part 2: Cases 1–46</a>\n        <a href=\"https://youtu.be/YurdJ0PQt1w?list=PLJiRXp7DjfyI\" target=\"_blank\" rel=\"noopener noreferrer\">Part 3: Cases 47–90</a>\n        <a href=\"https://youtu.be/8O0OaoCgJME?list=PLJiRXp7DjfyI\" target=\"_blank\" rel=\"noopener noreferrer\">Star CSP Example Traces</a>\n        <a href=\"https://youtu.be/XVcp4yG54sk?list=PLJiRXp7DjfyI\" target=\"_blank\" rel=\"noopener noreferrer\">A Tour of This Website</a>\n        <a href=\"https://youtu.be/mIXqyQIZrxk?list=PLJiRXp7DjfyI\" target=\"_blank\" rel=\"noopener noreferrer\">1-3 Slice CS</a>\n    </div>\n\n</div>\n",
+  "customAlgorithms": {
+    "1": {
+      "odd": [
+        "(3,0)/(1,0)/(-2,0)/(2,0)/(-2,0)/(1,0)/(3,0)/(-1,1)",
+        "(1,0)/(-3,-1)/(1,0)/(-2,0)/(2,0)/(-2,0)/(1,0)/(3,0)/(-1,1)"
+      ],
+      "even": [
+        "(3,1)/(-1,0)/(2,0)/(-2,0)/(2,0)/(-1,0)/(-3,0)/",
+        "(1,0)/(-3,0)/(-1,0)/(2,0)/(-2,0)/(2,0)/(-1,0)/(-3,0)/"
+      ]
+    },
+    "2": {
+      "odd": [
+        "(0,2)/(0,-2)/(-1,-2)/(2,-3)/(1,2)/(3,0)/(-1,1)"
+      ],
+      "even": [
+        "/(0,-2)/(-1,-2)/(2,-3)/(1,2)/(3,0)/(-1,1)",
+        "(0,-1)/(2,0)/(2,1)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ]
+    },
+    "3": {
+      "odd": [
+        "(0,2)/(-4,-2)/(-1,-2)/(-3,-3)/",
+        "/(2,4)/(-1,-2)/(-3,-3)/"
+      ],
+      "even": [
+        "/(-4,-2)/(-1,-2)/(-3,-3)/",
+        "(0,-6)/(-2,-4)/(1,2)/(-3,-3)/"
+      ]
+    },
+    "4": {
+      "odd": [
+        "(0,2)/(-4,-2)/(-1,4)/(-3,0)/",
+        "(0,-6)/(4,2)/(-4,1)/(3,0)/"
+      ],
+      "even": [
+        "/(-4,-2)/(-1,4)/(-3,0)/",
+        "/(2,4)/(-1,4)/(-3,0)/"
+      ]
+    },
+    "5": {
+      "odd": [
+        "(2,0)/(-2,-2)/(-1,-2)/(-3,-3)/",
+        "(0,2)/(-2,-2)/(0,1)/(3,3)/",
+        "(-2,0)/(2,2)/(1,2)/(-3,-3)/"
+      ],
+      "even": [
+        "/(-2,-2)/(0,1)/(3,3)/",
+        "(2,2)/(-2,-2)/(-1,-2)/(-3,-3)/",
+        "/(2,2)/(-1,0)/(-3,-3)/"
+      ]
+    },
+    "6": {
+      "odd": [
+        "(0,2)/(0,-4)/(-1,0)/(2,-3)/(1,2)/(3,0)/(-1,1)",
+        "(1,0)/(4,0)/(1,0)/(3,-2)/(2,1)/(0,3)/",
+        "(-1,0)/(-4,0)/(-1,-2)/(-3,2)/(-2,-1)/(0,-3)/(-1,1)"
+      ],
+      "even": [
+        "/(0,-4)/(-1,0)/(2,-3)/(1,2)/(3,0)/(-1,1)",
+        "(-5,0)/(0,4)/(1,0)/(-2,3)/(-1,-2)/(-3,0)/",
+        "(2,0)/(0,4)/(1,2)/(-2,3)/(-1,-2)/(-3,0)/"
+      ]
+    },
+    "7": {
+      "odd": [
+        "(0,2)/(1,0)/(-2,0)/(-1,-2)/(0,1)/(0,3)/",
+        "(2,-4)/(0,1)/(-2,0)/(-2,-1)/(0,1)/(3,0)/"
+      ],
+      "even": [
+        "/(-1,0)/(2,0)/(0,-2)/(0,1)/(0,3)/",
+        "(2,-6)/(0,-1)/(2,0)/(-4,1)/(-1,0)/(-3,0)/"
+      ]
+    },
+    "8": {
+      "odd": [
+        "(-2,0)/(3,0)/(0,2)/(0,-2)/(0,1)/(0,3)/",
+        "(0,6)/(6,-3)/(2,0)/(-2,0)/(1,0)/(3,0)/(-1,1)",
+        "(-6,0)/(0,-3)/(-2,0)/(2,0)/(-1,0)/(-3,0)/"
+      ],
+      "even": [
+        "(-2,0)/(-3,0)/(0,-2)/(0,2)/(0,-1)/(0,-3)/(-1,1)",
+        "(0,6)/(6,3)/(-2,0)/(2,0)/(-1,0)/(-3,0)/",
+        "(0,2)/(-3,6)/(0,2)/(0,-2)/(0,1)/(0,3)/"
+      ]
+    },
+    "9": {
+      "odd": [
+        "(0,6)/(-4,0)/(1,2)/(-2,0)/(-4,1)/(3,0)/",
+        "(1,-4)/(1,-2)/(2,1)/(2,-2)/(1,0)/(-3,-3)/",
+        "(0,-6)/(0,-4)/(2,1)/(0,-2)/(1,-4)/(0,3)/(-1,1)"
+      ],
+      "even": [
+        "(0,6)/(-4,0)/(-1,0)/(2,0)/(1,-4)/(0,3)/(-1,1)",
+        "(1,-4)/(1,-2)/(0,-1)/(0,2)/(-1,-2)/(-3,-3)/",
+        "(0,-6)/(0,-4)/(0,-1)/(0,2)/(-4,1)/(3,0)/"
+      ]
+    },
+    "10": {
+      "odd": [
+        "/(-4,0)/(-1,-2)/(2,0)/(1,-4)/(0,3)/(-1,1)",
+        "(6,-2)/(-1,2)/(-2,-1)/(-2,2)/(-1,0)/(-3,-3)/",
+        "(-6,-6)/(0,-4)/(-2,-1)/(0,2)/(-4,1)/(3,0)/"
+      ],
+      "even": [
+        "/(-4,0)/(1,0)/(-2,0)/(-4,1)/(3,0)/",
+        "(6,-2)/(-1,2)/(0,1)/(0,-2)/(1,2)/(-3,-3)/",
+        "(-6,-6)/(0,-4)/(0,1)/(0,-2)/(1,-4)/(0,3)/(-1,1)"
+      ]
+    },
+    "11": {
+      "odd": [
+        "(0,3)/(-4,-1)/(2,0)/(-2,0)/(-1,-2)/(-3,-3)/",
+        "(1,-3)/(-1,-2)/(0,2)/(0,-2)/(1,2)/(-3,-3)/",
+        "(3,-5)/(-2,-1)/(2,0)/(-2,0)/(-1,-2)/(-3,-3)/"
+      ],
+      "even": [
+        "(0,3)/(-4,1)/(-2,0)/(2,0)/(1,2)/(-3,-3)/",
+        "(1,-3)/(1,-2)/(0,-2)/(0,2)/(-1,-2)/(-3,-3)/",
+        "(3,-5)/(-2,1)/(-2,0)/(2,0)/(1,2)/(-3,-3)/"
+      ]
+    },
+    "12": {
+      "odd": [
+        "/(2,3)/(2,0)/(-2,0)/(1,0)/(3,0)/(-1,1)",
+        "(0,-2)/(-2,0)/(0,2)/(2,-3)/(1,2)/(3,0)/(-1,1)",
+        "(0,-5)/(4,3)/(-2,0)/(2,0)/(-1,0)/(-3,0)/"
+      ],
+      "even": [
+        "/(2,-3)/(-2,0)/(2,0)/(-1,0)/(-3,0)/",
+        "(-5,2)/(2,0)/(0,-2)/(-2,3)/(-1,-2)/(-3,0)/",
+        "(0,-6)/(3,2)/(0,2)/(0,-2)/(0,1)/(0,3)/"
+      ]
+    },
+    "13": {
+      "odd": [
+        "(6,-4)/(2,0)/(3,-2)/(2,0)/(1,2)/(3,0)/(-1,1)",
+        "(2,0)/(0,2)/(0,1)/(0,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ],
+      "even": [
+        "(6,-4)/(2,0)/(1,0)/(-2,0)/(-1,-2)/(-3,0)/",
+        "(2,0)/(0,2)/(-2,3)/(0,2)/(2,1)/(0,3)/"
+      ]
+    },
+    "14": {
+      "odd": [
+        "(0,-2)/(-2,0)/(-3,2)/(-2,0)/(-1,-2)/(-3,0)/",
+        "(4,-6)/(0,-2)/(2,-3)/(0,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ],
+      "even": [
+        "(0,-2)/(-2,0)/(-1,0)/(2,0)/(1,2)/(3,0)/(-1,1)",
+        "(4,-6)/(0,-2)/(0,-1)/(0,2)/(2,1)/(0,3)/"
+      ]
+    },
+    "15": {
+      "odd": [
+        "(2,-3)/(0,2)/(-2,-1)/(-2,2)/(-1,0)/(-3,-3)/",
+        "(2,-3)/(0,2)/(0,1)/(-2,0)/(2,-2)/(1,2)/(-3,-3)/",
+        "(3,2)/(2,0)/(-1,-2)/(4,0)/(1,0)/(-3,-3)/",
+        "(3,2)/(2,0)/(1,0)/(0,-2)/(-2,2)/(-1,-2)/(-3,-3)/"
+      ],
+      "even": [
+        "(2,-3)/(0,2)/(0,1)/(0,-2)/(1,2)/(-3,-3)/",
+        "(3,2)/(2,0)/(1,0)/(-2,0)/(-1,-2)/(-3,-3)/"
+      ]
+    },
+    "16": {
+      "odd": [
+        "(-2,-3)/(0,-2)/(2,1)/(2,-2)/(1,0)/(-3,-3)/",
+        "(-2,-3)/(0,-2)/(0,-1)/(2,0)/(-2,2)/(-1,-2)/(-3,-3)/",
+        "(3,4)/(-2,0)/(-1,0)/(2,0)/(1,2)/(-3,-3)/"
+      ],
+      "even": [
+        "(-2,-3)/(0,-2)/(0,-1)/(0,2)/(-1,-2)/(-3,-3)/",
+        "(3,4)/(-2,0)/(1,2)/(-4,0)/(-1,0)/(-3,-3)/",
+        "(3,4)/(-2,0)/(-1,0)/(0,2)/(2,-2)/(1,2)/(-3,-3)/"
+      ]
+    },
+    "17": {
+      "odd": [
+        "(0,-4)/(-4,0)/(2,0)/(-2,0)/(1,0)/(3,0)/(-1,1)",
+        "(-4,0)/(0,-4)/(0,2)/(0,-2)/(0,1)/(0,3)/"
+      ],
+      "even": [
+        "(2,6)/(2,0)/(-2,0)/(2,0)/(-1,0)/(-3,0)/"
+      ]
+    },
+    "18": {
+      "odd": [
+        "(4,0)/(-2,0)/(2,0)/(-2,0)/(1,0)/(3,0)/(-1,1)",
+        "(0,4)/(0,-2)/(0,2)/(0,-2)/(0,1)/(0,3)/"
+      ],
+      "even": [
+        "(6,-2)/(4,0)/(-2,0)/(2,0)/(-1,0)/(-3,0)/"
+      ]
+    },
+    "19": {
+      "odd": [
+        "(4,0)/(4,0)/(-1,-2)/(2,0)/(1,2)/(3,0)/(-1,1)",
+        "(0,-2)/(0,4)/(-2,-1)/(0,2)/(2,1)/(0,3)/"
+      ],
+      "even": [
+        "(-2,0)/(0,-2)/(0,1)/(-1,4)/(0,1)/(0,3)/",
+        "(4,0)/(4,0)/(-3,0)/(-2,0)/(-1,-2)/(-3,0)/",
+        "(0,4)/(-2,0)/(1,0)/(-4,0)/(-1,0)/(-3,0)/"
+      ]
+    },
+    "20": {
+      "odd": [
+        "(2,1)/(-4,0)/(1,2)/(-2,0)/(-1,-2)/(-3,0)/",
+        "(1,-4)/(0,-4)/(2,1)/(0,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ],
+      "even": [
+        "(-4,1)/(0,2)/(0,-1)/(0,4)/(0,1)/(0,3)/",
+        "(2,1)/(-4,0)/(3,0)/(2,0)/(1,2)/(3,0)/(-1,1)",
+        "(1,2)/(2,0)/(-1,0)/(-2,0)/(0,1)/(3,0)/"
+      ]
+    },
+    "21": {
+      "odd": [
+        "/(-2,0)/(-2,0)/(2,0)/(-2,0)/(1,0)/(3,0)/(-1,1)",
+        "(1,0)/(0,2)/(0,2)/(0,-2)/(-1,-2)/(0,1)/(0,3)/"
+      ],
+      "even": [
+        "(0,1)/(2,0)/(2,0)/(-2,0)/(2,0)/(-1,0)/(-3,0)/",
+        "/(0,-2)/(0,-2)/(0,2)/(0,-2)/(0,1)/(0,3)/"
+      ]
+    },
+    "22": {
+      "odd": [
+        "(2,-4)/(-2,-3)/(-3,2)/(2,1)/(0,3)/",
+        "(2,-4)/(-3,-2)/(2,-3)/(1,2)/(3,0)/(-1,1)"
+      ],
+      "even": [
+        "/(-3,-4)/(-2,3)/(-1,-2)/(-3,0)/",
+        "/(3,2)/(-2,3)/(-1,-2)/(-3,0)/"
+      ]
+    },
+    "23": {
+      "odd": [
+        "(-4,0)/(0,4)/(-2,3)/(-1,-2)/(-3,0)/",
+        "(-6,2)/(4,0)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ],
+      "even": [
+        "/(0,-4)/(2,-3)/(1,2)/(3,0)/(-1,1)",
+        "(-6,-6)/(-4,0)/(-3,2)/(2,1)/(0,3)/"
+      ]
+    },
+    "24": {
+      "odd": [
+        "(-4,0)/(-1,4)/(4,0)/(1,0)/(-3,-3)/",
+        "(-6,2)/(4,-1)/(-2,2)/(-1,0)/(-3,-3)/"
+      ],
+      "even": [
+        "(6,6)/(0,3)/(0,4)/(2,1)/(0,3)/",
+        "/(3,0)/(4,0)/(1,2)/(3,0)/(-1,1)"
+      ]
+    },
+    "25": {
+      "odd": [
+        "(-2,0)/(1,-4)/(-4,0)/(-1,0)/(-3,-3)/",
+        "(-6,4)/(-4,1)/(2,-2)/(1,0)/(-3,-3)/"
+      ],
+      "even": [
+        "(0,6)/(0,-3)/(0,-4)/(-2,-1)/(0,-3)/(-1,1)",
+        "(0,-6)/(-3,0)/(-4,0)/(-1,-2)/(-3,0)/"
+      ]
+    },
+    "26": {
+      "odd": [
+        "(6,-4)/(2,-3)/(-3,2)/(2,1)/(0,3)/",
+        "(2,0)/(-3,2)/(2,-3)/(1,2)/(3,0)/(-1,1)"
+      ],
+      "even": [
+        "(-4,6)/(0,3)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)",
+        "(0,2)/(3,0)/(-2,3)/(-1,-2)/(-3,0)/"
+      ]
+    },
+    "27": {
+      "odd": [
+        "(6,6)/(-2,3)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)",
+        "(2,-2)/(-3,0)/(2,-3)/(1,2)/(3,0)/(-1,1)"
+      ],
+      "even": [
+        "(4,-4)/(0,-3)/(-3,2)/(2,1)/(0,3)/",
+        "/(3,-2)/(-2,3)/(-1,-2)/(-3,0)/"
+      ]
+    },
+    "28": {
+      "odd": [
+        "(-1,4)/(0,2)/(-3,0)/(-2,-1)/(0,-3)/(-1,1)",
+        "(-2,5)/(2,0)/(0,-3)/(-1,-2)/(-3,0)/"
+      ],
+      "even": [
+        "(-1,0)/(0,-2)/(3,0)/(2,1)/(0,3)/",
+        "(-6,5)/(-2,0)/(0,3)/(1,2)/(3,0)/(-1,1)"
+      ]
+    },
+    "29": {
+      "odd": [
+        "(4,0)/(-1,2)/(2,0)/(1,2)/(-3,-3)/",
+        "(-6,-2)/(2,-1)/(0,2)/(-1,-2)/(-3,-3)/"
+      ],
+      "even": [
+        "(6,0)/(1,-2)/(-2,0)/(-1,-2)/(-3,-3)/",
+        "(-6,0)/(-2,1)/(0,-2)/(1,2)/(-3,-3)/"
+      ]
+    },
+    "30": {
+      "odd": [
+        "(5,6)/(-2,3)/(0,4)/(2,1)/(0,3)/",
+        "(0,-3)/(-3,2)/(-4,0)/(-1,-2)/(-3,0)/"
+      ],
+      "even": [
+        "(3,6)/(2,-3)/(0,-4)/(-2,-1)/(0,-3)/(-1,1)",
+        "(0,-1)/(3,-2)/(4,0)/(1,2)/(3,0)/(-1,1)"
+      ]
+    },
+    "31": {
+      "odd": [
+        "(3,6)/(-2,2)/(0,4)/(2,1)/(0,3)/",
+        "(0,-2)/(0,-5)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)",
+        "(2,-3)/(2,0)/(-4,1)/(-1,0)/(-3,0)/"
+      ],
+      "even": [
+        "(3,-4)/(0,2)/(0,4)/(0,1)/(0,3)/",
+        "(3,2)/(0,2)/(0,-4)/(0,1)/(0,3)/",
+        "(0,-3)/(2,-2)/(4,0)/(1,2)/(3,0)/(-1,1)"
+      ]
+    },
+    "32": {
+      "odd": [
+        "(6,-2)/(2,-2)/(0,-4)/(-2,-1)/(0,-3)/(-1,1)",
+        "(-3,6)/(0,5)/(-3,2)/(2,1)/(0,3)/",
+        "(2,0)/(-2,0)/(-4,0)/(-1,0)/(-3,0)/",
+        "(-4,0)/(-2,0)/(4,0)/(-1,0)/(-3,0)/"
+      ],
+      "even": [
+        "(6,-4)/(0,-2)/(-1,4)/(0,1)/(0,3)/",
+        "(6,2)/(0,-2)/(-1,0)/(0,1)/(0,3)/"
+      ]
+    },
+    "33": {
+      "odd": [
+        "(3,0)/(3,2)/(0,-4)/(0,1)/(0,3)/",
+        "(-3,6)/(2,0)/(-2,0)/(2,0)/(0,3)/",
+        "(-6,-3)/(2,3)/(0,1)/(-1,0)/(-3,0)/",
+        "(0,3)/(0,2)/(0,-2)/(0,2)/(3,0)/(-1,1)"
+      ],
+      "even": [
+        "(6,0)/(1,-4)/(-2,0)/(-1,-2)/(-3,-3)/",
+        "(-6,0)/(-4,1)/(0,-2)/(1,2)/(-3,-3)/"
+      ]
+    },
+    "34": {
+      "odd": [
+        "(6,0)/(-3,-2)/(-1,0)/(0,1)/(0,3)/",
+        "(0,6)/(-2,0)/(2,0)/(-2,0)/(0,-3)/(-1,1)",
+        "(-6,0)/(-2,-3)/(4,0)/(-1,0)/(-3,0)/",
+        "(0,-6)/(0,-2)/(0,2)/(0,-2)/(-3,0)/"
+      ],
+      "even": [
+        "(3,0)/(-1,4)/(2,0)/(1,2)/(-3,-3)/",
+        "(-6,-3)/(4,-1)/(0,2)/(-1,-2)/(-3,-3)/"
+      ]
+    },
+    "35": {
+      "odd": [
+        "(2,6)/(3,2)/(2,-3)/(1,2)/(3,0)/(-1,1)",
+        "(4,0)/(-1,-2)/(2,-3)/(1,2)/(3,0)/(-1,1)"
+      ],
+      "even": [
+        "(6,-2)/(-2,-1)/(-3,2)/(2,1)/(0,3)/",
+        "(0,-4)/(2,3)/(-3,2)/(2,1)/(0,3)/"
+      ]
+    },
+    "36": {
+      "odd": [
+        "(4,0)/(-3,-2)/(-2,3)/(-1,-2)/(-3,0)/",
+        "(-6,-2)/(-2,-3)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ],
+      "even": [
+        "(0,-4)/(2,1)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)",
+        "(2,-6)/(1,2)/(-2,3)/(-1,-2)/(-3,0)/"
+      ]
+    },
+    "37": {
+      "odd": [
+        "(2,0)/(0,2)/(-2,0)/(-1,-2)/(-3,-3)/",
+        "(2,-2)/(-2,0)/(0,2)/(-1,-2)/(-3,-3)/"
+      ],
+      "even": [
+        "(4,-4)/(0,-2)/(2,0)/(1,2)/(-3,-3)/",
+        "(-6,-4)/(2,0)/(0,-2)/(1,2)/(-3,-3)/"
+      ]
+    },
+    "38": {
+      "odd": [
+        "(2,0)/(0,-2)/(-2,3)/(-1,-2)/(-3,0)/",
+        "(1,-4)/(2,0)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ],
+      "even": [
+        "(2,-5)/(0,2)/(-2,3)/(-1,-2)/(-3,0)/",
+        "(-6,-4)/(-2,0)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ]
+    },
+    "39": {
+      "odd": [
+        "(4,4)/(-3,2)/(-2,3)/(-1,-2)/(-3,0)/",
+        "(-2,-2)/(2,-3)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ],
+      "even": [
+        "(2,6)/(3,0)/(2,-3)/(1,2)/(3,0)/(-1,1)",
+        "(0,-4)/(0,3)/(-3,2)/(2,1)/(0,3)/"
+      ]
+    },
+    "40": {
+      "odd": [
+        "(2,2)/(3,-2)/(2,-3)/(1,2)/(3,0)/(-1,1)",
+        "(-6,-2)/(0,-3)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ],
+      "even": [
+        "(4,0)/(-3,0)/(-2,3)/(-1,-2)/(-3,0)/",
+        "(-4,-4)/(-2,3)/(-3,2)/(2,1)/(0,3)/"
+      ]
+    },
+    "41": {
+      "odd": [
+        "(4,0)/(0,-2)/(2,0)/(1,2)/(3,0)/(-1,1)",
+        "(1,-4)/(2,0)/(0,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ],
+      "even": [
+        "(2,1)/(0,2)/(-2,0)/(-1,-2)/(-3,0)/",
+        "(0,-2)/(-2,0)/(0,2)/(2,1)/(0,3)/"
+      ]
+    },
+    "42": {
+      "odd": [
+        "(2,-2)/(0,-2)/(1,0)/(-2,3)/(-1,-2)/(-3,0)/",
+        "(4,-4)/(-2,0)/(0,1)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ],
+      "even": [
+        "(2,-4)/(1,0)/(-2,3)/(-1,-2)/(-3,0)/",
+        "(2,-4)/(0,1)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ]
+    },
+    "43": {
+      "odd": [
+        "(4,-2)/(0,2)/(-1,0)/(2,-3)/(1,2)/(3,0)/(-1,1)",
+        "(4,-2)/(2,0)/(0,-1)/(-3,2)/(2,1)/(0,3)/"
+      ],
+      "even": [
+        "(4,0)/(-1,0)/(2,-3)/(1,2)/(3,0)/(-1,1)",
+        "(-6,-2)/(0,-1)/(-3,2)/(2,1)/(0,3)/"
+      ]
+    },
+    "44": {
+      "odd": [
+        "(-2,-2)/(0,-1)/(2,2)/(-1,-2)/(-3,-3)/",
+        "(4,4)/(-1,0)/(2,2)/(1,2)/(-3,-3)/"
+      ],
+      "even": [
+        "(-2,-2)/(0,1)/(2,2)/(-1,0)/(-3,-3)/",
+        "(4,4)/(1,0)/(2,2)/(0,-1)/(3,3)/"
+      ]
+    },
+    "45": {
+      "odd": [
+        "(-4,-4)/(0,1)/(-2,-2)/(1,2)/(-3,-3)/",
+        "(2,2)/(1,0)/(-2,-2)/(-1,-2)/(-3,-3)/"
+      ],
+      "even": [
+        "(-4,-4)/(0,-1)/(2,2)/(-1,0)/(-3,-3)/",
+        "(2,2)/(-1,0)/(-2,-2)/(0,1)/(3,3)/"
+      ]
+    },
+    "46": {
+      "odd": [
+        "(4,0)/(-1,-4)/(2,0)/(1,2)/(-3,-3)/",
+        "(4,-5)/(1,2)/(-4,0)/(-1,0)/(-3,-3)/",
+        "(1,-2)/(0,-1)/(0,2)/(-1,-2)/(-3,-3)/"
+      ],
+      "even": [
+        "(4,-5)/(-1,0)/(2,0)/(1,2)/(-3,-3)/",
+        "(-6,-2)/(-4,-1)/(0,2)/(-1,-2)/(-3,-3)/",
+        "(1,-2)/(2,1)/(2,-2)/(1,0)/(-3,-3)/"
+      ]
+    },
+    "47": {
+      "odd": [
+        "(2,-5)/(1,4)/(-2,0)/(-1,-2)/(-3,-3)/",
+        "(2,0)/(-1,-2)/(4,0)/(1,0)/(-3,-3)/",
+        "(-6,-4)/(0,1)/(0,-2)/(1,2)/(-3,-3)/"
+      ],
+      "even": [
+        "(2,0)/(1,0)/(-2,0)/(-1,-2)/(-3,-3)/",
+        "(1,-4)/(4,1)/(0,-2)/(1,2)/(-3,-3)/",
+        "(-6,-4)/(-2,-1)/(-2,2)/(-1,0)/(-3,-3)/"
+      ]
+    },
+    "48": {
+      "odd": [
+        "(4,-4)/(2,0)/(-2,0)/(-4,1)/(3,0)/",
+        "(4,0)/(0,2)/(-4,0)/(-1,4)/(-3,0)/",
+        "(2,-2)/(-2,0)/(0,2)/(-4,1)/(3,0)/"
+      ],
+      "even": [
+        "(4,-4)/(0,-2)/(2,0)/(1,-4)/(0,3)/(-1,1)",
+        "(2,-2)/(0,2)/(0,-2)/(1,-4)/(0,3)/(-1,1)"
+      ]
+    },
+    "49": {
+      "odd": [
+        "(2,-2)/(-2,0)/(2,0)/(1,-4)/(0,3)/(-1,1)",
+        "(4,-4)/(2,0)/(0,-2)/(1,-4)/(0,3)/(-1,1)"
+      ],
+      "even": [
+        "(2,-2)/(0,2)/(-2,0)/(-4,1)/(3,0)/",
+        "(4,-4)/(0,-2)/(0,2)/(-4,1)/(3,0)/"
+      ]
+    },
+    "50": {
+      "odd": [
+        "(4,-3)/(-1,-2)/(2,0)/(1,2)/(-3,-3)/",
+        "(4,0)/(-1,-2)/(2,0)/(1,2)/(3,0)/(-1,1)",
+        "(3,-2)/(-2,-1)/(0,2)/(-1,-2)/(-3,-3)/"
+      ],
+      "even": [
+        "(4,6)/(1,0)/(-4,0)/(-1,0)/(-3,0)/",
+        "(4,0)/(-3,0)/(-2,0)/(-1,-2)/(-3,0)/",
+        "(0,-2)/(0,1)/(0,2)/(-1,0)/(0,-3)/"
+      ]
+    },
+    "51": {
+      "odd": [
+        "(2,-3)/(1,2)/(-2,0)/(-1,-2)/(-3,-3)/",
+        "(2,6)/(1,2)/(-2,0)/(-1,-2)/(-3,0)/",
+        "(-6,-4)/(0,-1)/(1,2)/(-1,0)/(0,-3)/"
+      ],
+      "even": [
+        "(2,0)/(-1,0)/(4,0)/(1,0)/(3,0)/(-1,1)",
+        "(2,6)/(3,0)/(2,0)/(1,2)/(3,0)/(-1,1)",
+        "(3,-4)/(2,1)/(0,-2)/(1,2)/(-3,-3)/"
+      ]
+    },
+    "52": {
+      "odd": [
+        "(0,2)/(2,0)/(3,-2)/(2,-3)/(1,2)/(3,0)/(-1,1)",
+        "(4,-2)/(2,-1)/(-3,2)/(2,1)/(0,3)/"
+      ],
+      "even": [
+        "(4,-2)/(-1,2)/(2,-3)/(1,2)/(3,0)/(-1,1)",
+        "(2,-6)/(0,2)/(-2,3)/(-3,2)/(2,1)/(0,3)/"
+      ]
+    },
+    "53": {
+      "odd": [
+        "(6,-2)/(-2,0)/(-3,2)/(-2,3)/(-1,-2)/(-3,0)/",
+        "(4,0)/(0,-2)/(2,-3)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ],
+      "even": [
+        "(2,2)/(1,-2)/(-2,3)/(-1,-2)/(-3,0)/",
+        "(2,-4)/(-2,1)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ]
+    },
+    "54": {
+      "odd": [
+        "(4,1)/(-3,2)/(-2,0)/(-1,-2)/(-3,0)/",
+        "(1,-2)/(0,-1)/(0,2)/(2,1)/(0,3)/"
+      ],
+      "even": [
+        "(4,1)/(-1,0)/(2,0)/(1,2)/(3,0)/(-1,1)",
+        "(1,-2)/(2,-3)/(0,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ]
+    },
+    "55": {
+      "odd": [
+        "(2,0)/(3,-2)/(2,0)/(1,2)/(3,0)/(-1,1)",
+        "(0,-4)/(0,1)/(0,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ],
+      "even": [
+        "(2,0)/(1,0)/(-2,0)/(-1,-2)/(-3,0)/",
+        "(0,-4)/(-2,3)/(0,2)/(2,1)/(0,3)/"
+      ]
+    },
+    "56": {
+      "odd": [
+        "(4,-3)/(-1,-2)/(2,0)/(1,-4)/(0,3)/(-1,1)",
+        "(3,-2)/(0,1)/(0,-2)/(1,-4)/(0,3)/(-1,1)"
+      ],
+      "even": [
+        "(4,-3)/(1,0)/(-2,0)/(-4,1)/(3,0)/",
+        "(3,-2)/(-2,-1)/(0,2)/(-4,1)/(3,0)/"
+      ]
+    },
+    "57": {
+      "odd": [
+        "(4,-3)/(1,2)/(-2,0)/(-4,1)/(3,0)/",
+        "(3,-2)/(0,-1)/(0,2)/(-4,1)/(3,0)/"
+      ],
+      "even": [
+        "(4,-3)/(-1,0)/(2,0)/(1,-4)/(0,3)/(-1,1)",
+        "(3,-2)/(2,1)/(0,-2)/(1,-4)/(0,3)/(-1,1)"
+      ]
+    },
+    "58": {
+      "odd": [
+        "(-2,0)/(2,0)/(-2,0)/(1,0)/(3,0)/(-1,1)",
+        "(0,4)/(0,-2)/(-1,-2)/(0,1)/(0,3)/"
+      ],
+      "even": [
+        "(-2,6)/(-2,0)/(2,0)/(-1,0)/(-3,0)/",
+        "(-6,4)/(0,2)/(0,-2)/(0,1)/(0,3)/"
+      ]
+    },
+    "59": {
+      "odd": [
+        "(4,2)/(2,0)/(-2,0)/(-1,-2)/(-3,-3)/",
+        "(2,-2)/(0,2)/(0,-2)/(1,2)/(-3,-3)/"
+      ],
+      "even": [
+        "(4,-2)/(-2,0)/(2,0)/(1,2)/(-3,-3)/",
+        "(4,-2)/(0,-2)/(0,2)/(-1,-2)/(-3,-3)/"
+      ]
+    },
+    "60": {
+      "odd": [
+        "(0,-2)/(-4,0)/(-1,-2)/(-3,-3)/",
+        "(0,2)/(0,4)/(-1,-2)/(-3,-3)/"
+      ],
+      "even": [
+        "(2,0)/(0,4)/(1,2)/(-3,-3)/",
+        "(4,-6)/(0,-4)/(1,2)/(-3,-3)/"
+      ]
+    },
+    "61": {
+      "odd": [
+        "(3,6)/(0,-4)/(3,2)/(2,1)/(0,3)/",
+        "(0,-3)/(-4,0)/(2,3)/(1,2)/(3,0)/(-1,1)"
+      ],
+      "even": [
+        "(-3,-4)/(-2,3)/(-1,-2)/(-3,0)/",
+        "(2,3)/(3,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ]
+    },
+    "62": {
+      "odd": [
+        "(3,-2)/(0,4)/(-3,-2)/(-2,-1)/(0,-3)/(-1,1)",
+        "(4,-3)/(4,0)/(-2,-3)/(-1,-2)/(-3,0)/"
+      ],
+      "even": [
+        "(3,2)/(-3,2)/(-2,-1)/(0,-3)/(-1,1)",
+        "(2,3)/(-3,2)/(2,1)/(0,3)/"
+      ]
+    },
+    "63": {
+      "odd": [
+        "(0,2)/(-2,-4)/(-2,0)/(-1,-2)/(-3,0)/",
+        "(2,0)/(4,2)/(-2,0)/(-1,-2)/(-3,0)/"
+      ],
+      "even": [
+        "(0,-4)/(-4,0)/(-1,-2)/(-3,0)/",
+        "(2,-6)/(0,-4)/(-2,-1)/(0,-3)/(-1,1)"
+      ]
+    },
+    "64": {
+      "odd": [
+        "(6,0)/(2,4)/(2,0)/(1,2)/(3,0)/(-1,1)",
+        "(0,-6)/(-4,-2)/(2,0)/(1,2)/(3,0)/(-1,1)"
+      ],
+      "even": [
+        "(6,6)/(4,0)/(1,2)/(3,0)/(-1,1)",
+        "/(0,4)/(2,1)/(0,3)/"
+      ]
+    },
+    "65": {
+      "odd": [
+        "(-2,-4)/(4,0)/(1,0)/(-3,-3)/",
+        "(4,-6)/(0,-2)/(1,2)/(-3,-3)/"
+      ],
+      "even": [
+        "(0,-2)/(-2,0)/(-1,-2)/(-3,-3)/",
+        "(2,4)/(-2,2)/(-1,0)/(-3,-3)/"
+      ]
+    },
+    "66": {
+      "odd": [
+        "(2,-4)/(-4,0)/(-1,0)/(-3,-3)/",
+        "(2,-4)/(2,-2)/(1,0)/(-3,-3)/"
+      ],
+      "even": [
+        "(0,6)/(2,0)/(1,2)/(-3,-3)/",
+        "(0,-6)/(0,2)/(-1,-2)/(-3,-3)/"
+      ]
+    },
+    "67": {
+      "odd": [
+        "(6,6)/(-4,0)/(-2,3)/(1,2)/(3,0)/(-1,1)",
+        "/(0,-4)/(3,-2)/(2,1)/(0,3)/"
+      ],
+      "even": [
+        "(2,6)/(2,3)/(1,2)/(3,0)/(-1,1)",
+        "(0,-4)/(3,2)/(2,1)/(0,3)/"
+      ]
+    },
+    "68": {
+      "odd": [
+        "(6,6)/(4,0)/(2,-3)/(-1,-2)/(-3,0)/",
+        "(0,4)/(-3,-2)/(-2,-1)/(0,-3)/(-1,1)"
+      ],
+      "even": [
+        "(-2,6)/(-2,-3)/(-1,-2)/(-3,0)/",
+        "/(0,4)/(-3,2)/(-2,-1)/(0,-3)/(-1,1)"
+      ]
+    },
+    "69": {
+      "odd": [
+        "(6,-4)/(-2,0)/(-4,1)/(3,0)/",
+        "(2,0)/(0,-2)/(1,-4)/(0,3)/(-1,1)"
+      ],
+      "even": [
+        "(4,6)/(2,0)/(1,-4)/(0,3)/(-1,1)",
+        "(0,-2)/(0,2)/(-4,1)/(3,0)/"
+      ]
+    },
+    "70": {
+      "odd": [
+        "(0,-2)/(-4,0)/(-1,4)/(-3,0)/",
+        "(4,-6)/(0,-4)/(1,-4)/(3,0)/(-1,1)"
+      ],
+      "even": [
+        "(-4,6)/(4,0)/(1,-4)/(3,0)/(-1,1)",
+        "(0,2)/(0,4)/(-1,4)/(-3,0)/"
+      ]
+    },
+    "71": {
+      "odd": [
+        "(-3,-4)/(-2,0)/(-1,-2)/(-3,0)/",
+        "(2,3)/(0,-2)/(1,2)/(0,3)/(-1,1)"
+      ],
+      "even": [
+        "(-1,6)/(2,0)/(1,2)/(3,0)/(-1,1)",
+        "(0,5)/(0,2)/(2,1)/(0,3)/"
+      ]
+    },
+    "72": {
+      "odd": [
+        "(-2,2)/(0,-4)/(-4,1)/(-1,0)/(-3,0)/",
+        "(0,4)/(-1,4)/(0,1)/(0,3)/"
+      ],
+      "even": [
+        "(-2,6)/(-4,0)/(-1,0)/(-3,0)/",
+        "(-4,4)/(-4,0)/(0,4)/(0,1)/(0,3)/"
+      ]
+    },
+    "73": {
+      "odd": [
+        "(-1,0)/(0,4)/(-4,0)/(-1,0)/(-3,0)/",
+        "(2,5)/(1,2)/(-1,0)/(0,-3)/"
+      ],
+      "even": [
+        "(-1,-4)/(-4,1)/(-1,0)/(-3,0)/",
+        "(-6,5)/(4,0)/(0,2)/(-1,0)/(0,-3)/"
+      ]
+    },
+    "74": {
+      "odd": [
+        "(0,-2)/(-4,-2)/(-1,0)/(-3,-3)/",
+        "(2,4)/(-2,-4)/(-1,0)/(-3,-3)/",
+        "(-6,0)/(2,0)/(-1,0)/(-3,-3)/"
+      ],
+      "even": [
+        "(-2,0)/(0,2)/(0,-1)/(3,3)/",
+        "(-2,0)/(-2,0)/(1,0)/(-3,-3)/"
+      ]
+    },
+    "75": {
+      "odd": [
+        "(-4,4)/(0,4)/(-2,0)/(-1,-2)/(-3,-3)/",
+        "(4,2)/(4,0)/(0,-2)/(1,2)/(-3,-3)/"
+      ],
+      "even": [
+        "/(4,0)/(-1,0)/(-3,-3)/",
+        "(-6,0)/(0,4)/(-1,0)/(-3,-3)/",
+        "(0,-6)/(0,4)/(0,-1)/(3,3)/",
+        "/(4,0)/(0,-1)/(3,3)/"
+      ]
+    },
+    "76": {
+      "odd": [
+        "(4,4)/(0,4)/(-4,0)/(-1,4)/(-3,0)/",
+        "(-6,-6)/(0,-4)/(0,1)/(0,3)/"
+      ],
+      "even": [
+        "/(0,1)/(-1,0)/(-3,0)/",
+        "(6,6)/(0,2)/(0,1)/(0,3)/",
+        "(-2,-2)/(4,0)/(0,-4)/(1,-4)/(3,0)/(-1,1)"
+      ]
+    },
+    "77": {
+      "odd": [
+        "(2,2)/(0,-4)/(4,0)/(1,-4)/(3,0)/(-1,1)",
+        "(-6,-6)/(-2,0)/(-1,0)/(-3,0)/"
+      ],
+      "even": [
+        "(6,6)/(4,0)/(-1,0)/(-3,0)/",
+        "(-4,-4)/(-4,0)/(0,4)/(-1,4)/(-3,0)/"
+      ]
+    },
+    "78": {
+      "odd": [
+        "(-4,1)/(-2,3)/(-2,2)/(-2,0)/(-1,-2)/(-3,0)/",
+        "(-6,0)/(0,-3)/(1,2)/(3,0)/(-1,1)"
+      ],
+      "even": [
+        "(0,6)/(0,-3)/(-1,-2)/(-3,0)/",
+        "(-4,1)/(0,3)/(1,2)/(3,0)/(-1,1)",
+        "(-6,0)/(-2,-3)/(-2,2)/(-2,0)/(-1,-2)/(-3,0)/"
+      ]
+    },
+    "79": {
+      "odd": [
+        "(2,-2)/(-2,2)/(-1,-2)/(-3,-3)/"
+      ],
+      "even": [
+        "/(-1,-2)/(-3,-3)/",
+        "(6,6)/(1,2)/(-3,-3)/"
+      ]
+    },
+    "80": {
+      "odd": [
+        "(4,6)/(-2,2)/(-2,0)/(-1,-2)/(-3,0)/",
+        "(2,0)/(2,-2)/(2,0)/(1,2)/(3,0)/(-1,1)",
+        "/(2,1)/(0,3)/",
+        "(-6,-6)/(-2,-1)/(0,-3)/(-1,1)"
+      ],
+      "even": [
+        "/(-1,-2)/(-3,0)/",
+        "(6,6)/(1,2)/(3,0)/(-1,1)"
+      ]
+    },
+    "81": {
+      "odd": [
+        "(2,-2)/(-2,2)/(-4,1)/(3,0)/",
+        "(-2,2)/(-2,2)/(1,-4)/(3,0)/(-1,1)"
+      ],
+      "even": [
+        "/(-4,1)/(3,0)/",
+        "/(-1,4)/(-3,0)/"
+      ]
+    },
+    "82": {
+      "odd": [
+        "(4,-2)/(-4,2)/(-1,0)/(-3,-3)/"
+      ],
+      "even": [
+        "/(-1,0)/(-3,-3)/"
+      ]
+    },
+    "83": {
+      "odd": [
+        "(2,0)/(4,0)/(2,-2)/(-2,2)/(-4,1)/(3,0)/",
+        "(4,0)/(0,4)/(0,4)/(-4,0)/(-1,0)/(-3,0)/",
+        "(0,2)/(0,1)/(0,3)/"
+      ],
+      "even": [
+        "(0,1)/(-1,0)/(-3,0)/",
+        "(1,0)/(0,-4)/(2,-2)/(-2,2)/(-4,1)/(3,0)/"
+      ]
+    },
+    "84": {
+      "odd": [
+        "(6,0)/(1,0)/(2,-2)/(-2,2)/(-1,-2)/(-3,-3)/",
+        "(1,-5)/(1,-2)/(2,-2)/(-2,2)/(-1,-2)/(-3,-3)/"
+      ],
+      "even": [
+        "(1,-5)/(0,2)/(-3,-3)/",
+        "(6,0)/(0,-2)/(-3,-3)/"
+      ]
+    },
+    "85": {
+      "odd": [
+        "(1,1)/(-1,0)/(-2,0)/(-2,2)/(-2,0)/(-1,-2)/(-3,0)/",
+        "(6,0)/(-5,0)/(2,-2)/(-2,2)/(-4,1)/(3,0)/",
+        "/(0,1)/(0,2)/(-2,2)/(0,2)/(2,1)/(0,3)/"
+      ],
+      "even": [
+        "(-5,1)/(2,0)/(3,0)/",
+        "(0,-6)/(0,-2)/(0,-3)/"
+      ]
+    },
+    "86": {
+      "odd": [
+        "/(-2,-4)/(2,-2)/(-2,2)/(-4,1)/(3,0)/",
+        "/(4,2)/(2,-2)/(-2,2)/(-4,1)/(3,0)/"
+      ],
+      "even": [
+        "/(0,3)/(0,3)/",
+        "/(-3,0)/(-3,0)/"
+      ]
+    },
+    "87": {
+      "odd": [
+        "(-2,-4)/(2,-2)/(-2,2)/(-4,1)/(3,0)/",
+        "(-4,-2)/(2,-2)/(2,-2)/(-1,4)/(-3,0)/"
+      ],
+      "even": [
+        "(0,3)/(0,3)/",
+        "(-3,-6)/(3,0)/(-1,1)"
+      ]
+    },
+    "88": {
+      "odd": [
+        "(-2,2)/(2,-2)/(-2,2)/(-1,-2)/(-3,-3)/"
+      ],
+      "even": [
+        "(-3,0)/(-3,-3)/"
+      ]
+    },
+    "89": {
+      "odd": [
+        "(0,6)/(6,6)/(3,3)/(1,0)/(4,-2)/(-4,2)/(-1,0)/(-3,-3)/",
+        "(3,-3)/(1,0)/(4,-2)/(-4,2)/(-1,0)/(-3,-3)/"
+      ],
+      "even": [
+        "(0,6)/"
+      ]
+    },
+    "90": {
+      "odd": [
+        "/(3,3)/(1,0)/(4,-2)/(-4,2)/(-1,0)/(-3,-3)/"
+      ],
+      "even": []
+    }
+  },
+  "learningOrder": [
+    [
+      66,
+      65
+    ],
+    70,
+    69,
+    28,
+    [
+      61,
+      62
+    ],
+    [
+      39,
+      40
+    ],
+    [
+      56,
+      57
+    ],
+    [
+      31,
+      32
+    ],
+    60,
+    37,
+    87,
+    [
+      27,
+      26
+    ],
+    71,
+    [
+      10,
+      9
+    ],
+    [
+      14,
+      13
+    ],
+    [
+      16,
+      15
+    ],
+    22,
+    38,
+    [
+      36,
+      35
+    ],
+    [
+      42,
+      43
+    ],
+    [
+      77,
+      76,
+      49,
+      48
+    ],
+    58,
+    59,
+    [
+      63,
+      64
+    ],
+    [
+      72,
+      73
+    ],
+    75,
+    80,
+    78,
+    [
+      18,
+      17
+    ],
+    11,
+    12,
+    [
+      47,
+      46
+    ],
+    [
+      51,
+      50
+    ],
+    [
+      53,
+      52
+    ],
+    30,
+    [
+      68,
+      67
+    ],
+    [
+      81,
+      79,
+      82
+    ],
+    [
+      88,
+      84,
+      90,
+      89
+    ],
+    86,
+    [
+      19,
+      20,
+      55,
+      54
+    ],
+    [
+      24,
+      25
+    ],
+    29,
+    23,
+    [
+      33,
+      34
+    ],
+    [
+      83,
+      85
+    ],
+    41,
+    [
+      1,
+      21
+    ],
+    [
+      74,
+      7,
+      8
+    ],
+    [
+      3,
+      4,
+      2,
+      6,
+      5
+    ],
+    [
+      45,
+      44
+    ]
+  ],
+  "sortMode": "priority",
+  "colorScheme": {
+    "topColor": "#474747",
+    "bottomColor": "#FFFFFF",
+    "frontColor": "#CC0000",
+    "rightColor": "#00AA00",
+    "backColor": "#FF8C00",
+    "leftColor": "#0066CC",
+    "dividerColor": "#7a0000",
+    "circleColor": "transparent"
+  },
+  "cornerStickerMode": "clockwise",
+  "evilCases": [
+    4,
+    7,
+    8,
+    12,
+    13,
+    16,
+    18,
+    21,
+    27,
+    30,
+    31,
+    32,
+    35,
+    37,
+    38,
+    40,
+    41,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    51,
+    52,
+    54,
+    55,
+    56,
+    57,
+    58,
+    60,
+    65,
+    68,
+    72,
+    73,
+    74,
+    76,
+    77,
+    78,
+    79,
+    80,
+    83,
+    88,
+    89
+  ],
+  "evilnessEnabled": true,
+  "evilnessAffectsParity": true,
+  "tracingPositions": {
+    "111111": "Star",
+    "10010101": "Right Fist",
+    "10010110": "Kite",
+    "100000101": "Left 5-1",
+    "100000110": "Right 5-1",
+    "1000001000": "5-3",
+    "01010101": "Square",
+    "00110011": "Barrel",
+    "00110101": "Left Fist",
+    "00100111": "Shield",
+    "00010111": "Left Pawn",
+    "01000111": "Right Pawn",
+    "00001111": "Scallop",
+    "0011111": "Pair",
+    "0101111": "L-Shape",
+    "000000111": "6-0",
+    "000010011": "Left 4-2",
+    "000010101": "4-1-1",
+    "000100011": "3-3",
+    "001001001": "2-2-2",
+    "0000000011": "8-0",
+    "0000001001": "6-2",
+    "0000100001": "4-4",
+    "0000000101": "7-1",
+    "000101001": "3-1-2",
+    "000100101": "3-2-1",
+    "000011001": "Right 4-2",
+    "0110111": "Line",
+    "00110110": "Muffin"
+  },
+  "preferences": {
+    "currentPreset": "Matt's_Preset",
+    "enhancedAccess": false,
+    "algorithmFontSize": 14,
+    "profileName": "Profile",
+    "profileAvatar": "res/avatar.svg",
+    "theme": "dark",
+    "ptImageSize": 280,
+    "ptArrow": {
+      "color": "rgba(253, 34, 34, 0.7)",
+      "opacity": 0.7,
+      "strokeWidth": 2.5,
+      "radius": 0.4,
+      "enabled": true
+    },
+    "hideInstructions": false,
+    "hideParentheses": false,
+    "animSpeed": 0.8,
+    "animDelay": 300,
+    "z2Tracing": true
+  },
+  "homepageShapeSVGCache": {
+    "hash": "odkx9p",
+    "shapes": {
+      "top:Right_4_2": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"125.45\" height=\"125.45\" class=\"squan\" data-origin-x=\"55\" data-origin-y=\"55\" data-puzzle-size=\"110\" style=\"overflow:visible\" viewBox=\"-7.73 -7.73 125.45 125.45\"><path stroke=\"var(--text-primary)\" stroke-width=\".29\" d=\"M66.27 12.92 43.73 97.08\"/><g class=\"sq1-pieces\"><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"M47.03 25.25h15.94\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-7.97-29.75h15.94z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"m33.22 33.22 13.8-7.97\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"M55 55 33.22 33.22l13.8-7.97z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"m25.25 47.03 7.97-13.8\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-29.75-7.97 7.97-13.8z\"/></g><g class=\"sq1-piece\"><path fill=\"#00ffffc0\" d=\"M25.25 62.97V47.03zM55 55l-29.75 7.97V47.03z\" class=\"sticker\"/><path stroke=\"var(--text-primary)\" stroke-linecap=\"round\" stroke-width=\"1.1\" d=\"M25.25 62.97V47.03\"/><path fill=\"none\" stroke=\"var(--text-primary)\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-29.75 7.97V47.03z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"M25.25 62.97v21.78h21.78\"/><path stroke-width=\"1.1\" d=\"M25.25 84.75h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-29.75 7.97v21.78h21.78z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"M62.97 84.75H47.03\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 7.97 29.75H47.03z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"m76.78 76.78-13.8 7.97\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 21.78 21.78-13.8 7.97z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"m76.78 76.78 18.86-10.9-10.9-18.85\"/><path stroke-width=\"1.1\" d=\"M95.64 65.89h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 21.78 21.78 18.86-10.9-10.9-18.85z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"M84.75 47.03V25.25H62.97\"/><path stroke-width=\"1.1\" d=\"M84.75 25.25h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 29.75-7.97V25.25H62.97z\"/></g></g></svg>",
+      "bottom:Paired_edges": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"125.45\" height=\"125.45\" class=\"squan\" data-origin-x=\"55\" data-origin-y=\"55\" data-puzzle-size=\"110\" style=\"overflow:visible\" viewBox=\"-7.73 -7.73 125.45 125.45\"><path stroke=\"var(--text-primary)\" stroke-width=\".29\" d=\"m43.73 12.92 22.54 84.16\"/><g class=\"sq1-pieces\"><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"M62.97 84.75h21.78V62.97\"/><path stroke-width=\"1.1\" d=\"M84.75 84.75h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 7.97 29.75h21.78V62.97z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"m84.75 62.97 10.89-18.86-18.86-10.89\"/><path stroke-width=\"1.1\" d=\"M95.64 44.11h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 29.75 7.97 10.89-18.86-18.86-10.89z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"m62.97 25.25 13.8 7.97\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 7.97-29.75 13.8 7.97z\"/></g><g class=\"sq1-piece\"><path fill=\"#00ffffc0\" d=\"M47.03 25.25h15.94zM55 55l-7.97-29.75h15.94z\" class=\"sticker\"/><path stroke=\"var(--text-primary)\" stroke-linecap=\"round\" stroke-width=\"1.1\" d=\"M47.03 25.25h15.94\"/><path fill=\"none\" stroke=\"var(--text-primary)\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-7.97-29.75h15.94z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"M47.03 25.25H25.25v21.78\"/><path stroke-width=\"1.1\" d=\"M25.25 25.25h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-7.97-29.75H25.25v21.78z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"M25.25 47.03 14.36 65.89l18.86 10.89\"/><path stroke-width=\"1.1\" d=\"M14.36 65.89h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-29.75-7.97-10.89 18.86 18.86 10.89z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"m33.22 76.78 10.9 18.86 18.85-10.9\"/><path stroke-width=\"1.1\" d=\"M44.11 95.64h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"M55 55 33.22 76.78l10.9 18.86 18.85-10.9z\"/></g></g></svg>",
+      "top:Left_4_2": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"125.45\" height=\"125.45\" class=\"squan\" data-origin-x=\"55\" data-origin-y=\"55\" data-puzzle-size=\"110\" style=\"overflow:visible\" viewBox=\"-7.73 -7.73 125.45 125.45\"><path stroke=\"var(--text-primary)\" stroke-width=\".29\" d=\"M66.27 12.92 43.73 97.08\"/><g class=\"sq1-pieces\"><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"M62.97 25.25 44.11 14.36 33.22 33.22\"/><path stroke-width=\"1.1\" d=\"M44.11 14.36h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 7.97-29.75-18.86-10.89-10.89 18.86z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"m25.25 47.03 7.97-13.8\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-29.75-7.97 7.97-13.8z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"M25.25 62.97V47.03\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-29.75 7.97V47.03z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"m33.22 76.78-7.97-13.8\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"M55 55 33.22 76.78l-7.97-13.8z\"/></g><g class=\"sq1-piece\"><path fill=\"#00ffffc0\" d=\"m47.03 84.75-13.8-7.97zM55 55l-7.97 29.75-13.8-7.97z\" class=\"sticker\"/><path stroke=\"var(--text-primary)\" stroke-linecap=\"round\" stroke-width=\"1.1\" d=\"m47.03 84.75-13.8-7.97\"/><path fill=\"none\" stroke=\"var(--text-primary)\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-7.97 29.75-13.8-7.97z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"m47.03 84.75 18.86 10.89 10.89-18.86\"/><path stroke-width=\"1.1\" d=\"M65.89 95.64h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-7.97 29.75 18.86 10.89 10.89-18.86z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"m76.78 76.78 18.86-10.9-10.9-18.85\"/><path stroke-width=\"1.1\" d=\"M95.64 65.89h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 21.78 21.78 18.86-10.9-10.9-18.85z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"m76.78 33.22 7.97 13.8\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 21.78-21.78 7.97 13.8z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"m62.97 25.25 13.8 7.97\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 7.97-29.75 13.8 7.97z\"/></g></g></svg>",
+      "top:svg_4_1_1": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"125.45\" height=\"125.45\" class=\"squan\" data-origin-x=\"55\" data-origin-y=\"55\" data-puzzle-size=\"110\" style=\"overflow:visible\" viewBox=\"-7.73 -7.73 125.45 125.45\"><path stroke=\"var(--text-primary)\" stroke-width=\".29\" d=\"M66.27 12.92 43.73 97.08\"/><g class=\"sq1-pieces\"><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"M47.03 25.25h15.94\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-7.97-29.75h15.94z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"m33.22 33.22 13.8-7.97\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"M55 55 33.22 33.22l13.8-7.97z\"/></g><g class=\"sq1-piece\"><path fill=\"#00ffffc0\" d=\"m25.25 47.03 7.97-13.8zM55 55l-29.75-7.97 7.97-13.8z\" class=\"sticker\"/><path stroke=\"var(--text-primary)\" stroke-linecap=\"round\" stroke-width=\"1.1\" d=\"m25.25 47.03 7.97-13.8\"/><path fill=\"none\" stroke=\"var(--text-primary)\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-29.75-7.97 7.97-13.8z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"M25.25 47.03 14.36 65.89l18.86 10.89\"/><path stroke-width=\"1.1\" d=\"M14.36 65.89h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-29.75-7.97-10.89 18.86 18.86 10.89z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"m47.03 84.75-13.8-7.97\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-7.97 29.75-13.8-7.97z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"m47.03 84.75 18.86 10.89 10.89-18.86\"/><path stroke-width=\"1.1\" d=\"M65.89 95.64h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-7.97 29.75 18.86 10.89 10.89-18.86z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"m84.75 62.97-7.97 13.8\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 29.75 7.97-7.97 13.8z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"m84.75 62.97 10.89-18.86-18.86-10.89\"/><path stroke-width=\"1.1\" d=\"M95.64 44.11h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 29.75 7.97 10.89-18.86-18.86-10.89z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"m62.97 25.25 13.8 7.97\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 7.97-29.75 13.8 7.97z\"/></g></g></svg>",
+      "top:svg_3_3": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"125.45\" height=\"125.45\" class=\"squan\" data-origin-x=\"55\" data-origin-y=\"55\" data-puzzle-size=\"110\" style=\"overflow:visible\" viewBox=\"-7.73 -7.73 125.45 125.45\"><path stroke=\"var(--text-primary)\" stroke-width=\".29\" d=\"M66.27 12.92 43.73 97.08\"/><g class=\"sq1-pieces\"><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"M62.97 25.25 44.11 14.36 33.22 33.22\"/><path stroke-width=\"1.1\" d=\"M44.11 14.36h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 7.97-29.75-18.86-10.89-10.89 18.86z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"m33.22 33.22-18.86 10.9 10.9 18.85\"/><path stroke-width=\"1.1\" d=\"M14.36 44.11h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"M55 55 33.22 33.22l-18.86 10.9 10.9 18.85z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"m33.22 76.78-7.97-13.8\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"M55 55 33.22 76.78l-7.97-13.8z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"m47.03 84.75-13.8-7.97\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-7.97 29.75-13.8-7.97z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"M62.97 84.75H47.03\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 7.97 29.75H47.03z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"M62.97 84.75h21.78V62.97\"/><path stroke-width=\"1.1\" d=\"M84.75 84.75h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 7.97 29.75h21.78V62.97z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"M84.75 47.03v15.94\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 29.75-7.97v15.94z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"m76.78 33.22 7.97 13.8\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 21.78-21.78 7.97 13.8z\"/></g><g class=\"sq1-piece\"><path fill=\"#00ffffc0\" d=\"m62.97 25.25 13.8 7.97zM55 55l7.97-29.75 13.8 7.97z\" class=\"sticker\"/><path stroke=\"var(--text-primary)\" stroke-linecap=\"round\" stroke-width=\"1.1\" d=\"m62.97 25.25 13.8 7.97\"/><path fill=\"none\" stroke=\"var(--text-primary)\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 7.97-29.75 13.8 7.97z\"/></g></g></svg>",
+      "bottom:Perpendicular_edges": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"125.45\" height=\"125.45\" class=\"squan\" data-origin-x=\"55\" data-origin-y=\"55\" data-puzzle-size=\"110\" style=\"overflow:visible\" viewBox=\"-7.73 -7.73 125.45 125.45\"><path stroke=\"var(--text-primary)\" stroke-width=\".29\" d=\"m43.73 12.92 22.54 84.16\"/><g class=\"sq1-pieces\"><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"M62.97 84.75h21.78V62.97\"/><path stroke-width=\"1.1\" d=\"M84.75 84.75h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 7.97 29.75h21.78V62.97z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path stroke-width=\"1.1\" d=\"M84.75 47.03v15.94\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 29.75-7.97v15.94z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"M84.75 47.03V25.25H62.97\"/><path stroke-width=\"1.1\" d=\"M84.75 25.25h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55 29.75-7.97V25.25H62.97z\"/></g><g class=\"sq1-piece\"><path fill=\"#00ffffc0\" d=\"M47.03 25.25h15.94zM55 55l-7.97-29.75h15.94z\" class=\"sticker\"/><path stroke=\"var(--text-primary)\" stroke-linecap=\"round\" stroke-width=\"1.1\" d=\"M47.03 25.25h15.94\"/><path fill=\"none\" stroke=\"var(--text-primary)\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-7.97-29.75h15.94z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"M47.03 25.25H25.25v21.78\"/><path stroke-width=\"1.1\" d=\"M25.25 25.25h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-7.97-29.75H25.25v21.78z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"M25.25 47.03 14.36 65.89l18.86 10.89\"/><path stroke-width=\"1.1\" d=\"M14.36 65.89h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"m55 55-29.75-7.97-10.89 18.86 18.86 10.89z\"/></g><g stroke=\"var(--text-primary)\" stroke-linecap=\"round\" class=\"sq1-piece\"><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.1\" d=\"m33.22 76.78 10.9 18.86 18.85-10.9\"/><path stroke-width=\"1.1\" d=\"M44.11 95.64h0\"/><path fill=\"none\" stroke-linejoin=\"round\" stroke-width=\"1.32\" d=\"M55 55 33.22 76.78l10.9 18.86 18.85-10.9z\"/></g></g></svg>"
+    }
+  }
+}

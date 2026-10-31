@@ -1,0 +1,47 @@
+/**
+ * Shape identity per homepage layer name: unit bits (0 = edge, 1 = corner) of the
+ * default tracer pattern, in tracing (reading) order. This is the fixed reference
+ * frame the tracing start is evaluated in. It is not a display setting; use
+ * shapeDisplay.ts to change how an image is oriented.
+ */
+export const LAYER_SHAPE_BITS: Record<string, string> = {
+  Barrel_bottom: '00110011',
+  Barrel_top: '00110011',
+  Kite_bottom: '00101101',
+  Kite_top: '00101101',
+  Left_4_2: '000010011',
+  Left_5_1: '000001011',
+  Left_fist_bottom: '00110101',
+  Left_fist_top: '00110101',
+  Left_pawn_bottom: '00010111',
+  Left_pawn_top: '00010111',
+  Mushroom_bottom: '00011011',
+  Mushroom_top: '00011011',
+  Paired_edges: '0011111',
+  Parallel_edges: '0111011',
+  Perpendicular_edges: '0101111',
+  Right_4_2: '001000011',
+  Right_5_1: '010000011',
+  Right_fist_bottom: '00101011',
+  Right_fist_top: '00101011',
+  Right_pawn_bottom: '01000111',
+  Right_pawn_top: '01000111',
+  Scallop_bottom: '00001111',
+  Scallop_top: '00001111',
+  Shield_bottom: '00100111',
+  Shield_top: '00100111',
+  Square_bottom: '01010101',
+  Square_top: '01010101',
+  Star: '111111',
+  svg_2_2_2: '001001001',
+  svg_3_1_2: '010010001',
+  svg_3_2_1: '010001001',
+  svg_3_3: '000100011',
+  svg_4_1_1: '000010101',
+  svg_4_4: '0000100001',
+  svg_5_3: '0000010001',
+  svg_6: '000000111',
+  svg_6_2: '0000001001',
+  svg_7_1: '0000000101',
+  svg_8: '0000000011',
+};
