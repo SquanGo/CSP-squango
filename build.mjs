@@ -23,7 +23,5 @@ if (!existsSync(resolve(appDir, 'node_modules'))) {
   run('npm', ['ci'], appDir);
 }
 
-run('node', ['generate-boot-preset.js'], root);
-
 // Calls vite directly (skips tsc typecheck); --emptyOutDir clears stale output.
 run('npx', ['vite', 'build', '--outDir', JSON.stringify(outDir), '--emptyOutDir', '--base', base], appDir);
