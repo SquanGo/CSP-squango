@@ -7,7 +7,7 @@
 //               is closed (no forced skipWaiting), so open tabs are never yanked
 //               onto a half-loaded new version mid-session.
 
-const VERSION = '1.0.0';
+const VERSION = '2.0.0';
 const CACHE = 'app-' + VERSION + '-' + self.location.pathname.replace(/[^a-zA-Z0-9_-]/g, '-');
 
 // Core files to pre-cache on install (so the site works offline from first visit).
