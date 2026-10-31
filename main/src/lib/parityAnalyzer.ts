@@ -875,11 +875,12 @@ export function calculateArrowAngle(
   rotationAmount: number,
   unitsArray: string[],
   layerType: 'TOP' | 'BOTTOM',
-  patternBits: string,
 ): ArrowAngle {
   const initialAngle = layerType === 'TOP' ? 90 : 300;
-  const endsWithCorner = patternBits.endsWith('1');
-  const arcDegrees = endsWithCorner ? 300 : 330;
+  // Tracing rotates the reading order. Its final piece is the one immediately
+  // before the selected start, not necessarily the raw layer's final piece.
+  const lastPieceIndex = (rotationAmount + unitsArray.length - 1) % unitsArray.length;
+  const arcDegrees = CORNER_HEX.has(unitsArray[lastPieceIndex]) ? 300 : 330;
 
   let totalRotationDegrees = 0;
   for (let i = 0; i < rotationAmount; i++) {

@@ -1667,8 +1667,8 @@ function createParityTracerModalWithAllParametersIncluded(options: ParityTracerO
               }, 120);
 
               const { topUnits: topRawU, botUnits: botRawU } = hexToUnits(tlHex, blHex);
-              const topArrowData = calculateArrowAngle(sixStepParity.topTraceRotation, topRawU, 'TOP', sixStepParity.topBits);
-              const botArrowData = calculateArrowAngle(sixStepParity.botTraceRotation, botRawU, 'BOTTOM', sixStepParity.botBits);
+              const topArrowData = calculateArrowAngle(sixStepParity.topTraceRotation, topRawU, 'TOP');
+              const botArrowData = calculateArrowAngle(sixStepParity.botTraceRotation, botRawU, 'BOTTOM');
 
               const tempDiv = document.createElement('div');
               tempDiv.innerHTML = svgContent;
