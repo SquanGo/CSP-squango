@@ -10,17 +10,17 @@
   "description": "Learn, train, and manage your CSPs, all in one place.",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "./favicon.ico",
       "sizes": "16x16 32x32",
       "type": "image/x-icon"
     },
     {
-      "src": "res/icons/icon-32.png",
+      "src": "./res/icons/icon-32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "res/icons/icon-16.png",
+      "src": "./res/icons/icon-16.png",
       "sizes": "16x16",
       "type": "image/png"
     }
