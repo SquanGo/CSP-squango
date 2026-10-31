@@ -21,9 +21,10 @@ const PRECACHE = [
     "./training-modal.css",
     "./quick-edit.css",
     "./svg-editor.css",
+    "./favicon.svg",
     "./res/icons/icon-32.png",
-    "./res/icons/icon-16.png",
-    "./favicon.ico"
+    "./res/icons/icon-192.png",
+    "./res/icons/icon-512.png",
 ];
 
 // ── WHAT TO CACHE ────────────────────────────────────────────────────────────
