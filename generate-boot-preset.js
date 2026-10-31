@@ -131,17 +131,21 @@ function generateInitialSVGCache(input, preset) {
   const bundlePath = `${tempBase}.bundle.mjs`;
   try {
     fs.writeFileSync(sourcePath, runner);
-    const bundle = spawnSync(
-      path.resolve('main/node_modules/.bin/esbuild'),
-      ['--bundle', '--platform=node', '--format=esm', `--outfile=${bundlePath}`, sourcePath],
-      { encoding: 'utf8' },
-    );
-    if (bundle.status !== 0) {
-      throw new Error(bundle.stderr.trim());
-    }
+    const esbuildPath = require.resolve('esbuild', { paths: [path.resolve('main')] });
+    require(esbuildPath).buildSync({
+      entryPoints: [sourcePath],
+      bundle: true,
+      platform: 'node',
+      format: 'esm',
+      outfile: bundlePath,
+      logLevel: 'silent',
+    });
     const result = spawnSync(process.execPath, [bundlePath], { encoding: 'utf8' });
+    if (result.error) {
+      throw result.error;
+    }
     if (result.status !== 0) {
-      throw new Error(result.stderr.trim());
+      throw new Error((result.stderr || '').trim() || `Bundle exited with status ${result.status}`);
     }
     return JSON.parse(result.stdout);
   } finally {
