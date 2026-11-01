@@ -1,9 +1,5 @@
 /**
  * Three.js Square-1 algorithm viewer.
- *
- * Replaces the SVG/fade legacy animator with a real 3D Square-1 model. The
- * public bridge stays compatible with the rest of the port:
- * `openAnimateAlgModal(algorithm, caseName, parity)`.
  */
 import * as THREE from 'three';
 import { insetStickerFace } from '../lib/stickerGeometry';
@@ -762,7 +758,7 @@ function createModalHTML(modalId: string, algorithm: string, caseName: string, p
         <div class="modal-header">
           <div>
             <div class="modal-title">${escapeHTML(title)}</div>
-            <div class="sq1-three-subtitle">${escapeHTML(algorithm)}</div>
+            <div class="sq1-three-subtitle">Design & animation by Dalton Yeo (2022YEOD01)</div>
           </div>
           <button class="close-btn" id="${modalId}-close">×</button>
         </div>
