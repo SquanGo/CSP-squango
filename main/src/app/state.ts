@@ -1022,15 +1022,10 @@ export async function applyPreset(
     ),
   ).forEach(([k, v]) => customAlgorithms.set(Number(k), v));
 
-  if (preset.evilCases !== undefined || preset.evilnessMap !== undefined) {
-    evilnessMap = evilMapFromCases(preset.evilCases ?? preset.evilnessMap);
-  }
-  if (preset.evilnessEnabled !== undefined) evilnessFactor = Boolean(preset.evilnessEnabled);
-  else if (preset.evilnessFactor !== undefined) evilnessFactor = Boolean(preset.evilnessFactor);
-  if (preset.evilnessAffectsParity !== undefined)
-    evilnessAffectsParity = Boolean(preset.evilnessAffectsParity);
-  else if (preset.evilnessStringReturn !== undefined)
-    evilnessAffectsParity = Boolean(preset.evilnessStringReturn);
+  // Missing keys reset to off, so presets without evilness don't inherit the previous one.
+  evilnessMap = evilMapFromCases(preset.evilCases ?? preset.evilnessMap);
+  evilnessFactor = Boolean(preset.evilnessEnabled ?? preset.evilnessFactor);
+  evilnessAffectsParity = Boolean(preset.evilnessAffectsParity ?? preset.evilnessStringReturn);
 
   generalNotes = (preset.generalNotes as string) || '';
 
