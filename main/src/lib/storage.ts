@@ -105,14 +105,6 @@ function migrateStorage(): void {
   // Nothing to migrate once legacy keys are gone.
   if (!hasLegacyData()) return;
 
-  // Skip when no legacy data remains.
-  let hasLegacy = false;
-  for (let i = 0; i < localStorage.length; i++) {
-    const k = localStorage.key(i);
-    if (k && !k.startsWith('csp')) { hasLegacy = true; break; }
-  }
-  if (!hasLegacy) return;
-
   const legacyProgress = readObject('sq1-parity-progress');
   const progress = { ...legacyProgress, ...readObject(CSP_PROGRESS_KEY) };
   if (progress.evilnessEnabled === undefined && legacyProgress.evilnessFactor !== undefined) {

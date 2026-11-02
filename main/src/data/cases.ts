@@ -12,9 +12,11 @@ const legacyEdgeNames: Record<string, string> = {
 function getExpandedLegacyCaseName(key: string): string {
   const separator = key.lastIndexOf('/');
   const suffix = key.slice(separator + 1);
-  return separator === -1 || !legacyEdgeNames[suffix]
+  const expanded = separator === -1 || !legacyEdgeNames[suffix]
     ? key
     : `${key.slice(0, separator + 1)}${legacyEdgeNames[suffix]}`;
+  // 'Pawn' was renamed to 'Paw'.
+  return expanded.replace(/\bPaw\b/g, 'Pawn');
 }
 
 const caseIdsByKey = new Map(

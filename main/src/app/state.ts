@@ -133,31 +133,31 @@ const defaultDisplayNames: Record<number, string> = {
   41: 'Scallop/Square',
   39: 'Scallop/Left Fist',
   40: 'Scallop/Right Fist',
-  36: 'Scallop/Left Pawn',
-  35: 'Scallop/Right Pawn',
+  36: 'Scallop/Left Paw',
+  35: 'Scallop/Right Paw',
   90: 'Square/Square',
   19: 'Left Fist/Square',
   18: 'Left Fist/Left Fist',
   87: 'Left Fist/Right Fist',
   20: 'Right Fist/Square',
   17: 'Right Fist/Right Fist',
-  53: 'Left Pawn/Barrel',
-  51: 'Left Pawn/Kite',
-  47: 'Left Pawn/Muffin',
-  42: 'Left Pawn/Shield',
-  55: 'Left Pawn/Square',
-  49: 'Left Pawn/Left Fist',
-  77: 'Left Pawn/Right Fist',
-  45: 'Left Pawn/Left Pawn',
-  81: 'Left Pawn/Right Pawn',
-  52: 'Right Pawn/Barrel',
-  50: 'Right Pawn/Kite',
-  46: 'Right Pawn/Muffin',
-  43: 'Right Pawn/Shield',
-  54: 'Right Pawn/Square',
-  76: 'Right Pawn/Left Fist',
-  48: 'Right Pawn/Right Fist',
-  44: 'Right Pawn/Right Pawn',
+  53: 'Left Paw/Barrel',
+  51: 'Left Paw/Kite',
+  47: 'Left Paw/Muffin',
+  42: 'Left Paw/Shield',
+  55: 'Left Paw/Square',
+  49: 'Left Paw/Left Fist',
+  77: 'Left Paw/Right Fist',
+  45: 'Left Paw/Left Paw',
+  81: 'Left Paw/Right Paw',
+  52: 'Right Paw/Barrel',
+  50: 'Right Paw/Kite',
+  46: 'Right Paw/Muffin',
+  43: 'Right Paw/Shield',
+  54: 'Right Paw/Square',
+  76: 'Right Paw/Left Fist',
+  48: 'Right Paw/Right Fist',
+  44: 'Right Paw/Right Paw',
 };
 
 // ── Mutable app state ───────────────────────────────────────────────────────
@@ -620,7 +620,11 @@ function normalizeCaseState(state: StoredProgressState): StoredProgressState {
 function mergeDisplayNames(source: Record<string, string>): void {
   displayNames = normalizeCaseRecord(source);
   for (const caseId in defaultDisplayNames) {
-    if (!displayNames[caseId]) displayNames[caseId] = defaultDisplayNames[caseId];
+    // Upgrade untouched pre-rename defaults ('Pawn' -> 'Paw'); keep custom names.
+    const legacyDefault = defaultDisplayNames[caseId].replace(/\bPaw\b/g, 'Pawn');
+    if (!displayNames[caseId] || displayNames[caseId] === legacyDefault) {
+      displayNames[caseId] = defaultDisplayNames[caseId];
+    }
   }
 }
 
@@ -902,10 +906,44 @@ async function loadPresetAsDefaults(presetName: string): Promise<boolean> {
   return true;
 }
 
+// Fill cases with no stored algs from the user's current preset (lost or newly added cases).
+function fillMissingCasesFromPreset(): void {
+  if (!presetData) return;
+  const presetAlgs = normalizeCaseRecord(
+    presetData.customAlgorithms as Record<string, { odd?: string[]; even?: string[] }> | undefined,
+  );
+  const presetComments = normalizeCaseRecord(presetData.comments as Record<string, string> | undefined);
+  const presetSubtitles = normalizeCaseRecord(
+    presetData.perCaseSubtitles as Record<string, string> | undefined,
+  );
+  const presetEvil = evilMapFromCases(presetData.evilCases ?? presetData.evilnessMap);
+  const presetNames = normalizeCaseRecord(presetData.displayNames as Record<string, string> | undefined);
+
+  const filled = data.filter((item) => !customAlgorithms.has(item.id) && presetAlgs[item.id]);
+  if (filled.length === 0) return;
+
+  const parityWasCurrent = !needsParityRecalculation();
+  for (const { id } of filled) {
+    customAlgorithms.set(id, presetAlgs[id]);
+    if (!comments.has(id) && presetComments[id] !== undefined) {
+      comments.set(id, String(presetComments[id]));
+    }
+    if (!perCaseSubtitles.has(id) && presetSubtitles[id] !== undefined) {
+      perCaseSubtitles.set(id, String(presetSubtitles[id]));
+    }
+    if (presetEvil[String(id)] === true) evilnessMap[String(id)] = true;
+    if (presetNames[id]) displayNames[String(id)] = presetNames[id];
+  }
+  calculateAndCacheParityForCases(filled);
+  if (parityWasCurrent) lastParityCalculationSettings = getParityCalculationSettings();
+  saveState();
+  notify();
+}
+
 export async function initializePreset(): Promise<void> {
   const savedPreset = String(readCspObject(CSP_PREFERENCES_KEY).currentPreset || "Matt's_Preset");
-  if (PRESET_CONFIG[savedPreset]) {
-    await loadPresetAsDefaults(savedPreset);
+  if (PRESET_CONFIG[savedPreset] && (await loadPresetAsDefaults(savedPreset))) {
+    fillMissingCasesFromPreset();
   }
 }
 
